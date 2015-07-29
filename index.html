@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="game">
   <head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
@@ -27,18 +28,22 @@
   
   
   <div class="scene playing" ng-controller="MainCtrl as scene" >
-     問題 : {{ scene.data.description }}
-     <div class="option" ng-repeat="option in scene.data.options">
-        <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
-            <span class="option-index">{{option.name}}</span>
-            <span class="option-value">{{option.value}}</span>
-        </a>
-     </div>
+    <div class="question">
+         問題 : {{ scene.data.description }}
+         <div class="options">
+             <div class="option" ng-repeat="option in scene.data.options">
+                <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
+                    <span class="option-index">{{option.name}}</span>
+                    <span class="option-value">{{option.value}}</span>
+                </a>
+             </div>
+        </div>
+    </div>
      <div class="score">積分 = {{scene.score}}</div>
   
   
   <div class="scene final">
-      <h2>information</h2>
+      <h2>結果頁</h2>
       <div ng-repeat="select in scene.selected">
             <span class="select-index">{{select.option.name}}</span>
             <span class="select-value">{{select.option.value}}</span>

@@ -173,4 +173,5 @@ var game = angular.module('game',[]);
     });
 
 function endofgame(){
+    $('.question').hide();
 };
