@@ -7,18 +7,21 @@ var data = [
                      "value":"身障者",
                      "addormulti":"+",
                      "score":30,
+                     "img":"img/disable-img.png",
                  },
                  {
                      "name":"B",
                      "value":"街友",
                      "addormulti":"+",
                      "score":30,
+                     "img":"img/old-img.png",
                  },
                  {
                      "name":"C",
                      "value":"老人家",
                      "addormulti":"+",
                      "score":30,
+                     "img":"img/old-img.png",
                  }
              ],
              "information":"弱勢狀態時選擇成為街頭者的原因，多來自於經濟、工作形式、以及環境三種考量。<br/>▍經濟：經濟考量是弱勢者選擇街賣最普遍的原因。然而，壓力未必只有個人生計。如一位街賣者受訪時所說：「若不需負擔媽媽看護費用，我自己是可以過的」。<br/>▍工作形式：街賣者因為生理上或個性上的問題，無法因應一般公司的工作型態，而街賣擁有的自由度或彈性，就成為他們的選擇。受訪街賣者曾提到無法負荷先前工作上的肢體負荷，所以選擇離開。<br/>▍環境：相對於利益導向的工作環境，街賣環境可能遇到更多的同理者（即使仍有少數環抱歧視心態的民眾），這樣的環境氛圍也是特定個案青睞街賣行業的原因之一。"
@@ -147,6 +150,18 @@ var game = angular.module('game',[]);
         this.score = 0;
         this.selected = [];
         this.data = data[this.index];
+        this.state='ready';
+        
+        gamePrepare();
+        
+        //按下開始
+        this.start = function(){
+            this.state = 'playing';
+//            $('.game-start').animate({'opacity':0},1500,function(){
+//                $('.game-start').hide();
+//                $('.playing').show().animate({'opacity':1},1500);
+//            });
+        }
         
         // 按下選項
         this.next = function(option){
@@ -157,6 +172,7 @@ var game = angular.module('game',[]);
             
             this.index++;
             if(this.index >= data.length){
+                this.state = 'ending';
                 endofgame();
             }else{
                 this.data = data[this.index];
@@ -173,5 +189,10 @@ var game = angular.module('game',[]);
     });
 
 function endofgame(){
-    $('.question').hide();
+    
 };
+
+function gamePrepare(){
+//    $('.playing').hide().css('opacity',0);
+//    $('.final').hide().css('opacity',0);
+}

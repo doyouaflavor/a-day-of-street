@@ -6,35 +6,39 @@
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
   </head>
-  <body>
+  <body ng-controller="MainCtrl as scene">
   <div class="header">
       <span class="header-logo">人生百味</span>
       <span class="header-team">製作團隊</span>
   </div>
   
   
-  <div class="scene game-start">
+  <div class="scene game-start" ng-if="scene.state=='ready'">
       <h1>街頭創業家的一天</h1>
       <p>十字路旁單薄的叫賣身影，你是否已習以為常？<br/>
 不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。<br/>
  其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。<br/>
  透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。</p>
- <form action="">
-     <input type="text" placeholder="你的大名" name="" id="">
-     <button type="submit">登計創業</button>
+ <form ng-submit="scene.start()" >
+     <input type="text" placeholder="你的大名" name="" id="" ng-model="scene.name">
+     <input type="submit" id="submit" value="登記創業" />
      </form>
   </div>
   
   
   
-  <div class="scene playing" ng-controller="MainCtrl as scene" >
-    <div class="question">
-         問題 : {{ scene.data.description }}
+  <div class="scene playing"  ng-if="scene.state=='playing'">
+    <div class="question-set">
+        <div class="question-content">
+         Q1. {{ scene.data.description }}
+         </div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
                 <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
-                    <span class="option-index">{{option.name}}</span>
-                    <span class="option-value">{{option.value}}</span>
+                   <div class="option-img">
+                       <img src="{{option.img}}"></img>
+                   </div>
+                    <div class="option-text">{{option.name}}.{{option.value}}</div>
                 </a>
              </div>
         </div>
@@ -42,7 +46,7 @@
      <div class="score">積分 = {{scene.score}}</div>
   
   
-  <div class="scene final">
+  <div class="scene final" ng-if="scene.state=='ending'">
       <h2>結果頁</h2>
       <div ng-repeat="select in scene.selected">
             <span class="select-index">{{select.option.name}}</span>
