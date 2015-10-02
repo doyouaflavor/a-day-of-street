@@ -3,6 +3,7 @@
   <head>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
   </head>
@@ -30,7 +31,7 @@
   <div class="scene playing"  ng-if="scene.state=='playing'">
     <div class="question-set">
         <div class="question-content">
-         Q1. {{ scene.data.description }}
+         {{ scene.data.name}}. {{ scene.data.description }}
          </div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
@@ -53,8 +54,8 @@
             <span class="select-value">{{select.option.value}}</span>
             <span class="select-am">{{select.option.addormulti}}</span>
             <span class="select-score">{{select.option.score}}</span>
-            <div class="information">
-                {{select.information}}
+            <div class="information" ng-html="select.information">
+                
             </div>
      </div>
   </div>
