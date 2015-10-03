@@ -19,35 +19,35 @@ var game = angular.module('game',['ngSanitize']);
         }
 
         //按下
-        this.select = function(){
+        this.select = function(option){
             this.state = 'selected'; 
-            console.log(this.state);
-        }
-
-        // 按下選項
-        this.next = function(option){
-            
             this.selected.push({
                 "information":this.data.information,
                 "option":option,
             });
-            
-            this.index++;
-            if(this.index >= data.length){
-                this.state = 'ending';
-                console.log("0");
-                endofgame();
-            }else{
-                this.state = 'playing';
-                console.log("1");
-                this.data = data[this.index];
-                switch(option.addormulti){
+            switch(option.addormulti){
                         case "+":
                             this.score+=option.score;
                         break;
                         case "*":
                             this.score*=option.score;
                         break;
+            console.log(this.state);
+        }
+
+        // 按下選項
+        this.next = function(){
+            
+            
+            
+            this.index++;
+            if(this.index >= data.length){
+                this.state = 'ending';
+                endofgame();
+            }else{
+                this.state = 'playing';
+                this.data = data[this.index];
+                
                 }
             }
         }
