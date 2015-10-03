@@ -36,7 +36,7 @@
          <div class="triangle"></div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
-                <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
+                <a class="option" href="javascript:void(0);" ng-click="scene.select()">
                    <div class="option-img">
                        <img src="{{option.img}}" class="img-sm"></img>
                        <img src="{{option.rwd_img}}" class="img-lg"></img>
@@ -47,8 +47,29 @@
         </div>
     </div>
      <div class="score">積分 = {{scene.score}}</div>
-  
-  
+  </div>
+
+  <div class="scene selected"  ng-if="scene.state=='selected'">
+   
+    <!--要改classname-->
+    <div class="question-set">
+        <div class="question-content">
+         {{ scene.data.information }}
+         
+         <div class="options">
+             <div class="option" ng-repeat="option in scene.data.options">
+                <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
+                   <div class="option-img">
+                       <img src="{{option.rwd_img}}" class="img-lg"></img>
+                   </div>
+                </a>
+             </div>
+        </div>
+    </div>
+     <div class="score">積分 = {{scene.score}}</div>
+  </div>
+  </div>
+
   <div class="scene final" ng-if="scene.state=='ending'">
       <h2>結果頁</h2>
       <div ng-repeat="select in scene.selected">
@@ -57,12 +78,11 @@
             <span class="select-am">{{select.option.addormulti}}</span>
             <span class="select-score">{{select.option.score}}</span>
             <div class="information" ng-html="select.information">
-                
             </div>
-     </div>
+      </div>
   </div>
   
-  </div>
+  
   
   </body>
 </html>
