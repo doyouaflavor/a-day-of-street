@@ -19,13 +19,23 @@
 }
 
 .scene{
-/*    margin:20px auto;*/
-/*    max-width:960px;*/
     background: #FFF0E3;
 }
 
 .game-start{
     text-align: center;
+    padding-bottom: 100px;
+}
+.game-start h1{
+    padding-top: 50px;
+}
+.game-start p{
+    padding-top: 50px;
+    line-height: 1.5em;
+}
+.game-start input{
+    font-size: 20px;
+    margin-top: 30px;
 }
 
 .triangle{
@@ -120,6 +130,16 @@ a .option-text{
     color: white;
     text-decoration: none;
 }
+.next{
+    margin-top: 100px;
+    padding-top: 20px;
+    color: white;
+    background: #486e74;
+}
+.next:after{
+    content: "";
+}
 .score{
     clear: both;
 }
+
