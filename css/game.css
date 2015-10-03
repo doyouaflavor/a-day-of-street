@@ -58,9 +58,17 @@
     margin: 0 auto;
     text-align: center;
 }
-.option-img img{
-    
+@media screen and (max-width: 480px) {
+    .img-sm{
+        display: none;
+    }
 }
+@media screen and (min-width: 480px) {
+    .img-lg{
+        display: none;
+    }    
+}
+
 .option-text{
     margin: 0 auto;
     background: #DE574B;

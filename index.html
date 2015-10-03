@@ -33,11 +33,13 @@
         <div class="question-content">
          {{ scene.data.name}}. {{ scene.data.description }}
          </div>
+         <div class="triangle"></div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
                 <a class="option" href="javascript:void(0);" ng-click="scene.next(option)">
                    <div class="option-img">
-                       <img src="{{option.img}}"></img>
+                       <img src="{{option.img}}" class="img-sm"></img>
+                       <img src="{{option.rwd_img}}" class="img-lg"></img>
                    </div>
                     <div class="option-text">{{option.name}}.{{option.value}}</div>
                 </a>
