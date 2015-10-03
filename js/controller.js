@@ -1,4 +1,4 @@
-var game = angular.module('game',[]);
+var game = angular.module('game',['ngSanitize']);
     game.controller('MainCtrl', function () {  
         this.index = 0;
         this.score = 0;
