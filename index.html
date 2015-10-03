@@ -37,7 +37,7 @@
          <div class="triangle"></div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
-                <a class="option" href="javascript:void(0);" ng-click="scene.select()">
+                <a class="option" href="javascript:void(0);" ng-click="scene.select(option)">
                    <div class="option-img">
                        <img src="{{option.img}}" class="img-sm"></img>
                        <img src="{{option.rwd_img}}" class="img-lg"></img>
@@ -62,7 +62,7 @@
          
          <div class="next">
              <div class="next" >
-                <a class="next" href="javascript:void(0);" ng-click="scene.next(option)">
+                <a class="next" href="javascript:void(0);" ng-click="scene.next()">
                   NEXT
                    </div>
                 </a>
