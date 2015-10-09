@@ -5,16 +5,22 @@
     text-align: center;
 }
 .header{
-    background: #ccc;
-    height:25px;
+    background: #3FAA96;
+    color: aliceblue;
+    height:45px;
 /*    margin-bottom: 50px;*/
+}
+.header-item{
+    padding: 0 20px;
+    margin: 10px 0;
 }
 .header-logo{
     float:left;
     line-height: 25px;
+    border-right:aliceblue 2px solid;
 }
 .header-team{
-    float:right;
+    float:left;
     line-height: 25px;
 }
 
@@ -139,6 +145,11 @@ a .option-text{
 .next:after{
     content: "";
 }
+.answer-set{
+    background: #3FAA96;
+    color: #eee;
+}
+
 .score{
     clear: both;
 }
