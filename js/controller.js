@@ -10,17 +10,17 @@ var game = angular.module('game',['ngSanitize']);
         
         //按下開始
         this.start = function(){
-            this.state = 'playing';
+            this.state = 'question';
 //            $('.game-start').animate({'opacity':0},1500,function(){
 //                $('.game-start').hide();
-//                $('.playing').show().animate({'opacity':1},1500);
+//                $('.question').show().animate({'opacity':1},1500);
 //            });
             console.log(this.state);
         }
 
         //按下
         this.select = function(option){
-            this.state = 'selected'; 
+            this.state = 'answer-information'; 
             this.selected.push({
                 "information":this.data.information,
                 "option":option,
@@ -45,7 +45,7 @@ var game = angular.module('game',['ngSanitize']);
                 this.state = 'ending';
                 endofgame();
             }else{
-                this.state = 'playing';
+                this.state = 'question';
                 this.data = data[this.index];
                 
                 }
@@ -58,6 +58,6 @@ function endofgame(){
 };
 
 function gamePrepare(){
-//    $('.playing').hide().css('opacity',0);
+//    $('.question').hide().css('opacity',0);
 //    $('.final').hide().css('opacity',0);
 }

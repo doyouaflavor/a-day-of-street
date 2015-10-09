@@ -10,8 +10,8 @@
   </head>
   <body ng-controller="MainCtrl as scene">
   <div class="header">
-      <span class="header-logo">人生百味</span>
-      <span class="header-team">製作團隊</span>
+      <span class="header-item header-logo">人生百味</span>
+      <span class="header-item header-team">製作團隊</span>
   </div>
   
   
@@ -29,7 +29,7 @@
   
   
   <!--選項-->
-  <div class="scene playing"  ng-if="scene.state=='playing'">
+  <div class="scene question"  ng-if="scene.state=='question'">
     <div class="question-set">
         <div class="question-content">
          {{ scene.data.name}}. {{ scene.data.description }}
@@ -51,11 +51,11 @@
   
 
   <!--選擇選項後出現的說明-->
-  <div class="scene selected"  ng-if="scene.state=='selected'">
+  <div class="scene answer-information"  ng-if="scene.state=='answer-information'">
    
     <!--要改classname-->
-    <div class="question-set">
-        <div class="question-content" >
+    <div class="answer-set">
+        <div class="answer-content" >
         <p ng-bind-html="scene.data.information"></p>
          </div>
          
