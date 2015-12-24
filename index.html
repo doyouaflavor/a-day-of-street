@@ -37,9 +37,9 @@
          <div class="triangle"></div>
          <div class="options">
              <div class="option" ng-repeat="option in scene.data.options">
-                <a class="option" href="javascript:void(0);" ng-click="scene.select(option)">
+                <a href="javascript:void(0);" ng-click="scene.select(option)">
                    <div class="option-img">
-                       <img src="{{option.img}}" class="img-sm"></img>
+                       <img src="{{option.img}}" class="img-sm"/>
                        <img src="{{option.rwd_img}}" class="img-lg"></img>
                    </div>
                     <div class="option-text">{{option.name}}.{{option.value}}</div>
@@ -52,9 +52,26 @@
 
   <!--選擇選項後出現的說明-->
   <div class="scene answer-information"  ng-if="scene.state=='answer-information'">
-   
     <!--要改classname-->
     <div class="answer-set">
+       <div class="answer-info">
+           <div class="answer-info-header">
+               <div class="answer-score">
+                   創業積分
+               </div>
+               <div class="answer-selection">
+                   <span class="answer-select">
+                       {{scene.last_selected_option.value}}
+                   </span>
+                   <span class="answer-point">
+                       {{scene.last_selected_option.addormulti}}{{scene.last_selected_option.score}}
+                   </span>
+               </div>
+           </div>
+           <div class="answer-info-content">
+               <img src="{{scene.last_selected_option.img}}" />
+           </div>
+       </div>
         <div class="answer-content" >
         <p ng-bind-html="scene.data.information"></p>
          </div>
@@ -62,14 +79,11 @@
          <div class="next">
                 <a class="next" href="javascript:void(0);" ng-click="scene.next()">
                   NEXT
-                   </div>
                 </a>
+                </div>
              </div>
         </div>
-    </div>
      <div class="score">積分 = {{scene.score}}</div>
-  </div>
-  </div>
 
   <!--結局-->
   <div class="scene final" ng-if="scene.state=='ending'">

@@ -4,6 +4,7 @@ var game = angular.module('game',['ngSanitize']);
         this.score = 0;
         this.selected = [];
         this.data = data[this.index];
+        this.last_selected_option = null;
         this.state='ready';
         
         gamePrepare();
@@ -21,6 +22,7 @@ var game = angular.module('game',['ngSanitize']);
         //按下
         this.select = function(option){
             this.state = 'answer-information'; 
+            this.last_selected_option = option;
             this.selected.push({
                 "information":this.data.information,
                 "option":option,

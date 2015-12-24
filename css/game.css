@@ -87,6 +87,8 @@
 
 .options{
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 @media screen and (max-width: 768px) {
     .question-content{
@@ -131,16 +133,25 @@
     }
     .option{
         float: left;
-        width: 30%;
+        width: 33.3333%;
         height: 400px;
-        margin-right: 10px;
-        text-align: center;
+        position: relative;
     }
     .option-img{
-        width: 100%;
-        height: 350px;
+    }
+    .option-img img{
+/*        width: 100%;*/
         margin: 0 auto;
-        text-align: center;
+        position: absolute;
+        bottom:50px;
+        right: 0;
+        left: 0;
+    }
+    .option-text{
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        left: 0;
     }
 }
 
@@ -164,6 +175,7 @@ a .option-text{
     padding-top: 20px;
     color: white;
     background: #486e74;
+    clear: both;
 }
 .next:after{
     content: "";
@@ -176,4 +188,26 @@ a .option-text{
 .score{
     clear: both;
 }
-
+.answer-info{
+    width: 50%;
+    float: left;
+}
+.answer-info-header{
+    height: 40px;
+}
+.answer-score{
+    width: 120px;
+    height: 100%;
+    line-height: 2.2em;
+    float: left;
+    background: #DB534B;
+}
+.answer-selection{
+    line-height: 2.2em;
+    float: left;
+    width: 50%;
+}
+.answer-info-content{
+    background: #FFF0E3;
+    height: 100%;
+}
