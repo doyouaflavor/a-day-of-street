@@ -131,9 +131,11 @@
     .img-lg{
         display: none;
     }
+    .options{
+        display: table;
+    }
     .option{
-        float: left;
-        width: 33.3333%;
+        display: table-cell;
         height: 400px;
         position: relative;
     }
@@ -210,4 +212,5 @@ a .option-text{
 .answer-info-content{
     background: #FFF0E3;
     height: 100%;
+    position: relative;
 }

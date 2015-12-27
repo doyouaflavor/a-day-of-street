@@ -35,7 +35,7 @@
          {{ scene.data.name}}. {{ scene.data.description }}
          </div>
          <div class="triangle"></div>
-         <div class="options">
+         <div class="options" ng-style="optionsStyle">
              <div class="option" ng-repeat="option in scene.data.options">
                 <a href="javascript:void(0);" ng-click="scene.select(option)">
                    <div class="option-img">
@@ -68,8 +68,9 @@
                    </span>
                </div>
            </div>
-           <div class="answer-info-content">
+           <div class="answer-info-content" ng-style="answerInfoContentStyle">
                <img src="{{scene.last_selected_option.img}}" />
+               <div class="option-text">{{scene.last_selected_option.name}}.{{scene.last_selected_option.value}}</div>
            </div>
        </div>
         <div class="answer-content" >
