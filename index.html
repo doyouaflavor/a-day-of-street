@@ -5,6 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
     <script src="js/data.js"></script>
+    <script src="js/person.js"></script>
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
   </head>
@@ -26,7 +27,6 @@
      <input type="submit" id="submit" value="登記創業" />
      </form>
   </div>
-  
   
   <!--選項-->
   <div class="scene question"  ng-if="scene.state=='question'">
@@ -84,20 +84,44 @@
                 </div>
              </div>
         </div>
-     <div class="score">積分 = {{scene.score}}</div>
-
-  <!--結局-->
-  <div class="scene final" ng-if="scene.state=='ending'">
-      <h2>結果頁</h2>
-      <div ng-repeat="select in scene.selected">
-            <span class="select-index">{{select.option.name}}</span>
-            <span class="select-value">{{select.option.value}}</span>
-            <span class="select-am">{{select.option.addormulti}}</span>
-            <span class="select-score">{{select.option.score}}</span>
-            <div class="information" ng-html="select.information">
+        
+    <div class="scene question"  ng-if="scene.state=='street'">
+        <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
+        <div class="street-stage">
+            <div class="street-background">
+                <img src=""/>
             </div>
-      </div>
-  </div>
+            <div class="street-customers"></div>
+            <div class="street-master" ng-click="scene.action()">
+                <img src="img/disable-img.png"/>
+            </div>
+            <div class="street-customers">
+                <div class="person"  ng-repeat="person in scene.street_people" ng-style="person.style()">
+                    <img class="person-saw" ng-if="person.saw" src="img/person-normalsaw.png"/>
+                    <img src="img/option-6-2.jpg"/>
+                    {{person.state}}
+                </div>
+            </div>    
+        </div>
+    </div>
+        
+    <div class="score">積分 = {{scene.total_score}}</div>
+    <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
+     
+     
+
+    <!--結局-->
+    <div class="scene final" ng-if="scene.state=='ending'">
+        <h2>結果頁</h2>
+        <div ng-repeat="select in scene.selected">
+              <span class="select-index">{{select.option.name}}</span>
+              <span class="select-value">{{select.option.value}}</span>
+              <span class="select-am">{{select.option.addormulti}}</span>
+              <span class="select-score">{{select.option.score}}</span>
+              <div class="information" ng-html="select.information">
+              </div>
+        </div>
+    </div>
   
   
   

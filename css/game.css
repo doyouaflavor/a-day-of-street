@@ -214,3 +214,31 @@ a .option-text{
     height: 100%;
     position: relative;
 }
+
+
+/* Street */
+.street-stage{
+    position:relative;
+}
+.street-stage>div{
+    position:absolute;
+}
+.street-background{
+    background: #FFF0E3;
+}
+.street-master{
+    left: 50%;
+    horizontal-anchor: center;
+    vertical-anchor: center;
+}
+.street-master img{
+    width: 50%;
+}
+.person {
+    position: absolute;
+}
+.person-saw {
+    position: absolute;
+    top: -40px;
+    left: 50px;
+}
