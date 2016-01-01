@@ -226,19 +226,15 @@ a .option-text{
 .street-background{
     background: #FFF0E3;
 }
+.person-token{
+    position: absolute;
+    top: -40px;
+    left: 30px;
+}
 .street-master{
-    left: 50%;
-    horizontal-anchor: center;
-    vertical-anchor: center;
 }
 .street-master img{
-    width: 50%;
 }
 .person {
     position: absolute;
-}
-.person-saw {
-    position: absolute;
-    top: -40px;
-    left: 50px;
 }

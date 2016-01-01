@@ -15,6 +15,27 @@
       <span class="header-item header-team">製作團隊</span>
   </div>
   
+    <div class="scene" ng-style='scene.streetStyle()'>
+        <div class="street-info"> 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span></div>
+        <div class="street-stage">
+            <div class="street-background">
+                <img src=""/>
+            </div>
+            <div class="street-master" ng-click="scene.action()" ng-style="scene.masterStyle()">
+                <img src="img/street-role-{{scene.role}}.png"/>
+            </div>
+            <div class="street-customers">
+                <div class="person" ng-class="person.name" ng-repeat="person in scene.street_people" ng-style="person.style()">
+                    <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/person-normalsaw.png"/>
+                    <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/person-redeye.png"/>
+                    <img class="person-body" src="img/person.png"/>
+                    {{person.action}}
+                    {{person.state}}
+                </div>
+            </div>    
+        </div>
+    </div>  
+  
   
   <div class="scene game-start" ng-if="scene.state=='ready'">
       <h1>街頭創業家的一天</h1>
@@ -32,11 +53,11 @@
   <div class="scene question"  ng-if="scene.state=='question'">
     <div class="question-set">
         <div class="question-content">
-         {{ scene.data.name}}. {{ scene.data.description }}
+         {{ scene.question.name}}. {{ scene.question.description }}
          </div>
          <div class="triangle"></div>
          <div class="options" ng-style="optionsStyle">
-             <div class="option" ng-repeat="option in scene.data.options">
+             <div class="option" ng-repeat="option in scene.question.options">
                 <a href="javascript:void(0);" ng-click="scene.select(option)">
                    <div class="option-img">
                        <img src="{{option.img}}" class="img-sm"/>
@@ -74,7 +95,7 @@
            </div>
        </div>
         <div class="answer-content" >
-        <p ng-bind-html="scene.data.information"></p>
+        <p ng-bind-html="scene.question.information"></p>
          </div>
          
          <div class="next">
@@ -85,34 +106,13 @@
              </div>
         </div>
         
-    <div class="scene question"  ng-if="scene.state=='street'">
-        <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
-        <div class="street-stage">
-            <div class="street-background">
-                <img src=""/>
-            </div>
-            <div class="street-customers"></div>
-            <div class="street-master" ng-click="scene.action()">
-                <img src="img/disable-img.png"/>
-            </div>
-            <div class="street-customers">
-                <div class="person"  ng-repeat="person in scene.street_people" ng-style="person.style()">
-                    <img class="person-saw" ng-if="person.saw" src="img/person-normalsaw.png"/>
-                    <img src="img/option-6-2.jpg"/>
-                    {{person.state}}
-                </div>
-            </div>    
-        </div>
-    </div>
-        
-    <div class="score">積分 = {{scene.total_score}}</div>
-    <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
-     
+
      
 
     <!--結局-->
     <div class="scene final" ng-if="scene.state=='ending'">
         <h2>結果頁</h2>
+        <div>分數：{{scene.total_score}}</div>
         <div ng-repeat="select in scene.selected">
               <span class="select-index">{{select.option.name}}</span>
               <span class="select-value">{{select.option.value}}</span>
@@ -123,6 +123,14 @@
         </div>
     </div>
   
+<div class="scene final" ng-if="scene.debug">
+    <div class="score">積分 = {{scene.total_score}}</div>
+    <div class="score">單次分數 = {{scene.deal_score}}</div>
+    <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
+    <div class="sate">State：{{scene.state}}</div>
+    {{scene}}
+</div>
+     
   
   
   </body>

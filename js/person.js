@@ -1,23 +1,49 @@
-function newPerson(i){
+function newPerson(i,x,y){
     var person = {};
     person.position = {x:0,y:0};
     person.target = {x:0,y:0};
     person.vel = 5;
-    person.state = 'stop';
-    person.saw = false;
-    person.position.x = Math.random()*100;
-    person.position.y = Math.random()*100;
-    person.target.x = Math.random()*300+300;
-    person.target.y = Math.random()*300;
+    person.action = 'stop';
+    // stop, walk, kill
+    person.state = 'idle';
+    person.waitInterval = 0;
+    // idle, saw, walk-deal, redeye, leave
+    person.position.x = x;
+    person.position.y = y;
+    person.target.x = 0;
+    person.target.y = 0;
     person.name = 'wang'+i;
     person.sprite = $('.'+person.name);
     
-    person.do = function(action){
-        person.state = action;
+    person.do = function(action,target){
+        if(!target){
+            target = [0,0];
+        }
         
         switch(action){
-            case 'walk-deal':
-                person.goto(500,0);
+            case 'stop':
+            case 'walk':
+            case 'kill':
+                person.action = action;
+                break;
+            case 'walk-deal':    
+                person.goto(target[0],target[1]);
+                person.state = action;
+                break;
+            case 'kill':
+                person.state = action;
+                break;
+            case 'redeye':
+                person.state = action;
+                person.waitInterval = 30;
+                
+                break;
+            case 'leave':
+                person.state = action;
+                person.goto(target[0],target[1]);
+                break;
+            case 'saw':
+                person.state = action;
                 break;
         }
         
@@ -27,10 +53,11 @@ function newPerson(i){
     person.goto = function(x,y){
         person.target.x = x;
         person.target.y = y;
+        person.action = 'walk';
     }
     
     person.move = function(){
-        switch(person.state){
+        switch(person.action){
             case 'walk':
             case 'walk-deal':
                 // count position x
@@ -61,20 +88,18 @@ function newPerson(i){
 
                 if((disx == 0) && (disy == 0)){
                     
-                    if(person.state == 'walk-deal'){
-                        var destroy = true;
-                        
+                    if(person.state == 'leave'){
+                        person.do('kill');
+                    }else{
+                        person.do('stop');
                     }
-                    person.state = 'stop';
+                    
                 }
                 break;
             case 'stop':
                 
                 
                 break;
-        }
-        if(destroy){
-            person.do('kill');
         }
         return person;
     }
