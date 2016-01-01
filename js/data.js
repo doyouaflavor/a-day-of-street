@@ -20,7 +20,7 @@ var data = [
                      "rwd_img":"img/disable-mobile.png",
                      "effect":function(scene){
                          scene.role = 1;
-                         scene.threshold.saw = 0.1;
+                         scene.threshold.saw = 0.08;
                      },
                  },
                  {
@@ -46,7 +46,7 @@ var data = [
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
                          scene.role = 3;
-                         scene.threshold.saw = 0.08;
+                         scene.threshold.saw = 0.07;
                      },
                  }
              ],
@@ -64,6 +64,7 @@ var data = [
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
                          removeItem(scene.data, 3, "C");//刪掉第四題的夜市
+                         scene.threshold.redeye += 0.001;
                      },
                  },
                  {
@@ -73,7 +74,7 @@ var data = [
                      "score":15,
                      "img":"img/option-2-2.jpg",
                      "effect":function(scene){
-                         
+                         scene.threshold.redeye += 0.001;
                      },
                  }
              ],
@@ -130,12 +131,12 @@ var data = [
              "options":[
                  {
                      "name":"A",
-                     "value":"捷運站出口",
+                     "value":"車站出口",
                      "addormulti":"*",
                      "score":3,
                      "img":"img/option-4-1.jpg",
                      "effect":function(scene){
-                         scene.threshold.newPeople += 0.05;
+                         scene.threshold.newPeople += 0.1;
                          scene.threshold.redeye += 0.05;
                      },
                  },

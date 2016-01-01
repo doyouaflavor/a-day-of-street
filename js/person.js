@@ -2,7 +2,7 @@ function newPerson(i,x,y){
     var person = {};
     person.position = {x:0,y:0};
     person.target = {x:0,y:0};
-    person.vel = 5;
+    person.vel = Math.random()*4+3;
     person.action = 'stop';
     // stop, walk, kill
     person.state = 'idle';

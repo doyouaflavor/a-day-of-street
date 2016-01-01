@@ -8,15 +8,13 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         $this.selected = [];
         $this.data = data.slice();
         for(var i = 0; i < $this.data.length ;i++){
-            console.log(data);
-            console.log(data[i].options);
             $this.data[i].options = data[i].options.slice();
         }
 
         $this.question = $this.data[this.index];
         $this.last_selected_option = null;
         $this.state = 'ready';
-        $this.countdown = 50;
+        $this.countdown = 60;
         $this.currentTime = $this.countdown;
         $scope.optionsStyle = {};
         $scope.answerInfoContentStyle = {};
@@ -265,7 +263,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
                 $this.afterStreet();
             }else{
                 $this.currentTime -= 1;
-                if($this.currentTime % Math.floor($this.countdown/5) == 0){
+                if($this.currentTime % Math.floor($this.countdown/6) == 0){
                     $this.state = 'question';
                     $this.afterStreet();
                 }
