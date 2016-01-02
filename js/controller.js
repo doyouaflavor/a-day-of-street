@@ -4,7 +4,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
     $this.newGame = function(){
         $this.index = 0;
         $this.total_score = 0;
-        $this.deal_score = 50;
+        $this.deal_score = 10;
         $this.selected = [];
         $this.data = data.slice();
         for(var i = 0; i < $this.data.length ;i++){
@@ -14,7 +14,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         $this.question = $this.data[this.index];
         $this.last_selected_option = null;
         $this.state = 'ready';
-        $this.countdown = 60;
+        $this.countdown = 6;
         $this.currentTime = $this.countdown;
         $scope.optionsStyle = {};
         $scope.answerInfoContentStyle = {};
@@ -87,6 +87,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         $this.state = 'answer-information'; 
         $this.last_selected_option = option;
         $this.selected.push({
+            "questionInfo":$this.question.name,
             "information":$this.question.information,
             "option":option,
         });
@@ -258,11 +259,11 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         },33);
         
         $this.countDownInterval = $interval(function(){
+            $this.currentTime -= 1;
             if($this.currentTime == 0){
                 $this.state = 'ending';
                 $this.afterStreet();
             }else{
-                $this.currentTime -= 1;
                 if($this.currentTime % Math.floor($this.countdown/6) == 0){
                     $this.state = 'question';
                     $this.afterStreet();

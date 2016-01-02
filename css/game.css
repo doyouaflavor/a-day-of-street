@@ -261,3 +261,24 @@ a .option-text{
 .person {
     position: absolute;
 }
+
+/* ending */
+.select-question{
+    background: #3FAA96;
+    border-top: aliceblue 1px solid;
+    color: aliceblue;
+    height:45px;
+    line-height: 45px;
+    width: 40%;
+    float: left;
+    clear: both;
+}
+.select-answer{
+    height:45px;
+    line-height: 45px;
+    border-top: black 1px solid;
+}
+
+.select-effectInfo{
+    color: #DE574B;
+}
