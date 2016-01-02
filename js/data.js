@@ -64,6 +64,7 @@ var data = [
                      "addormulti":"+",
                      "score":20,
                      "img":"img/option-2-1.jpg",
+                     "rwd_img":"img/option-2-1.jpg",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
                          removeItem(scene.data, 3, "C");//刪掉第四題的夜市
@@ -77,6 +78,7 @@ var data = [
                      "addormulti":"+",
                      "score":15,
                      "img":"img/option-2-2.jpg",
+                     "rwd_img":"img/option-2-2.jpg",
                      "effect":function(scene){
                          scene.threshold.redeye += 0.001;
                      },
@@ -95,6 +97,7 @@ var data = [
                      "addormulti":"+",
                      "score":10,
                      "img":"img/option-3-1.png",
+                     "rwd_img":"img/option-3-1.png",
                      "effect":function(scene){
                          scene.deal_score += 25;
                      },
@@ -106,6 +109,7 @@ var data = [
                      "addormulti":"+",
                      "score":5,
                      "img":"img/option-3-2.png",
+                     "rwd_img":"img/option-3-2.png",
                      "effect":function(scene){
                          scene.deal_score += 10;
                      },
@@ -117,6 +121,7 @@ var data = [
                      "addormulti":"+",
                      "score":10,
                      "img":"img/option-3-3.png",
+                     "rwd_img":"img/option-3-3.png",
                      "effect":function(scene){
                          scene.deal_score += 50;
                      },
@@ -128,6 +133,7 @@ var data = [
                      "addormulti":"+",
                      "score":5,
                      "img":"img/option-3-4.png",
+                     "rwd_img":"img/option-3-4.png",
                      "effect":function(scene){
                          scene.deal_score += 20;
                      },
@@ -144,6 +150,7 @@ var data = [
                      "addormulti":"*",
                      "score":3,
                      "img":"img/option-4-1.jpg",
+                     "rwd_img":"img/option-4-1.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople += 0.1;
                          scene.threshold.redeye += 0.05;
@@ -156,6 +163,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/option-4-2.jpg",
+                     "rwd_img":"img/option-4-2.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople -= 0.05;
                      },
@@ -167,6 +175,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/option-4-3.jpg",
+                     "rwd_img":"img/option-4-3.jpg",
                      "effect":function(scene){
                          scene.threshold.saw -= 0.05;
                          scene.threshold.redeye -= 0.05;
@@ -185,6 +194,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/option-5-1.jpg",
+                     "rwd_img":"img/option-5-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                      },
@@ -196,6 +206,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/option-5-2.jpg",
+                     "rwd_img":"img/option-5-2.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                          scene.threshold.redeye += 0.05;
@@ -208,6 +219,7 @@ var data = [
                      "addormulti":"*",
                      "score":3,
                      "img":"img/option-5-3.jpg",
+                     "rwd_img":"img/option-5-3.jpg",
                      "effect":function(scene){
                      },
                      "effectInfo":"沒什麼人會注意你",
@@ -224,6 +236,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/option-6-1.jpg",
+                     "rwd_img":"img/option-6-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                      },
@@ -235,6 +248,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/option-6-2.jpg",
+                     "rwd_img":"img/option-6-2.jpg",
                      "effect":function(scene){
                      },
                      "effectInfo":"買得人不會變多",

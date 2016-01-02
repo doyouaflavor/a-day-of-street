@@ -86,19 +86,20 @@
        <div class="answer-info">
            <div class="answer-info-header">
                <div class="answer-score">
-                   創業積分
-               </div>
-               <div class="answer-selection">
                    <span class="answer-select">
                        {{scene.last_selected_option.value}}
                    </span>
+               </div>
+               <div class="answer-selection">
                    <span class="answer-point">
                       {{scene.last_selected_option.effectInfo}}
                    </span>
                </div>
            </div>
            <div class="answer-info-content" ng-style="answerInfoContentStyle">
+              <div class="answer-info-img">
                <img src="{{scene.last_selected_option.img}}" />
+               </div>
                <div class="option-text">{{scene.last_selected_option.name}}.{{scene.last_selected_option.value}}</div>
            </div>
        </div>
@@ -130,8 +131,10 @@
     <!--              <span class="select-score">{{select.option.score}}</span>-->
                  <span class="select-effectInfo">{{select.option.effectInfo}}</span>
              </div>
-              <div class="information" ng-html="select.information">
+<!--
+              <div class="information" ng-bind-html="select.information">
               </div>
+-->
         </div>
     </div>
   
