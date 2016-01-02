@@ -6,6 +6,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
     <script src="js/data.js"></script>
     <script src="js/person.js"></script>
+    <script src="js/sceneAction.js"></script>
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -22,7 +23,7 @@
             <div class="street-background">
                 <img src=""/>
             </div>
-            <div class="street-master" ng-click="scene.action()" ng-style="scene.masterStyle()">
+            <div class="street-master" ng-click="scene.doClickMaster()" ng-style="scene.masterStyle()">
                 <img src="img/street-role-{{scene.role}}.png"/>
             </div>
             <div class="street-customers">
@@ -30,8 +31,10 @@
                     <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/person-normalsaw.png"/>
                     <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/person-redeye.png"/>
                     <img class="person-body" src="img/person.png"/>
+                    <div ng-if="scene.debug">
                     {{person.action}}
                     {{person.state}}
+                    </div>
                 </div>
             </div>    
         </div>
@@ -52,7 +55,7 @@
          <li>遊戲過程中會定期出現選項，這些選項會造成各種影響，請妥善選擇</li>
      </ul>
  </div>
- <form ng-submit="scene.start()" >
+ <form ng-submit="scene.doClickStart()" >
      <input type="text" placeholder="你的大名" name="" id="" ng-model="scene.name">
      <input type="submit" id="submit" value="登記創業" />
      </form>
@@ -67,7 +70,7 @@
          <div class="triangle"></div>
          <div class="options" ng-style="optionsStyle">
              <div class="option" ng-repeat="option in scene.question.options">
-                <a href="javascript:void(0);" ng-click="scene.select(option)">
+                <a href="javascript:void(0);" ng-click="scene.doClickSelectioins(option)">
                    <div class="option-img">
                        <img src="{{option.img}}" class="img-sm"/>
                        <img src="{{option.rwd_img}}" class="img-lg"></img>
@@ -109,7 +112,7 @@
          </div>
          
          <div class="next">
-                <a class="next" href="javascript:void(0);" ng-click="scene.next()">
+                <a class="next" href="javascript:void(0);" ng-click="scene.doClickNext()">
                   NEXT
                 </a>
                 </div>

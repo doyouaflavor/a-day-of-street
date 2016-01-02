@@ -117,7 +117,7 @@ var data = [
                  },
                  {
                      "name":"C",
-                     "value":"衛生用品(牙線、衛生紙)",
+                     "value":"衛生用品",
                      "addormulti":"+",
                      "score":10,
                      "img":"img/option-3-3.png",
