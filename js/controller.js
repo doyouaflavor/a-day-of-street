@@ -14,7 +14,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         $this.question = $this.data[this.index];
         $this.last_selected_option = null;
         $this.state = 'ready';
-        $this.countdown = 6;
+        $this.countdown = 60;
         $this.currentTime = $this.countdown;
         $scope.optionsStyle = {};
         $scope.answerInfoContentStyle = {};
