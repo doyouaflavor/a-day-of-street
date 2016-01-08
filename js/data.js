@@ -63,7 +63,7 @@ var data = [
                      "value":"獨立",
                      "addormulti":"+",
                      "score":20,
-                     "img":"img/2-individual.jpg",
+                     "img":"img/2-individual.png",
                      "rwd_img":"img/option-2-1.jpg",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
@@ -77,7 +77,7 @@ var data = [
                      "value":"集團",
                      "addormulti":"+",
                      "score":15,
-                     "img":"img/2-group.jpg",
+                     "img":"img/2-group.png",
                      "rwd_img":"img/option-2-2.jpg",
                      "effect":function(scene){
                          scene.threshold.redeye += 0.001;
@@ -149,7 +149,7 @@ var data = [
                      "value":"車站出口",
                      "addormulti":"*",
                      "score":3,
-                     "img":"img/4-MRT.jpg",
+                     "img":"img/4-MRT.png",
                      "rwd_img":"img/option-4-1.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople += 0.1;
@@ -162,7 +162,7 @@ var data = [
                      "value":"馬路上",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/4-street.jpg",
+                     "img":"img/4-street.png",
                      "rwd_img":"img/option-4-2.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople -= 0.05;
@@ -174,7 +174,7 @@ var data = [
                      "value":"夜市",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/4-nightmarket.jpg",
+                     "img":"img/4-nightmarket.png",
                      "rwd_img":"img/option-4-3.jpg",
                      "effect":function(scene){
                          scene.threshold.saw -= 0.05;
@@ -193,7 +193,7 @@ var data = [
                      "value":"製作看板",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/5-board.jpg",
+                     "img":"img/5-board.png",
                      "rwd_img":"img/option-5-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
@@ -205,7 +205,7 @@ var data = [
                      "value":"大聲叫賣",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/5-loudly.jpg",
+                     "img":"img/5-loudly.png",
                      "rwd_img":"img/option-5-2.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
@@ -218,7 +218,7 @@ var data = [
                      "value":"安靜等客",
                      "addormulti":"*",
                      "score":3,
-                     "img":"img/5-silence.jpg",
+                     "img":"img/5-silence.png",
                      "rwd_img":"img/option-5-3.jpg",
                      "effect":function(scene){
                      },
@@ -235,7 +235,7 @@ var data = [
                      "value":"是",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/6-Sympathy.jpg",
+                     "img":"img/6-Sympathy.png",
                      "rwd_img":"img/option-6-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
@@ -247,7 +247,7 @@ var data = [
                      "value":"否",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/6-noSympathy.jpg",
+                     "img":"img/6-noSympathy.png",
                      "rwd_img":"img/option-6-2.jpg",
                      "effect":function(scene){
                      },
