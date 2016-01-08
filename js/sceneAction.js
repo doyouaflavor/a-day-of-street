@@ -82,6 +82,9 @@ function Toolkit(scene){
                         person.do('leave',target);
                     }
                 }
+                if( person.state == 'saw' ){
+                    
+                }
                 
                 
                 if(person.action == 'kill'){

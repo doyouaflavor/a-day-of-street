@@ -16,20 +16,20 @@ var data = [
                      "value":"身障者",
                      "addormulti":"+",
                      "score":30,
-                     "img":"img/disable-img.png",
+                     "img":"img/1-disable.png",
                      "rwd_img":"img/disable-mobile.png",
                      "effect":function(scene){
                          scene.role = 1;
                          scene.threshold.saw = 0.08;
                      },
-                     "effectInfo":"消費機率高",
+                     "effectInfo":"消費機率高，商品增加「彩券」選項",
                  },
                  {
                      "name":"B",
                      "value":"街友",
                      "addormulti":"+",
                      "score":30,
-                     "img":"img/homeless.png",
+                     "img":"img/1-homeless.png",
                      "rwd_img":"img/homeless-mobile.png",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
@@ -43,7 +43,7 @@ var data = [
                      "value":"老人家",
                      "addormulti":"+",
                      "score":30,
-                     "img":"img/elder-img.png",
+                     "img":"img/1-oldman.png",
                      "rwd_img":"img/elder-mobile.png",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
@@ -63,7 +63,7 @@ var data = [
                      "value":"獨立",
                      "addormulti":"+",
                      "score":20,
-                     "img":"img/option-2-1.jpg",
+                     "img":"img/2-individual.jpg",
                      "rwd_img":"img/option-2-1.jpg",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
@@ -77,12 +77,12 @@ var data = [
                      "value":"集團",
                      "addormulti":"+",
                      "score":15,
-                     "img":"img/option-2-2.jpg",
+                     "img":"img/2-group.jpg",
                      "rwd_img":"img/option-2-2.jpg",
                      "effect":function(scene){
                          scene.threshold.redeye += 0.001;
                      },
-                     "effectInfo":"商品、地點可選擇方式增加",
+                     "effectInfo":"商品增加日用品選項，地點增加夜市選項",
                  }
              ],
             "information":"許多人對於街賣集團有著許多疑問，人生百味團隊實地走訪了台北兩個團體，發現其多為合作社或一般公司形式進行，有些為出外打拚的身障者提供正餐與住宿，有些因交通安全考量提供接送。台北地區目前有六至七個街賣團體，此外更有大誌、華山地瓜媽媽、人生百味等街頭商品。<br/>獨立與團體街賣各有優劣勢，但街頭並不只屬於行人，也屬於暫時住宿者，以及在街頭上討生活的人們。"
@@ -96,7 +96,7 @@ var data = [
                      "value":"玉蘭花",
                      "addormulti":"+",
                      "score":10,
-                     "img":"img/option-3-1.png",
+                     "img":"img/3-flower.png",
                      "rwd_img":"img/option-3-1.png",
                      "effect":function(scene){
                          scene.deal_score += 25;
@@ -108,7 +108,7 @@ var data = [
                      "value":"口香糖",
                      "addormulti":"+",
                      "score":5,
-                     "img":"img/option-3-2.png",
+                     "img":"img/3-gum.png",
                      "rwd_img":"img/option-3-2.png",
                      "effect":function(scene){
                          scene.deal_score += 10;
@@ -117,10 +117,10 @@ var data = [
                  },
                  {
                      "name":"C",
-                     "value":"衛生用品",
+                     "value":"日用品",
                      "addormulti":"+",
                      "score":10,
-                     "img":"img/option-3-3.png",
+                     "img":"img/3-tissue.png",
                      "rwd_img":"img/option-3-3.png",
                      "effect":function(scene){
                          scene.deal_score += 50;
@@ -132,7 +132,7 @@ var data = [
                      "value":"彩券",
                      "addormulti":"+",
                      "score":5,
-                     "img":"img/option-3-4.png",
+                     "img":"img/3-lottery.png",
                      "rwd_img":"img/option-3-4.png",
                      "effect":function(scene){
                          scene.deal_score += 20;
@@ -149,7 +149,7 @@ var data = [
                      "value":"車站出口",
                      "addormulti":"*",
                      "score":3,
-                     "img":"img/option-4-1.jpg",
+                     "img":"img/4-MRT.jpg",
                      "rwd_img":"img/option-4-1.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople += 0.1;
@@ -162,7 +162,7 @@ var data = [
                      "value":"馬路上",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/option-4-2.jpg",
+                     "img":"img/4-street.jpg",
                      "rwd_img":"img/option-4-2.jpg",
                      "effect":function(scene){
                          scene.threshold.newPeople -= 0.05;
@@ -174,13 +174,13 @@ var data = [
                      "value":"夜市",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/option-4-3.jpg",
+                     "img":"img/4-nightmarket.jpg",
                      "rwd_img":"img/option-4-3.jpg",
                      "effect":function(scene){
                          scene.threshold.saw -= 0.05;
                          scene.threshold.redeye -= 0.05;
                      },
-                     "effectInfo":"眼紅的人較少、消費的人也少",
+                     "effectInfo":"願意消費的人少，眼紅的人也較少",
                  }
              ],
             "information":"街賣者多為身體行動較不便者，因此選擇地點時機能與人潮同樣重要。廁所、飲水機回家交通的便利性都是十分重要的考量。<br/>另外有分流動或定點兩種賣法，不一定會每日出現在同點。人氣街賣者就像POP-UP SHOP一樣，撞見時會充滿驚喜呢。"
@@ -193,7 +193,7 @@ var data = [
                      "value":"製作看板",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/option-5-1.jpg",
+                     "img":"img/5-board.jpg",
                      "rwd_img":"img/option-5-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
@@ -205,24 +205,24 @@ var data = [
                      "value":"大聲叫賣",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/option-5-2.jpg",
+                     "img":"img/5-loudly.jpg",
                      "rwd_img":"img/option-5-2.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                          scene.threshold.redeye += 0.05;
                      },
-                     "effectInfo":"客人和眼紅的人都比較會注意你",
+                     "effectInfo":"較受各種人群注意",
                  },
                  {
                      "name":"C",
                      "value":"安靜等客",
                      "addormulti":"*",
                      "score":3,
-                     "img":"img/option-5-3.jpg",
+                     "img":"img/5-silence.jpg",
                      "rwd_img":"img/option-5-3.jpg",
                      "effect":function(scene){
                      },
-                     "effectInfo":"沒什麼人會注意你",
+                     "effectInfo":"較少人注意你",
                  }
              ],
             "information":"許多人常認為，街賣是一份低門檻的工作，所以才會有許多弱勢者從事，但低技術門檻的工作比比階是，超過九成過去有其他工作經驗，且街賣也絕非低門檻的工作，夏天早上悶熱、下午暴雨，冬天賣到四肢冰冷，天氣再熱也不敢喝太多水，因為行動不方便，而廁所距離很遠，吃飯要找無障礙空間，被警察取締，還要面對面向路人推銷忍耐冷潮熱諷，若不是有高度的覺悟與毅力，絕對撐不了幾天就放棄了。"
@@ -235,7 +235,7 @@ var data = [
                      "value":"是",
                      "addormulti":"*",
                      "score":2,
-                     "img":"img/option-6-1.jpg",
+                     "img":"img/6-Sympathy.jpg",
                      "rwd_img":"img/option-6-1.jpg",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
@@ -247,7 +247,7 @@ var data = [
                      "value":"否",
                      "addormulti":"*",
                      "score":1,
-                     "img":"img/option-6-2.jpg",
+                     "img":"img/6-noSympathy.jpg",
                      "rwd_img":"img/option-6-2.jpg",
                      "effect":function(scene){
                      },

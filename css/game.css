@@ -258,12 +258,16 @@ a .option-text{
 
 
 /* Street */
+.street {
+    position: relative;
+}
 .street-info{
     position: absolute;
     z-index: 99;
 }
 .street-stage{
-    position:relative;
+    overflow: hidden;
+    position:absolute;
 }
 .street-stage>div{
     position:absolute;

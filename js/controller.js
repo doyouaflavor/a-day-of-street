@@ -1,5 +1,5 @@
 var game = angular.module('game',['ngSanitize']);
-game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) {  
+game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$interval,$window) {  
     $this = this;
     
     $this.debug = false;
@@ -11,7 +11,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
     $this.newGame();
     
     $scope.optionsStyle = {};
-    $scope.answerInfoContentStyle = {};
+    $this.answerInfoContentStyle = {};
     
     $this.getMasterBoxSize = function(){
         return {width : $('.street-master img').width(), height: $('.street-master img').height()};
@@ -40,11 +40,11 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
         
         $this.region = [[0,150],[600,350]];
         $this.region[1][0] = $(window).width();
-        $this.region[1][1] = $(window).height() - 115 - $this.getPersonBoxSize().height;
+        $this.region[1][1] = $window.innerHeight - 115 - $this.getPersonBoxSize().height;
         $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
         
-        $('.street-background').width($(window).width());
-        $('.street-background').height($(window).height());
+        $('.street-background, .street-stage').width($(window).width());
+        $('.street-background, .street-stage').height($window.innerHeight);
         
         
     }
@@ -70,7 +70,7 @@ game.controller('MainCtrl', ['$scope', '$interval', function ($scope,$interval) 
             case "ending":
                 break;
             case "answer-information":
-                $scope.answerInfoContentStyle = {
+                $this.answerInfoContentStyle = {
                     height: ($(window).height() - 121) + 'px'
                 };
                 break;
