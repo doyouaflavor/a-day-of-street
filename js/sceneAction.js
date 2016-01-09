@@ -3,6 +3,37 @@ function Toolkit(scene){
     var $this = scene;
     var $interval = scene.interval;
     
+    tools.newGame = function(){
+        $this.pause = false;
+        $this.index = 0;
+        $this.total_score = 0;
+        $this.deal_score = 10;
+        $this.selected = [];
+        $this.data = data.slice();
+        for(var i = 0; i < $this.data.length ;i++){
+            $this.data[i].options = data[i].options.slice();
+        }
+
+        $this.question = $this.data[this.index];
+        $this.last_selected_option = null;
+        $this.state = 'ready';
+        $this.countdown = 180;
+        $this.currentTime = $this.countdown;
+        $this.street_people = [];
+        $this.allPeopleCount = 0;
+        $this.role = 0;
+
+        $this.threshold = {
+            newPeople : 0.04,
+            saw : 0.002,
+            redeye : 0.001,
+            move: 0.01,
+            idleToLeave: 0.02,
+            sawToLeave: 0.001,
+        }
+    }
+    
+    
     tools.doClickStart = function(){
         $this.state = 'question';
         $this.resizing();
@@ -35,10 +66,10 @@ function Toolkit(scene){
     tools.prepareStreet = function(){
         $this.updateRegionAndMaster();
         $this.streetInterval = $interval(function(){
-            if(Math.random()<0.04){
+            if(Math.random()<$this.threshold.newPeople){
                 $this.allPeopleCount++;
                 var y = $this.getRegionPoint.y();
-                if(Math.random()<$this.threshold.newPeople){
+                if(Math.random()<0.5){
                     var person = newPerson($this.allPeopleCount,-200,y);
                 }else{
                     var person = newPerson($this.allPeopleCount,$this.region[1][0]+200,y);
@@ -66,10 +97,9 @@ function Toolkit(scene){
                         if(Math.random()<$this.threshold.redeye){
                             person.do('redeye');
                         }
-                        if(Math.random()<$this.threshold.leave){
-                            var target = [0,person.position.y];
-                        target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
-                            person.do('leave',target);
+                        if(Math.random()<$this.threshold.idleToLeave){
+                            
+                            person.do('leave',getLeaveTarget(person,$this));
                         }
                     }
                     
@@ -77,13 +107,14 @@ function Toolkit(scene){
                 if(person.state == 'redeye'){
                     person.waitInterval--;
                     if(person.waitInterval == 0){
-                        var target = [0,person.position.y];
-                        target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
-                        person.do('leave',target);
+                        person.do('leave',getLeaveTarget(person,$this));
                     }
                 }
                 if( person.state == 'saw' ){
-                    
+                    person.sawInterval--;
+                    if(person.sawInterval == 0){
+                        person.do('leave',getLeaveTarget(person,$this));
+                    }
                 }
                 
                 
@@ -136,34 +167,6 @@ function Toolkit(scene){
         },1000);
     }
     
-    tools.newGame = function(){
-        $this.index = 0;
-        $this.total_score = 0;
-        $this.deal_score = 10;
-        $this.selected = [];
-        $this.data = data.slice();
-        for(var i = 0; i < $this.data.length ;i++){
-            $this.data[i].options = data[i].options.slice();
-        }
-
-        $this.question = $this.data[this.index];
-        $this.last_selected_option = null;
-        $this.state = 'ready';
-        $this.countdown = 180;
-        $this.currentTime = $this.countdown;
-        $this.street_people = [];
-        $this.allPeopleCount = 0;
-        $this.role = 0;
-
-        $this.threshold = {
-            newPeople : 0.5,
-            saw : 0.005,
-            redeye : 0.001,
-            move: 0.01,
-            leave: 0.02,
-        }
-    }
-    
     /**
       
     */
@@ -192,7 +195,7 @@ function Toolkit(scene){
                 // call first 'saw' person coming.
                 if(person.state == 'saw'){
                     var target = $this.masterPoint.slice();
-                    target[1] += $('.street-master img').height();
+                    target[1] += $('.street-master img').height()/2;
                     person.do("walk-deal",target);
                     break;
                 }
@@ -206,9 +209,34 @@ function Toolkit(scene){
         $interval.cancel($this.streetInterval);
     }
     
+    tools.showPauseMenu = function(){
+        if($this.pause){
+            tools.prepareStreet();
+        }else{
+            tools.afterStreet();
+        }
+        $this.pause = !$this.pause;
+    }
+    
+    tools.pauseMenu = {};
+    tools.pauseMenu.continue = function(){
+        $this.pause = false;
+    }
+    tools.pauseMenu.replay = function(){
+        $this.newGame();
+    }
+    tools.pauseMenu.shareFB = function(){
+        
+    }
     
     /**
     End of toolkits
     */
     return tools;
+}
+
+function getLeaveTarget(person, $this){
+    var target = [0,person.position.y];
+    target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
+    return target;
 }

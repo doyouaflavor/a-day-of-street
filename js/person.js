@@ -7,6 +7,9 @@ function newPerson(i,x,y){
     // stop, walk, kill
     person.state = 'idle';
     person.waitInterval = 0;
+    person.sawInterval = 0;
+    person.sawIntervalMax = 90;
+    person.sawIntervalMin = 30;
     // idle, saw, walk-deal, redeye, leave
     person.position.x = x;
     person.position.y = y;
@@ -44,6 +47,7 @@ function newPerson(i,x,y){
                 break;
             case 'saw':
                 person.state = action;
+                person.sawInterval = Math.floor(Math.random()*(person.sawIntervalMax-person.sawIntervalMin) + person.sawIntervalMin);
                 break;
         }
         

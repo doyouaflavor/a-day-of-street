@@ -17,7 +17,7 @@ var data = [
                      "addormulti":"+",
                      "score":30,
                      "img":"img/1-disable.png",
-                     "rwd_img":"img/disable-mobile.png",
+                     "rwd_img":"img/mobile-1-disable.png",
                      "effect":function(scene){
                          scene.role = 1;
                          scene.threshold.saw = 0.08;
@@ -30,7 +30,7 @@ var data = [
                      "addormulti":"+",
                      "score":30,
                      "img":"img/1-homeless.png",
-                     "rwd_img":"img/homeless-mobile.png",
+                     "rwd_img":"img/mobile-1-homeless.png",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
                          scene.role = 2;
@@ -44,7 +44,7 @@ var data = [
                      "addormulti":"+",
                      "score":30,
                      "img":"img/1-oldman.png",
-                     "rwd_img":"img/elder-mobile.png",
+                     "rwd_img":"img/mobile-1-oldman.png",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
                          scene.role = 3;
@@ -64,7 +64,7 @@ var data = [
                      "addormulti":"+",
                      "score":20,
                      "img":"img/2-individual.png",
-                     "rwd_img":"img/option-2-1.jpg",
+                     "rwd_img":"img/mobile-2-individual.png",
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
                          removeItem(scene.data, 3, "C");//刪掉第四題的夜市
@@ -78,7 +78,7 @@ var data = [
                      "addormulti":"+",
                      "score":15,
                      "img":"img/2-group.png",
-                     "rwd_img":"img/option-2-2.jpg",
+                     "rwd_img":"img/mobile-2-group.png",
                      "effect":function(scene){
                          scene.threshold.redeye += 0.001;
                      },
@@ -97,7 +97,7 @@ var data = [
                      "addormulti":"+",
                      "score":10,
                      "img":"img/3-flower.png",
-                     "rwd_img":"img/option-3-1.png",
+                     "rwd_img":"img/mobile-3-flower.png",
                      "effect":function(scene){
                          scene.deal_score += 25;
                      },
@@ -109,7 +109,7 @@ var data = [
                      "addormulti":"+",
                      "score":5,
                      "img":"img/3-gum.png",
-                     "rwd_img":"img/option-3-2.png",
+                     "rwd_img":"img/mobile-3-gum.png",
                      "effect":function(scene){
                          scene.deal_score += 10;
                      },
@@ -121,7 +121,7 @@ var data = [
                      "addormulti":"+",
                      "score":10,
                      "img":"img/3-tissue.png",
-                     "rwd_img":"img/option-3-3.png",
+                     "rwd_img":"img/mobile-3-tissue.png",
                      "effect":function(scene){
                          scene.deal_score += 50;
                      },
@@ -133,7 +133,7 @@ var data = [
                      "addormulti":"+",
                      "score":5,
                      "img":"img/3-lottery.png",
-                     "rwd_img":"img/option-3-4.png",
+                     "rwd_img":"img/mobile-3-lottery.png",
                      "effect":function(scene){
                          scene.deal_score += 20;
                      },
@@ -150,10 +150,10 @@ var data = [
                      "addormulti":"*",
                      "score":3,
                      "img":"img/4-MRT.png",
-                     "rwd_img":"img/option-4-1.jpg",
+                     "rwd_img":"img/mobile-4-MRT.png",
                      "effect":function(scene){
                          scene.threshold.newPeople += 0.1;
-                         scene.threshold.redeye += 0.05;
+                         scene.threshold.redeye += 0.03;
                      },
                      "effectInfo":"人潮多、眼紅的人也多",
                  },
@@ -163,7 +163,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/4-street.png",
-                     "rwd_img":"img/option-4-2.jpg",
+                     "rwd_img":"img/mobile-4-street.png",
                      "effect":function(scene){
                          scene.threshold.newPeople -= 0.05;
                      },
@@ -175,7 +175,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/4-nightmarket.png",
-                     "rwd_img":"img/option-4-3.jpg",
+                     "rwd_img":"img/mobile-4-nightmarket.png",
                      "effect":function(scene){
                          scene.threshold.saw -= 0.05;
                          scene.threshold.redeye -= 0.05;
@@ -219,7 +219,7 @@ var data = [
                      "addormulti":"*",
                      "score":3,
                      "img":"img/5-silence.png",
-                     "rwd_img":"img/option-5-3.jpg",
+                     "rwd_img":"img/mobile-5-silence.png",
                      "effect":function(scene){
                      },
                      "effectInfo":"較少人注意你",
@@ -236,7 +236,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/6-Sympathy.png",
-                     "rwd_img":"img/option-6-1.jpg",
+                     "rwd_img":"img/mobile-6-Sympathy.png",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                      },
@@ -248,7 +248,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/6-noSympathy.png",
-                     "rwd_img":"img/option-6-2.jpg",
+                     "rwd_img":"img/mobile-6-noSympathy.png",
                      "effect":function(scene){
                      },
                      "effectInfo":"買得人不會變多",

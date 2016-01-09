@@ -2,7 +2,7 @@ var game = angular.module('game',['ngSanitize']);
 game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$interval,$window) {  
     $this = this;
     
-    $this.debug = false;
+    $this.debug = true;
     $this.interval = $interval;
     var toolkit = Toolkit($this);
     
@@ -96,6 +96,12 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
         var pe = ($this.state == 'street')?'auto':'none';
         return {opacity : o, 'pointer-events': pe }
     }
+    
+    $this.pauseMenu = {};
+    $this.showPauseMenu = toolkit.showPauseMenu;
+    $this.pauseMenu.continue = toolkit.pauseMenu.continue;
+    $this.pauseMenu.replay = toolkit.pauseMenu.replay;
+    $this.pauseMenu.shareFB = toolkit.pauseMenu.shareFB;
 }]);
 
 

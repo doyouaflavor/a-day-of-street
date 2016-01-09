@@ -123,9 +123,16 @@
         clear: both;
         width: 320px;
         text-align: right;
-        margin: 0 auto;
+        margin: auto;
         position: relative;
         margin-top:20px;
+    }
+    .option:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
     }
     .option-img{
         float:left;
@@ -137,6 +144,15 @@
         position: absolute;
         top:40px;
         right: 0;
+    }
+    .option-effect{
+        color: black;
+        text-decoration: none;
+        font-size: 13px;
+        position: absolute;
+        right: 0;
+        width:150px;
+        top:80px
     }
     
 }
@@ -155,8 +171,14 @@
     }
     .option{
         display: table-cell;
-        height: 400px;
+        height: 500px;
         position: relative;
+    }
+    .option-effect{
+        position: absolute;
+        top: 450px;
+        width: 100%;
+        color:black;
     }
     .option-img{
     }
@@ -170,7 +192,7 @@
         right: 0;
     }
     .option-text{
-        bottom: 0;
+        top: 400px;
         position: absolute;
         right: 0;
         left: 0;
@@ -188,6 +210,8 @@
     -moz-border-radius: 30px;
     border-radius: 30px;
 }
+
+
 a .option-text{
     color: white;
     text-decoration: none;
@@ -219,9 +243,7 @@ a .option-text{
     display: block;
     height: 300px;
 }
-.score{
-    clear: both;
-}
+
 .answer-info{
     width: 50%;
     float: left;
@@ -243,7 +265,7 @@ a .option-text{
 }
 .answer-info-content{
     background: #FFF0E3;
-    height: 400px;
+    height: 500px;
     position: relative;
 }
 .answer-info-content img{
@@ -253,9 +275,12 @@ a .option-text{
     -webkit-transform: translate(-50%, -50%); 
 }
 .answer-info-content .option-text{
-    margin-bottom: 20px;;
+    top: 440px;
 }
 
+.score{
+    clear: both;
+}
 
 /* Street */
 .street {
@@ -284,8 +309,42 @@ a .option-text{
 }
 .street-master img{
 }
+.street-customers{
+    pointer-events: none;
+}
 .person {
     position: absolute;
+}
+.pause-button{
+    position: fixed;
+    z-index: 999;
+    bottom:0;
+    right: 0;
+    background: url("../img/menu.png") no-repeat ;
+    width: 65px;
+    height: 65px;
+}
+.pause-menu{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    border-radius: 3px;
+    -webkit-transform: translate(-50%, -50%); 
+    background: #dbd0b3;
+    padding: 10px 20px;
+}
+.pause-menu li{
+    font-size: 20px;
+    margin: 10px 0;
+    border-radius: 3px;
+    padding: 20px;
+    list-style: none;
+    background: #FFF0E3;
+/*    border: #dbd0b3 1px solid;*/
+}
+.pause-menu li:hover{
+    color: white;
+    background: #3FAA96;
 }
 
 /* ending */
