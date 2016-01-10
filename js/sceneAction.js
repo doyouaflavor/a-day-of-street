@@ -2,8 +2,10 @@ function Toolkit(scene){
     var tools = {};
     var $this = scene;
     var $interval = scene.interval;
+    var $scope = scene.$scope;
     
     tools.newGame = function(){
+        $this.afterTut = false;
         $this.pause = false;
         $this.index = 0;
         $this.total_score = 0;
@@ -18,12 +20,12 @@ function Toolkit(scene){
         $this.last_selected_option = null;
         $this.state = 'ready';
         $this.countdown = 180;
-        $this.currentTime = $this.countdown;
+        $this.currentTime = -1;
         $this.street_people = [];
         $this.allPeopleCount = 0;
         $this.role = 0;
 
-        $this.threshold = {
+        $this.defaultThreshold = {
             newPeople : 0.04,
             saw : 0.002,
             redeye : 0.001,
@@ -31,12 +33,22 @@ function Toolkit(scene){
             idleToLeave: 0.02,
             sawToLeave: 0.001,
         }
+        
+        $this.threshold = {
+            newPeople : 0,
+            saw : 0,
+            redeye : 0,
+            move: 0,
+            idleToLeave: 0,
+            sawToLeave: 0,
+        };
     }
     
     
     tools.doClickStart = function(){
         $this.state = 'question';
         $this.resizing();
+        $this.updateRegionAndMaster();
     }
     
     tools.doClickSelectioins = function(option){
@@ -56,6 +68,11 @@ function Toolkit(scene){
         $this.state = 'street';
         $this.question = $this.data[$this.index];
         
+        if(!$this.afterTut){
+            $this.showTut(1);
+            return;
+        }
+        
         $this.prepareStreet();
         $this.resizing();
     }
@@ -64,6 +81,7 @@ function Toolkit(scene){
       Action when enter 'Street'
     */
     tools.prepareStreet = function(){
+        
         $this.updateRegionAndMaster();
         $this.streetInterval = $interval(function(){
             if(Math.random()<$this.threshold.newPeople){
@@ -123,14 +141,22 @@ function Toolkit(scene){
                     dying_people.push(i);
                 }
                 if(person.action == 'stop'){
+                    if(person.state == 'leave'){
+                        person.do('kill');
+                    }
                     if(person.state == 'walk-deal'){
                         if(person.state == 'walk-deal'){
                             $this.total_score += $this.deal_score;
+                        }
+                        if(!$this.afterTut){
+                            $this.showTut(2);
+                            return
                         }
                         var target = [0,person.position.y];
                         target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                         person.do('leave',target);
                     }
+                    
                     if(Math.random()<$this.threshold.move){
                         person.goto($this.getRegionPoint.x(),$this.getRegionPoint.y());
                         person.do('walk');
@@ -140,11 +166,16 @@ function Toolkit(scene){
                 person.move();
             });
             
-            
-            
+            // Kill the outbonding people.
+            if(dying_people.length >= 1 && !$this.afterTut){
+                $this.showTut(3);
+                return 
+            }
             for(var i = dying_people.length - 1; i >= 0;i--){
                 index = dying_people[i];
+                delete($this.street_people[index]);
                 $this.street_people.splice(index,1);
+                
             }
             
             $this.street_people.sort(function(a,b){return a.position.y - b.position.y});
@@ -227,6 +258,146 @@ function Toolkit(scene){
     }
     tools.pauseMenu.shareFB = function(){
         
+    }
+    
+    tools.showTut = function(level){
+        tools.afterStreet();
+        switch(level){
+            case 1:
+                var person1 = newPerson(1,100,160);
+                var person2 = newPerson(2,500,250);
+                person1.vel = person2.vel = 7;
+                $this.street_people.push(person1);
+                $this.street_people.push(person2);
+
+
+                introOption = {
+                    steps: [
+                      {
+                        element: '.street-master',
+                        intro: "這是主人翁!!",
+                        position: 'left'
+                      },
+                      {
+                        element: '.wang1',
+                        intro: '這是路人，當路人頭上有出現「看見」時，點一下你的街賣者，路人會走過來跟你消費。',
+                        position: 'right'
+                      },
+                      {
+                        element: '.street-master',
+                        intro: '現在點擊看看。',
+                        position: 'left'
+                      }
+                    ],
+                    exitOnOverlayClick : false,
+                    prevLabel : '上一步',
+                    nextLabel : '我知道了',
+                    skipLabel: '跳過教學',
+                    doneLabel: '我知道了',
+                    disableInteraction : true,
+                  }
+
+                setTimeout(function(){
+                    intro1 = introJs().setOptions(introOption);
+                    intro1.oncomplete(function(){
+                        person1.state = 'saw';
+                        person1.sawInterval = -1;
+                        $this.prepareStreet();
+                    }).onexit(tools.showAfterTut);
+                    intro1.start();
+                },500);
+                break;
+            case 2:
+                for(var i = $this.street_people.length - 1; i >= 0;i--){
+                    delete($this.street_people[i]);
+                    $this.street_people.splice(i,1);
+                }
+                var person1 = newPerson(1,100,160);
+                var person2 = newPerson(2,500,250);
+                person1.vel = person2.vel = 7;
+                person2.state ='redeye';
+                person2.waitInterval = -1;
+                $this.street_people.push(person1);
+                $this.street_people.push(person2);
+
+
+                introOption = {
+                    steps: [
+                      {
+                        element: '.wang2',
+                        intro: "這是個人眼紅了，這時叫賣的話，他會大聲嚷嚷把想買的人嚇走。",
+                        position: 'left'
+                      },
+                      {
+                        element: '.street-master',
+                        intro: '現在叫賣看看。',
+                        position: 'left'
+                      }
+                    ],
+                    exitOnOverlayClick : false,
+                    prevLabel : '上一步',
+                    nextLabel : '我知道了',
+                    skipLabel: '跳過教學',
+                    doneLabel: '我知道了',
+                    disableInteraction : true,
+                  }
+
+                setTimeout(function(){
+                    intro1 = introJs().setOptions(introOption);
+                    intro1.oncomplete(function(){
+                        person1.state = 'saw';
+                        person1.sawInterval = -1;
+                        $this.prepareStreet();
+                        
+                    }).onexit(tools.showAfterTut);
+                    intro1.start();
+                },500);
+                break;
+            case 3:
+                for(var i = $this.street_people.length - 1; i >= 0;i--){
+                    delete($this.street_people[i]);
+                    $this.street_people.splice(i,1);
+                }
+                introOption = {
+                    steps: [
+                      {
+                        element: '.street-master',
+                        intro: "每隔一段時間會出現選擇，不同選擇會影響你的環境變因。",
+                        position: 'left'
+                      },
+                      {
+                        element: '.street-master',
+                        intro: '現在就來挑戰如何能在一天內賺取最多錢吧!!',
+                        position: 'left'
+                      }
+                    ],
+                    exitOnOverlayClick : false,
+                    prevLabel : '上一步',
+                    nextLabel : '我知道了',
+                    skipLabel: '跳過教學',
+                    doneLabel: '我知道了',
+                    disableInteraction : true,
+                  }
+                setTimeout(function(){
+                    intro1 = introJs().setOptions(introOption);
+                    intro1.oncomplete(tools.showAfterTut)
+                        .onexit(tools.showAfterTut);
+                    intro1.start();
+                },500);
+                break;
+        }
+        
+    }
+    
+    tools.showAfterTut = function(){
+        for(var i = $this.street_people.length - 1; i >= 0;i--){
+            delete($this.street_people[i]);
+            $this.street_people.splice(i,1);
+        }
+        $this.currentTime = $this.countdown;
+        $this.threshold = $this.defaultThreshold;
+        $this.afterTut = true;
+        $this.prepareStreet();
     }
     
     /**

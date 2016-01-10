@@ -33,9 +33,6 @@ function newPerson(i,x,y){
                 person.goto(target[0],target[1]);
                 person.state = action;
                 break;
-            case 'kill':
-                person.state = action;
-                break;
             case 'redeye':
                 person.state = action;
                 person.waitInterval = 30;

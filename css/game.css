@@ -367,3 +367,8 @@ a .option-text{
 .select-effectInfo{
     color: #DE574B;
 }
+
+
+.introjs-prevbutton,.introjs-disabled{
+    display: none;
+}

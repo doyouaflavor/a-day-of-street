@@ -1,9 +1,12 @@
 <!doctype html>
 <html ng-app="game">
   <head>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+    <script type="text/javascript" src="../js/lib/intro.min.js"></script>
+    <link href="css/intro.css" rel="stylesheet">
+<!--    <script type="text/javascript" src="js/lib/angular-intro.js"></script>-->
     <script src="js/data.js"></script>
     <script src="js/person.js"></script>
     <script src="js/sceneAction.js"></script>
@@ -12,7 +15,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
   </head>
   <body ng-controller="MainCtrl as scene">
-  <div class="header">
+  <div class="header" id="header">
       <span class="header-item header-logo">人生百味</span>
       <span class="header-item header-team">製作團隊</span>
   </div>
@@ -23,7 +26,7 @@
             <div class="street-background">
                 <img src=""/>
             </div>
-            <div class="street-master" ng-click="scene.doClickMaster()" ng-style="scene.masterStyle()">
+            <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()">
                 <img src="img/street-role-{{scene.role}}.png"/>
             </div>
             <div class="street-customers">
@@ -32,6 +35,7 @@
                     <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/person-redeye.png"/>
                     <img class="person-body" src="img/person.png"/>
                     <div ng-if="scene.debug">
+                    {{person.name}}
                     {{person.action}}
                     {{person.state}}
                     {{person.sawInterval}}
@@ -58,14 +62,6 @@
 不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。<br/>
  其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。<br/>
  透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。</p>
- <div class="rule-info">
-     <h2>規則說明：</h2>
-     <ul style="text-aligh: left;">
-         <li><img src="img/person-normalsaw.png"/><div>當路人頭上出現「看見」的圖案，點擊街賣者表示叫賣，這時路人會走過來購物</div></li>
-         <li><img src="img/person-redeye.png"/><div>頭上出現「眼紅」表示有競爭者覬覦你，這時不能叫賣，否則「眼紅」人會報警，所有客人會走掉</div></li>
-         <li>遊戲過程中會定期出現選項，這些選項會造成各種影響，請妥善選擇</li>
-     </ul>
- </div>
  <form ng-submit="scene.doClickStart()" >
      <input type="text" placeholder="你的大名" name="" id="" ng-model="scene.name">
      <input type="submit" id="submit" value="登記創業" />
@@ -161,6 +157,7 @@
     <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
 <!--    <div class="sate">selected：{{scene.selected}}</div>-->
 <!--    {{scene}}-->
+
 </div>
      
   

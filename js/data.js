@@ -153,7 +153,7 @@ var data = [
                      "rwd_img":"img/mobile-4-MRT.png",
                      "effect":function(scene){
                          scene.threshold.newPeople += 0.1;
-                         scene.threshold.redeye += 0.03;
+                         scene.threshold.redeye += 0.02;
                      },
                      "effectInfo":"人潮多、眼紅的人也多",
                  },
