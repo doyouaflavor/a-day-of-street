@@ -6,6 +6,7 @@
     <script src="js/lib/angular-sanitize.js"></script>
     <script type="text/javascript" src="../js/lib/intro.min.js"></script>
     <link href="css/intro.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
 <!--    <script type="text/javascript" src="js/lib/angular-intro.js"></script>-->
     <script src="js/data.js"></script>
     <script src="js/person.js"></script>
@@ -26,7 +27,7 @@
             <div class="street-background">
                 <img src=""/>
             </div>
-            <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()">
+            <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()" ng-class="scene.animate">
                 <img src="img/street-role-{{scene.role}}.png"/>
             </div>
             <div class="street-customers">

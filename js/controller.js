@@ -126,3 +126,10 @@ function resizing($scope){
         $('.options').height(w - 121);
     }
 }
+
+$(document).ready(function(){
+  $('.street-master').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass('animated').removeClass('rubberBand');
+    });
+});
+

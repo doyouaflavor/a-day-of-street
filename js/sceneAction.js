@@ -84,6 +84,11 @@ function Toolkit(scene){
         
         $this.updateRegionAndMaster();
         $this.streetInterval = $interval(function(){
+            if($this.click){
+                $this.animate = ' tada animated';
+                $this.click = false;
+            }
+            
             if(Math.random()<$this.threshold.newPeople){
                 $this.allPeopleCount++;
                 var y = $this.getRegionPoint.y();
@@ -202,6 +207,8 @@ function Toolkit(scene){
       
     */
     tools.doClickMaster = function(){
+        $this.animate = '';
+        $this.click = true;
         var i = 0;
         // Check if there are any redeyed-person.
         while(i < $this.street_people.length){
