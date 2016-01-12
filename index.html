@@ -4,7 +4,7 @@
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-sanitize.js"></script>
-    <script type="text/javascript" src="../js/lib/intro.min.js"></script>
+    <script type="text/javascript" src="js/lib/intro.min.js"></script>
     <link href="css/intro.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
 <!--    <script type="text/javascript" src="js/lib/angular-intro.js"></script>-->
@@ -43,6 +43,20 @@
                     </div>
                 </div>
             </div>    
+        </div>
+        <div class="street-dashboard">
+            <div class="db-badge">
+                <div class="bg-space" ng-repeat="element in scene.data"></div>
+                <div class="badges">
+                    <div class="badge" ng-repeat="select in scene.selected">
+                        <img src="{{select.option.rwd_img}}" alt=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="db-warning animated bounce" ng-if="scene.warning">
+                <img src="img/warning.png" alt=""/>
+            </div>
+            
         </div>
         <div class="pause-section">
             <div class="pause-button" ng-click="scene.showPauseMenu()"></div>
@@ -113,7 +127,7 @@
               <div class="answer-info-img">
                <img src="{{scene.last_selected_option.img}}" />
                </div>
-               <div class="option-text">{{scene.last_selected_option.name}}.{{scene.last_selected_option.value}}</div>
+<!--               <div class="option-text">{{scene.last_selected_option.name}}.{{scene.last_selected_option.value}}</div>-->
            </div>
        </div>
         <div class="answer-content" >

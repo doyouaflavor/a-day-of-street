@@ -34,7 +34,7 @@
 }
 .rule-info li{
     list-style: none;
-    width: 460px;
+    width: 555px;
     margin: 10px auto;
     text-align: left;
     line-height: 1.5em;
@@ -154,6 +154,9 @@
         width:150px;
         top:80px
     }
+    .db-badge{
+        display: none;
+    }
     
 }
 @media screen and (min-width: 768px) {
@@ -171,7 +174,7 @@
     }
     .option{
         display: table-cell;
-        height: 500px;
+        height: 444px;
         position: relative;
     }
     .option-effect{
@@ -196,6 +199,17 @@
         position: absolute;
         right: 0;
         left: 0;
+    }
+    .bg-space{
+        float: left;
+    }
+    .badge{
+        float: left;
+    }
+    .db-warning{
+        left: 0;
+        top: 63px;
+        position:absolute;
     }
 }
 
@@ -265,7 +279,7 @@ a .option-text{
 }
 .answer-info-content{
     background: #FFF0E3;
-    height: 500px;
+    height: 444px;
     position: relative;
 }
 .answer-info-content img{
@@ -314,6 +328,25 @@ a .option-text{
 }
 .person {
     position: absolute;
+}
+.street-dashboard{
+    position: absolute;
+}
+.bg-space{
+    background: url(../img/circle.png);
+    width: 63px;
+    height: 66px;
+/*    float: left;*/
+}
+.badges{
+    position: absolute;
+    top: 0;
+}
+.badge{
+/*    float: left;*/
+}
+.badge img{
+    width: 63px;
 }
 .pause-button{
     position: fixed;

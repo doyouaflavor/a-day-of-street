@@ -40,11 +40,14 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
     $this.updateRegionAndMaster = function(){
         
         $this.region = [[0,150],[600,350]];
-        $this.region[1][0] = $(window).width();
+        $this.region[1][0] = $window.innerWidth;
         $this.region[1][1] = $window.innerHeight - 115 - $this.getPersonBoxSize().height;
         $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
+        $this.width = $window.innerWidth;
+        console.log($window.innerHeight);
+        $this.height = $window.innerHeight - 45;
         
-        $('.street-background, .street-stage').width($(window).width());
+        $('.street-background, .street-stage').width($window.innerWidth);
         $('.street-background, .street-stage').height($window.innerHeight);
         
         
@@ -95,7 +98,12 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
     $this.streetStyle = function(){
         var o = ($this.state == 'street')?'auto':0;
         var pe = ($this.state == 'street')?'auto':'none';
-        return {opacity : o, 'pointer-events': pe }
+        return {
+            opacity : o, 
+            'pointer-events': pe ,
+            width: $this.width, 
+//            height: $this.height
+           }
     }
     
     $this.pauseMenu = {};
@@ -109,8 +117,8 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
 
 
 function resizing($scope){
-    var w = $(window).height();
-    
+    /*
+    var wh = $(window).height();
     setTimeout(function(){
             $scope.optionsStyle = {
                 height: ($(window).height() - 111) + 'px'
@@ -118,18 +126,26 @@ function resizing($scope){
         },100);
     
     if($('.answer-set').length > 0){
-        $('.answer-info-content').height(w - 121);
+        $('.answer-info-content').height(wh - 121);
     }
     if($('.options').length > 0){
-        var new_w = w - $('.question-content').outerHeight() - 45;
+        var new_wh = wh - $('.question-content').outerHeight() - 45;
         $('.options')
-        $('.options').height(w - 121);
+        $('.options').height(wh - 121);
     }
+    */
 }
 
 $(document).ready(function(){
   $('.street-master').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $(this).removeClass('animated').removeClass('rubberBand');
+      $(this).removeClass('animated').removeClass('tada');
     });
+    
+  $('.db-warning').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $this = $('.db-warning');
+      $this.removeClass('animated').removeClass('bounce');
+      setTimeout(function(){$this.addClass('animated').addClass('bounce');},100);
+    });
+    
 });
 

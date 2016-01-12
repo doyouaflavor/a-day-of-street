@@ -7,6 +7,9 @@ function Toolkit(scene){
     tools.newGame = function(){
         $this.afterTut = false;
         $this.pause = false;
+        $this.warning = false;
+        $this.width = 0;
+        $this.height = 0;
         $this.index = 0;
         $this.total_score = 0;
         $this.deal_score = 10;
@@ -27,7 +30,7 @@ function Toolkit(scene){
 
         $this.defaultThreshold = {
             newPeople : 0.04,
-            saw : 0.002,
+            saw : 0.003,
             redeye : 0.001,
             move: 0.01,
             idleToLeave: 0.02,
@@ -194,6 +197,9 @@ function Toolkit(scene){
                 $this.state = 'ending';
                 $this.afterStreet();
             }else{
+                if($this.currentTime % Math.floor($this.countdown/6) == 3){
+                    $this.warning = true;
+                }
                 if($this.currentTime % Math.floor($this.countdown/6) == 0){
                     $this.state = 'question';
                     $this.afterStreet();
@@ -245,6 +251,7 @@ function Toolkit(scene){
     tools.afterStreet = function(){
         $interval.cancel($this.countDownInterval);
         $interval.cancel($this.streetInterval);
+        $this.warning = false;
     }
     
     tools.showPauseMenu = function(){
@@ -282,12 +289,12 @@ function Toolkit(scene){
                     steps: [
                       {
                         element: '.street-master',
-                        intro: "這是主人翁!!",
+                        intro: "你是一名街賣者，正在熙熙攘攘的路上販賣商品!!",
                         position: 'left'
                       },
                       {
                         element: '.wang1',
-                        intro: '這是路人，當路人頭上有出現「看見」時，點一下你的街賣者，路人會走過來跟你消費。',
+                        intro: '這是路人，當路人頭上有出現「看見」符號時，點一下你的街賣者，路人會走過來跟你消費。',
                         position: 'right'
                       },
                       {
@@ -364,6 +371,7 @@ function Toolkit(scene){
                 for(var i = $this.street_people.length - 1; i >= 0;i--){
                     delete($this.street_people[i]);
                     $this.street_people.splice(i,1);
+                    $this.warning = true;
                 }
                 introOption = {
                     steps: [
@@ -372,6 +380,12 @@ function Toolkit(scene){
                         intro: "每隔一段時間會出現選擇，不同選擇會影響你的環境變因。",
                         position: 'left'
                       },
+                      {
+                        element: '.db-warning',
+                        intro: '在進入選擇題之前，會出現警告標誌，這時請注意螢幕。',
+                        position: 'right'
+                      },
+                        
                       {
                         element: '.street-master',
                         intro: '現在就來挑戰如何能在一天內賺取最多錢吧!!',
@@ -403,6 +417,7 @@ function Toolkit(scene){
         }
         $this.currentTime = $this.countdown;
         $this.threshold = $this.defaultThreshold;
+        $this.warning = false;
         $this.afterTut = true;
         $this.prepareStreet();
     }

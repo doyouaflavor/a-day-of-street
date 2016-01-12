@@ -194,7 +194,7 @@ var data = [
                      "addormulti":"*",
                      "score":2,
                      "img":"img/5-board.png",
-                     "rwd_img":"img/option-5-1.jpg",
+                     "rwd_img":"img/mobile-5-board.png",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                      },
@@ -206,7 +206,7 @@ var data = [
                      "addormulti":"*",
                      "score":1,
                      "img":"img/5-loudly.png",
-                     "rwd_img":"img/option-5-2.jpg",
+                     "rwd_img":"img/mobile-5-loudly.png",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
                          scene.threshold.redeye += 0.05;
