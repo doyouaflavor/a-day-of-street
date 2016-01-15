@@ -200,6 +200,9 @@
         right: 0;
         left: 0;
     }
+    .street-dashboard{
+        width: 100%;
+    }
     .bg-space{
         float: left;
     }
@@ -211,6 +214,46 @@
         top: 63px;
         position:absolute;
     }
+    .db-score{
+        left: 300px;
+        top:80px;
+    }
+}
+
+.db-score{
+    position: absolute;
+    background: #3FAA96;
+    width: 50px;
+    color: white;
+    padding: 3px 10px;
+    text-align: left;
+}
+.db-score:before{
+    content:"$";
+    padding-right: 10px;
+}
+.db-score-number{
+    float:right;
+}
+.db-timebar-wrapper{
+    position: absolute;
+    left: 500px;
+    top: 0;
+    height: 100px;
+}
+
+.db-timebar{
+    position: relative;
+    
+}
+.db-timelayer{
+    position: absolute;
+    left: 0;
+}
+.db-time-arrow{
+    -webkit-transform: translate(50%, 0); 
+    position: absolute;
+    top: 50%;
 }
 
 .option-text{
@@ -329,8 +372,12 @@ a .option-text{
 .person {
     position: absolute;
 }
-.street-dashboard{
+.street-dashboard-wrapper{
     position: absolute;
+}
+.street-dashboard{
+    position: relative;
+    width: 600px;
 }
 .bg-space{
     background: url(../img/circle.png);

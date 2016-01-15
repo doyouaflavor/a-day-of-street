@@ -22,7 +22,7 @@
   </div>
   
     <div class="scene street" ng-style='scene.streetStyle()'>
-        <div class="street-info"> 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span></div>
+        <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span></div>
         <div class="street-stage">
             <div class="street-background">
                 <img src=""/>
@@ -44,19 +44,34 @@
                 </div>
             </div>    
         </div>
-        <div class="street-dashboard">
-            <div class="db-badge">
-                <div class="bg-space" ng-repeat="element in scene.data"></div>
-                <div class="badges">
-                    <div class="badge" ng-repeat="select in scene.selected">
-                        <img src="{{select.option.rwd_img}}" alt=""/>
+        <div class="street-dashboard-wrapper">
+            <div class="street-dashboard">
+               <div class="db-score">
+                   <span class="db-score-number">{{scene.total_score}}</span>
+               </div>
+                <div class="db-badge">
+                    <div class="bg-space" ng-repeat="element in scene.data"></div>
+                    <div class="badges">
+                        <div class="badge" ng-repeat="select in scene.selected">
+                            <img src="{{select.option.rwd_img}}" alt=""/>
+                        </div>
                     </div>
                 </div>
+                <div class="db-warning animated bounce" ng-if="scene.warning">
+                    <img src="img/warning.png" alt=""/>
+                </div>
+                <div class="db-timebar-wrapper">
+                    <div class="db-timebar">
+                        <div class="db-timelayer">
+                            <img src="img/time-bar.png" alt="">
+                            <div class="db-time-arrow" style="right:{{scene.currentTime / scene.countdown * 322}}px;">
+                                <img src="img/sun.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="db-warning animated bounce" ng-if="scene.warning">
-                <img src="img/warning.png" alt=""/>
-            </div>
-            
         </div>
         <div class="pause-section">
             <div class="pause-button" ng-click="scene.showPauseMenu()"></div>

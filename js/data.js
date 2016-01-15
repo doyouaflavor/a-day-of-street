@@ -20,7 +20,7 @@ var data = [
                      "rwd_img":"img/mobile-1-disable.png",
                      "effect":function(scene){
                          scene.role = 1;
-                         scene.threshold.saw = 0.08;
+                         scene.defaultThreshold.saw += 0.008;
                      },
                      "effectInfo":"消費機率高，商品增加「彩券」選項",
                  },
@@ -34,7 +34,7 @@ var data = [
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
                          scene.role = 2;
-                         scene.threshold.saw = 0.06;
+                         scene.defaultThreshold.saw += 0.006;
                      },
                      "effectInfo":"消費機率低",
                  },
@@ -48,7 +48,7 @@ var data = [
                      "effect":function(scene){
                          removeItem(scene.data, 2, "D");
                          scene.role = 3;
-                         scene.threshold.saw = 0.07;
+                         scene.defaultThreshold.saw += 0.007;
                      },
                      "effectInfo":"消費機率中等",
                  }
