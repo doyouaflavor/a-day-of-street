@@ -40,15 +40,24 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
     $this.updateRegionAndMaster = function(){
         
         $this.region = [[0,150],[600,350]];
-        $this.region[1][0] = $window.innerWidth;
-        $this.region[1][1] = $window.innerHeight - 115 - $this.getPersonBoxSize().height;
-        $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
-        $this.width = $window.innerWidth;
-        console.log($window.innerHeight);
-        $this.height = $window.innerHeight - 45;
+        if($window.innerWidth>= 960){
+            $this.region[1][0] = $this.width = 960;
+            $this.region[1][1] = $this.height = 600 - 115 - $this.getPersonBoxSize().height;    
+            $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
+            $('.street-background, .street-stage').width(960);
+            $('.street-background, .street-stage').height(600);
+        }else{
+            $this.region[1][0] = $window.innerWidth;
+            $this.region[1][1] = $window.innerHeight - 115 - $this.getPersonBoxSize().height;
+            $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
+            $this.width = $window.innerWidth;
+            $this.height = $window.innerHeight - 45;
+            $('.street-background, .street-stage').width($window.innerWidth);
+            $('.street-background, .street-stage').height($window.innerHeight); 
+
+        }
         
-        $('.street-background, .street-stage').width($window.innerWidth);
-        $('.street-background, .street-stage').height($window.innerHeight);
+        
         
         
     }

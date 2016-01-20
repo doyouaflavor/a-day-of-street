@@ -35,6 +35,7 @@ function Toolkit(scene){
             move: 0.01,
             idleToLeave: 0.02,
             sawToLeave: 0.001,
+            mindToGood: 0.97,
         }
         
         $this.threshold = {
@@ -85,7 +86,7 @@ function Toolkit(scene){
     */
     tools.prepareStreet = function(){
         
-        $this.updateRegionAndMaster();
+//        $this.updateRegionAndMaster();
         $this.streetInterval = $interval(function(){
             if($this.click){
                 $this.animate = ' tada animated';
@@ -153,9 +154,7 @@ function Toolkit(scene){
                         person.do('kill');
                     }
                     if(person.state == 'walk-deal'){
-                        if(person.state == 'walk-deal'){
-                            $this.total_score += $this.deal_score;
-                        }
+                        $this.total_score += $this.deal_score;
                         if(!$this.afterTut){
                             $this.showTut(2);
                             return
@@ -163,6 +162,11 @@ function Toolkit(scene){
                         var target = [0,person.position.y];
                         target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                         person.do('leave',target);
+                        if(Math.random()<$this.threshold.mindToGood){
+                            person.mind = 'good';
+                        }else{
+                            person.mind = 'bad';
+                        }
                     }
                     
                     if(Math.random()<$this.threshold.move){
@@ -192,19 +196,22 @@ function Toolkit(scene){
         },33);
         
         $this.countDownInterval = $interval(function(){
-            $this.currentTime -= 1;
-            if($this.currentTime == 0){
-                $this.state = 'ending';
-                $this.afterStreet();
-            }else{
-                if($this.currentTime % Math.floor($this.countdown/6) == 3){
-                    $this.warning = true;
-                }
-                if($this.currentTime % Math.floor($this.countdown/6) == 0){
-                    $this.state = 'question';
+            if($this.currentTime >= 0){
+                $this.currentTime -= 1;
+                if($this.currentTime == 0){
+                    $this.state = 'ending';
                     $this.afterStreet();
+                }else{
+                    if($this.currentTime % Math.floor($this.countdown/6) == 3){
+                        $this.warning = true;
+                    }
+                    if($this.currentTime % Math.floor($this.countdown/6) == 0){
+                        $this.state = 'question';
+                        $this.afterStreet();
+                    }
                 }
             }
+            
             
         },1000);
     }
@@ -232,6 +239,7 @@ function Toolkit(scene){
             // clear any customers
             if(person_clear && ( person.state == 'saw' || person.state == 'redeye')){    
                 var target = [0,person.position.y];
+                person.mind = 'bad';
                 target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                 person.do("leave",target);
             }
@@ -278,8 +286,8 @@ function Toolkit(scene){
         tools.afterStreet();
         switch(level){
             case 1:
-                var person1 = newPerson(1,100,160);
-                var person2 = newPerson(2,500,250);
+                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.5);
+                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.8);
                 person1.vel = person2.vel = 7;
                 $this.street_people.push(person1);
                 $this.street_people.push(person2);
@@ -326,8 +334,8 @@ function Toolkit(scene){
                     delete($this.street_people[i]);
                     $this.street_people.splice(i,1);
                 }
-                var person1 = newPerson(1,100,160);
-                var person2 = newPerson(2,500,250);
+                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.5);
+                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.8);
                 person1.vel = person2.vel = 7;
                 person2.state ='redeye';
                 person2.waitInterval = -1;
@@ -382,10 +390,14 @@ function Toolkit(scene){
                       },
                       {
                         element: '.db-warning',
-                        intro: '在進入選擇題之前，會出現警告標誌，這時請注意螢幕。',
+                        intro: '在進入選擇題之前，會出現警告標誌。',
                         position: 'right'
                       },
-                        
+                      {
+                        element: '.db-timebar',
+                        intro: '隨著時間的推演，日光的更迭，你必須努力在黑夜來臨前賺取夠多的錢。',
+                        position: 'left'
+                      },
                       {
                         element: '.street-master',
                         intro: '現在就來挑戰如何能在一天內賺取最多錢吧!!',

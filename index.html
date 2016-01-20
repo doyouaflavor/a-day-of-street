@@ -32,6 +32,8 @@
             </div>
             <div class="street-customers">
                 <div class="person" ng-class="person.name" ng-repeat="person in scene.street_people" ng-style="person.style()">
+                   <img class="person-mind person-token" ng-if="person.mind=='bad'" src="img/heart-bad.png"/>
+                   <img class="person-mind person-token" ng-if="person.mind=='good'" src="img/heart-good.png"/>
                     <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/person-normalsaw.png"/>
                     <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/person-redeye.png"/>
                     <img class="person-body" src="img/person.png"/>
@@ -42,7 +44,8 @@
                     {{person.sawInterval}}
                     </div>
                 </div>
-            </div>    
+            </div>
+            <div class="pause-button" ng-click="scene.showPauseMenu()"></div>    
         </div>
         <div class="street-dashboard-wrapper">
             <div class="street-dashboard">
@@ -74,7 +77,6 @@
             </div>
         </div>
         <div class="pause-section">
-            <div class="pause-button" ng-click="scene.showPauseMenu()"></div>
             <div class="pause-menu" ng-if="scene.pause">
                 <ul>
                     <li ng-click="scene.showPauseMenu()">繼續</li>

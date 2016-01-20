@@ -23,7 +23,9 @@
     float:left;
     line-height: 25px;
 }
-
+body{
+    background: #3FAA96;
+}
 .scene{
     background: #FFF0E3;
 }
@@ -154,12 +156,30 @@
         width:150px;
         top:80px
     }
+    .street-dashboard,
+    .street-dashboard-wrapper{
+        width: 100%;
+    
+    }
+    .db-score{
+        top: 10px;
+        left:10px;
+    }
     .db-badge{
         display: none;
     }
+    .db-timebar-wrapper{
+        height: 10px;
+        right: 0;
+    }
+    .db-timebar{
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+        transform: rotate(90deg);
+    }
     
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px){
     .question-content{
         border-bottom: #486e74 solid 10px;
     }
@@ -179,9 +199,15 @@
     }
     .option-effect{
         position: absolute;
-        top: 450px;
-        width: 100%;
+        top: 390px;
         color:black;
+        font-size: 15px;
+        border: 1px solid black;
+        background: white;
+        width: 140px;
+        left: 50%;
+        padding: 5px;
+        -webkit-transform: translate(-50%, 0); 
     }
     .option-img{
     }
@@ -195,10 +221,18 @@
         right: 0;
     }
     .option-text{
-        top: 400px;
         position: absolute;
         right: 0;
         left: 0;
+        bottom: 60px
+    }
+    .street-dashboard,
+    .street-dashboard-wrapper{
+        width: 100%;
+    }
+    .answer-info{
+        width: 50%;
+        float: left;
     }
     .street-dashboard{
         width: 100%;
@@ -218,12 +252,37 @@
         left: 300px;
         top:80px;
     }
+    .db-timebar-wrapper{
+        width: 320px;
+        height: 90px;
+        right: 10px;
+    }
+    .answer-content{
+        padding:45px 0 0;
+        display: block;
+        height: 300px;
+    }
 }
+
+@media screen and (min-width: 960px){
+    .street-dashboard,
+    .question,
+    .street,
+    .answer-information{
+        max-width: 960px;
+        margin: 0 auto;
+    }
+    
+    
+}
+
+/* element */
+
 
 .db-score{
     position: absolute;
     background: #3FAA96;
-    width: 50px;
+    width: 60px;
     color: white;
     padding: 3px 10px;
     text-align: left;
@@ -237,7 +296,6 @@
 }
 .db-timebar-wrapper{
     position: absolute;
-    left: 500px;
     top: 0;
     height: 100px;
 }
@@ -295,16 +353,9 @@ a .option-text{
     background: #3FAA96;
     color: #eee;
 }
-.answer-content{
-    padding:45px 0 0;
-    display: block;
-    height: 300px;
-}
 
-.answer-info{
-    width: 50%;
-    float: left;
-}
+
+
 .answer-info-header{
     height: 40px;
 }
@@ -359,8 +410,11 @@ a .option-text{
 }
 .person-token{
     position: absolute;
-    top: -40px;
+    top: -45px;
     left: 30px;
+}
+.person-mind{
+    left: 50px;
 }
 .street-master{
 }
@@ -377,7 +431,6 @@ a .option-text{
 }
 .street-dashboard{
     position: relative;
-    width: 600px;
 }
 .bg-space{
     background: url(../img/circle.png);
@@ -396,7 +449,7 @@ a .option-text{
     width: 63px;
 }
 .pause-button{
-    position: fixed;
+    position: absolute;
     z-index: 999;
     bottom:0;
     right: 0;

@@ -22,7 +22,7 @@ var data = [
                          scene.role = 1;
                          scene.defaultThreshold.saw += 0.008;
                      },
-                     "effectInfo":"消費機率高，商品增加「彩券」選項",
+                     "effectInfo":"消費機率高，多了「彩券」可賣",
                  },
                  {
                      "name":"B",
@@ -82,7 +82,7 @@ var data = [
                      "effect":function(scene){
                          scene.threshold.redeye += 0.001;
                      },
-                     "effectInfo":"商品增加日用品選項，地點增加夜市選項",
+                     "effectInfo":"較多選擇",
                  }
              ],
             "information":"許多人對於街賣集團有著許多疑問，人生百味團隊實地走訪了台北兩個團體，發現其多為合作社或一般公司形式進行，有些為出外打拚的身障者提供正餐與住宿，有些因交通安全考量提供接送。台北地區目前有六至七個街賣團體，此外更有大誌、華山地瓜媽媽、人生百味等街頭商品。<br/>獨立與團體街賣各有優劣勢，但街頭並不只屬於行人，也屬於暫時住宿者，以及在街頭上討生活的人們。"
@@ -152,8 +152,8 @@ var data = [
                      "img":"img/4-MRT.png",
                      "rwd_img":"img/mobile-4-MRT.png",
                      "effect":function(scene){
-                         scene.threshold.newPeople += 0.1;
-                         scene.threshold.redeye += 0.02;
+                         scene.threshold.newPeople *= 1.1;
+                         scene.threshold.redeye *= 1.1;
                      },
                      "effectInfo":"人潮多、眼紅的人也多",
                  },
@@ -165,7 +165,7 @@ var data = [
                      "img":"img/4-street.png",
                      "rwd_img":"img/mobile-4-street.png",
                      "effect":function(scene){
-                         scene.threshold.newPeople -= 0.05;
+                         scene.threshold.newPeople *= 0.85;
                      },
                      "effectInfo":"人潮較少",
                  },
@@ -177,10 +177,11 @@ var data = [
                      "img":"img/4-nightmarket.png",
                      "rwd_img":"img/mobile-4-nightmarket.png",
                      "effect":function(scene){
-                         scene.threshold.saw -= 0.05;
-                         scene.threshold.redeye -= 0.05;
+                         scene.threshold.newPeople *= 1.1;
+                         scene.threshold.saw *= 0.9;
+                         scene.threshold.redeye *= 0.9;
                      },
-                     "effectInfo":"願意消費的人少，眼紅的人也較少",
+                     "effectInfo":"人潮多，但容易遭人忽視",
                  }
              ],
             "information":"街賣者多為身體行動較不便者，因此選擇地點時機能與人潮同樣重要。廁所、飲水機回家交通的便利性都是十分重要的考量。<br/>另外有分流動或定點兩種賣法，不一定會每日出現在同點。人氣街賣者就像POP-UP SHOP一樣，撞見時會充滿驚喜呢。"
@@ -239,8 +240,9 @@ var data = [
                      "rwd_img":"img/mobile-6-Sympathy.png",
                      "effect":function(scene){
                          scene.threshold.saw += 0.05;
+                         scene.threshold.mindToGood = 0.6;
                      },
-                     "effectInfo":"購買的人變多了，但不乏買得不甘願的人",
+                     "effectInfo":"買的人變多了，但不乏買得不甘願的人",
                  },
                  {
                      "name":"B",
@@ -251,7 +253,7 @@ var data = [
                      "rwd_img":"img/mobile-6-noSympathy.png",
                      "effect":function(scene){
                      },
-                     "effectInfo":"買得人不會變多",
+                     "effectInfo":"買的人不會變多",
                  }
              ],
             "information":"以同情的基礎的銷售，就好像是一種捐款，必需不斷的向消費者傳達自身「匱乏」的訊息才能得到生活所需的收入，因此買賣雙方其實很難形成真誠的關係，並且一旦讓消費者明顯的感覺到，你生活改善了，很有可能就造成這樣收入的減少甚至是終止。<br/>另一方面，對於是否需要渲染同情，街賣者心中其實也充滿矛盾。除了怕破壞隱性的同情關係之外，也可能是因擔心弄巧成拙影響收入。這類矛盾與壓抑的心態，自然會阻礙街賣者與消費者做更深的互動。"

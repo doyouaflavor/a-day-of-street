@@ -15,6 +15,7 @@ function newPerson(i,x,y){
     person.position.y = y;
     person.target.x = 0;
     person.target.y = 0;
+    person.mind = '';
     person.name = 'wang'+i;
     person.sprite = $('.'+person.name);
     
