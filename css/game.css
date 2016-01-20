@@ -207,6 +207,7 @@ body{
         width: 140px;
         left: 50%;
         padding: 5px;
+        transform: translate(50%, 0); 
         -o-transform: translate(50%, 0); 
         -ms-transform: translate(50%, 0); 
         -moz-transform: translate(50%, 0);
@@ -220,6 +221,7 @@ body{
         position: absolute;
         top: 50%;
         left: 50%;
+        transform: translate(50%, 0); 
         -o-transform: translate(50%, 0); 
         -ms-transform: translate(50%, 0); 
         -moz-transform: translate(50%, 0);
@@ -315,6 +317,7 @@ body{
     left: 0;
 }
 .db-time-arrow{
+    transform: translate(50%, 0); 
     -o-transform: translate(50%, 0); 
     -ms-transform: translate(50%, 0); 
     -moz-transform: translate(50%, 0); 
@@ -389,6 +392,7 @@ a .option-text{
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(50%, 0); 
     -o-transform: translate(50%, 0); 
     -ms-transform: translate(50%, 0); 
     -moz-transform: translate(50%, 0);
@@ -474,6 +478,7 @@ a .option-text{
     left: 50%;
     top: 50%;
     border-radius: 3px;
+    transform: translate(50%, 0); 
     -o-transform: translate(50%, 0); 
     -ms-transform: translate(50%, 0); 
     -moz-transform: translate(50%, 0);
