@@ -439,6 +439,9 @@ a .option-text{
 .street-customers{
     pointer-events: none;
 }
+.street-dashboard-wrapper{
+    pointer-event: none;
+}
 .person {
     position: absolute;
 }

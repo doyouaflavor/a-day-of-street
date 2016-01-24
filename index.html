@@ -47,7 +47,7 @@
             </div>
             <div class="pause-button" ng-click="scene.showPauseMenu()"></div>    
         </div>
-        <div class="street-dashboard-wrapper">
+        <div class="street-dashboard-wrapper" ng-click="scene.doClickMaster();">
             <div class="street-dashboard">
                <div class="db-score">
                    <span class="db-score-number">{{scene.total_score}}</span>
@@ -165,7 +165,8 @@
     <!--結局-->
     <div class="scene final" ng-if="scene.state=='ending'">
         <h2>結果頁</h2>
-        <div>分數：{{scene.total_score}}</div>
+        <div>本日共賺進<span class="ending-score-span">{{scene.total_score}}</span>元</div>
+        <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span></div>
         <div ng-repeat="select in scene.selected">
              <div class="select-question">{{select.questionInfo}}</div>
              <div class="select-answer">
@@ -180,6 +181,21 @@
               </div>
 -->
         </div>
+        <div>
+            重新游玩
+        </div>
+        <div>
+            在 FB 分享給好友。
+        </div>
+        <div>
+            更多關於街賣的文章
+        </div>
+        <div>
+            尋找攻略和彩蛋
+        </div>
+        <div>
+            贊助我們 (2/3 前的群眾募資計劃)
+        </div>
     </div>
   
 <div class="scene final" ng-if="scene.debug">
@@ -187,7 +203,7 @@
     <div class="score">積分 = {{scene.total_score}}</div>
     <div class="score">單次分數 = {{scene.deal_score}}</div>
     <div class="street-info"> 時間：<span>{{scene.currentTime}}</span></div>
-<!--    <div class="sate">selected：{{scene.selected}}</div>-->
+    <div class="sate">selected：{{scene.selected}}</div>
 <!--    {{scene}}-->
 
 </div>

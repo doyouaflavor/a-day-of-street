@@ -13,6 +13,7 @@ function Toolkit(scene){
         $this.index = 0;
         $this.total_score = 0;
         $this.deal_score = 10;
+        $this.final_title = '';
         $this.selected = [];
         $this.data = data.slice();
         for(var i = 0; i < $this.data.length ;i++){
@@ -27,6 +28,12 @@ function Toolkit(scene){
         $this.street_people = [];
         $this.allPeopleCount = 0;
         $this.role = 0;
+        
+        // For get final title. 
+        $this.countDealedPeople = 0;
+        $this.countGetOutPeople = 0;
+        $this.countGoodMindPeople = 0;
+        $this.countBadMindPeople = 0;
 
         $this.defaultThreshold = {
             newPeople : 0.04,
@@ -154,6 +161,7 @@ function Toolkit(scene){
                         person.do('kill');
                     }
                     if(person.state == 'walk-deal'){
+                        $this.countDealedPeople++;
                         $this.total_score += $this.deal_score;
                         if(!$this.afterTut){
                             $this.showTut(2);
@@ -164,8 +172,10 @@ function Toolkit(scene){
                         person.do('leave',target);
                         if(Math.random()<$this.threshold.mindToGood){
                             person.mind = 'good';
+                            $this.countGoodMindPeople++;
                         }else{
                             person.mind = 'bad';
+                            $this.countBadMindPeople++;
                         }
                     }
                     
@@ -200,6 +210,7 @@ function Toolkit(scene){
                 $this.currentTime -= 1;
                 if($this.currentTime == 0){
                     $this.state = 'ending';
+                    $this.final_title = getFinalTitle($this);
                     $this.afterStreet();
                 }else{
                     if($this.currentTime % Math.floor($this.countdown/6) == 3){
@@ -240,8 +251,10 @@ function Toolkit(scene){
             if(person_clear && ( person.state == 'saw' || person.state == 'redeye')){    
                 var target = [0,person.position.y];
                 person.mind = 'bad';
+                $this.countBadMindPeople++;
                 target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                 person.do("leave",target);
+                $this.countGetOutPeople++;
             }
             else{
                 // call first 'saw' person coming.
@@ -347,7 +360,7 @@ function Toolkit(scene){
                     steps: [
                       {
                         element: '.wang2',
-                        intro: "這是個人眼紅了，這時叫賣的話，他會大聲嚷嚷把想買的人嚇走。",
+                        intro: "這個人眼紅了，這時叫賣的話，他會大聲嚷嚷把想買的人嚇走。",
                         position: 'left'
                       },
                       {
@@ -444,4 +457,41 @@ function getLeaveTarget(person, $this){
     var target = [0,person.position.y];
     target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
     return target;
+}
+
+function getFinalTitle($this){
+    var countDealedPeople = $this.countDealedPeople;
+    var countGetOutPeople = $this.countGetOutPeople;
+    var countBadMindPeople = $this.countBadMindPeople;
+    var countGoodMindPeople = $this.countGoodMindPeople;
+    var total_score = $this.total_score;
+    
+    var first_name_list = ['','街頭的','隨風而逝的','自由的','可憐的'];
+    if(countBadMindPeople >= 20){
+        first_name = first_name_list[4];
+    }else{
+        var first_name = first_name_list[countBadMindPeople % 4];
+    }
+    var middle_name_list = ['吟遊','噴水','絕地','神秘','做好做滿','天使'];
+    var middle_name = middle_name_list[countDealedPeople % 6];
+    var last_name_list = ['小販','商人','走路工','逃給','總裁','校長'];
+    var score_interval = [300,700,1000,2000,99999]
+    if( $this.selected[0].option.name == 'A' && 
+        $this.selected[1].option.name == 'A' &&
+        $this.selected[3].option.name == 'A' &&
+        $this.selected[4].option.name == 'A' &&
+        $this.selected[5].option.name == 'B'
+    ){
+        last_name = last_name_list[6];
+    }else{
+        if(total_score < score_interval[0]){
+            var last_name = last_name_list[0];
+        }
+        for(var i = 1;i <= score_interval.length; i++){
+            if(total_score > score_interval[i-1] && total_score <= score_interval[i]){
+                var last_name = last_name_list[i];
+            }
+        }
+    }
+    return first_name + middle_name + last_name;
 }
