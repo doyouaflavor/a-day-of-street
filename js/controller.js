@@ -1,5 +1,5 @@
 var game = angular.module('game',['ngSanitize']);
-game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$interval,$window) {
+game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($scope,$interval,$window,$sce) {
     $this = this;
     
     $this.debug = false;
@@ -122,6 +122,10 @@ game.controller('MainCtrl', ['$scope', '$interval','$window', function ($scope,$
     $this.pauseMenu.shareFB = toolkit.pauseMenu.shareFB;
     
     $this.showTut = toolkit.showTut;
+    
+    $this.getInformation = function(){
+        return $sce.getTrustedHtml($this.question.information);
+    }
 }]);
 
 
