@@ -53,7 +53,7 @@ var data = [
                      "effectInfo":"消費機率中等",
                  }
              ],
-             "information":"<div class='answer-bottom-line answer-bigger-text'><img src='img/answer/search.png' />弱勢狀態時選擇成為街頭者的原因，多來自於經濟、工作形式、以及環境三種考量。</div><div><img ng-src='img/answer/a1-money.png'> 經濟：經濟考量是弱勢者選擇街賣最普遍的原因。然而，壓力未必只有個人生計。如一位街賣者受訪時所說：「若不需負擔媽媽看護費用，我自己是可以過的」。</div><div><img src='img/answer/a1-people.png'>工作形式：街賣者因為生理上或個性上的問題，無法因應一般公司的工作型態，而街賣擁有的自由度或彈性，就成為他們的選擇。受訪街賣者曾提到無法負荷先前工作上的肢體負荷，所以選擇離開。</div><div><img src='img/answer/a1-home.png'>環境：相對於利益導向的工作環境，街賣環境可能遇到更多的同理者（即使仍有少數環抱歧視心態的民眾），這樣的環境氛圍也是特定個案青睞街賣行業的原因之一。</div>"
+             "information":"<div class='answer-bottom-line'><div class='data-img img-answer-search'></div><div class='answer-title'>弱勢狀態時選擇成為街頭者的原因，多來自於經濟、工作形式、以及環境三種考量。</div></div><div class='answer-section'><div class='data-img img-answer-a1-money'></div> <h3>經濟</h3><p>經濟考量是弱勢者選擇街賣最普遍的原因。然而，壓力未必只有個人生計。如一位街賣者受訪時所說：「若不需負擔媽媽看護費用，我自己是可以過的」。</p></div><div class='answer-section'><div class='data-img img-answer-a1-people'></div><h3>工作形式</h3><p>街賣者因為生理上或個性上的問題，無法因應一般公司的工作型態，而街賣擁有的自由度或彈性，就成為他們的選擇。受訪街賣者曾提到無法負荷先前工作上的肢體負荷，所以選擇離開。</p></div><div class='answer-section'><div class='data-img img-answer-a1-home'></div><h3>環境</h3><p>相對於利益導向的工作環境，街賣環境可能遇到更多的同理者（即使仍有少數環抱歧視心態的民眾），這樣的環境氛圍也是特定個案青睞街賣行業的原因之一。</p></div>"
             },
         {"name":"Q2 獨立或集團",
              "description":"初次在街頭創業，你想加入集團合作還是獨立自強呢？",

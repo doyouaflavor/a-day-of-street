@@ -266,9 +266,10 @@ body{
         right: 10px;
     }
     .answer-content{
-        padding:45px 0 0;
-        display: block;
-        height: 300px;
+        margin-top: 45px;
+        float: left;
+        width: 50%;
+        
     }
 }
 
@@ -342,6 +343,16 @@ body{
 a .option-text{
     color: white;
     text-decoration: none;
+}
+
+.answer-content{
+    margin-top: 45px;
+    box-sizing: border-box;
+    padding: 10px;
+    display: block;
+}
+.answer-content *{
+    text-align: left;
 }
 .next{
     margin-top: 100px;
@@ -527,4 +538,66 @@ a .option-text{
 
 .introjs-prevbutton,.introjs-disabled{
     display: none;
+}
+
+/* data */
+.data-img{
+    float: left;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.img-answer-search{
+    width: 60px;
+    height: 60px;
+    background-image: url(../img/answer/search.png);
+}
+.img-answer-a1-money{
+    margin-right: 20px;
+    width: 90px;
+    height: 105px;
+    background-image: url(../img/answer/a1-money.png);
+}
+.img-answer-a1-people{
+    margin-right: 20px;
+    width: 90px;
+    height: 105px;
+    background-image: url(../img/answer/a1-people.png);
+}
+.img-answer-a1-home{
+    margin-right: 20px;
+    width: 90px;
+    height: 105px;
+    background-image: url(../img/answer/a1-home.png);
+}
+
+.answer-content p{
+    font-size: 13px;
+    line-height: 1.5em;
+}
+.answer-content h3{
+    font-size: 19px;
+    line-height: 2em;
+}
+
+
+.answer-bottom-line{
+    padding-bottom: 20px;
+    border-bottom: white 1px solid;
+    margin-bottom: 10px;
+}
+.answer-bottom-line:after{
+  content: "";
+  clear: both;
+  display: table;
+}
+.answer-section{
+    padding-top: 10px;
+    clear: both;
+}
+.answer-title{
+    padding-top: 10px;
+    float: left;
+    width: 380px;
+    text-align: left;
+    font-size: 19px;
 }

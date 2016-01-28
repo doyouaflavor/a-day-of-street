@@ -124,6 +124,7 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($
     $this.showTut = toolkit.showTut;
     
     $this.getInformation = function(){
+        $sce.trustAsHtml($this.question.information);
         return $sce.getTrustedHtml($this.question.information);
     }
 }]);
