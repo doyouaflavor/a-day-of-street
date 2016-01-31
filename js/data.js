@@ -7,55 +7,7 @@ function removeItem(optionsArray, questionIndex, optionName){
      }
 }
 
-var data = [{"name":"Q1 創業家角色",
-             "description":"虛擬是美好的，因為我們有得選擇。請選擇你的街頭創業家屬性",
-             "options":[
-                 {
-                     "name":"A",
-                     "value":"身障者",
-                     "addormulti":"+",
-                     "score":30,
-                     "img":"img/1-disable.png",
-                     "rwd_img":"img/mobile-1-disable.png",
-                     "effect":function(scene){
-                         scene.role = 1;
-                         scene.defaultThreshold.saw += 0.008;
-                     },
-                     "effectInfo":"消費機率高，多了「彩券」可賣",
-                 },
-                 {
-                     "name":"B",
-                     "value":"街友",
-                     "addormulti":"+",
-                     "score":30,
-                     "img":"img/1-homeless.png",
-                     "rwd_img":"img/mobile-1-homeless.png",
-                     "effect":function(scene){
-                         removeItem(scene.data, 2, "D");
-                         scene.role = 2;
-                         scene.defaultThreshold.saw += 0.006;
-                     },
-                     "effectInfo":"消費機率低",
-                 },
-                 {
-                     "name":"C",
-                     "value":"老人家",
-                     "addormulti":"+",
-                     "score":30,
-                     "img":"img/1-oldman.png",
-                     "rwd_img":"img/mobile-1-oldman.png",
-                     "effect":function(scene){
-                         removeItem(scene.data, 2, "D");
-                         scene.role = 3;
-                         scene.defaultThreshold.saw += 0.007;
-                     },
-                     "effectInfo":"消費機率中等",
-                 }
-             ],
-             "information":"<div class='answer-section-title'><div class='data-img img-answer-search'></div><p>許多人對於街賣集團有著許多疑問，人生百味團隊實地走訪了台北兩個團體，發現其多為合作社或一般公司形式進行，有些為出外打拚的身障者提供正餐與住宿，有些因交通安全考量提供接送。</p></div><div class='answer-section'><div class='data-img img-answer-a2-img'></div></div>\
-<div class='answer-section'><div class='data-img img-answer-a2-img2'></div><p class='answer-float-left answer-upper-line'>台北地區目前有六至七個街賣團體，此外更有大誌、華山地瓜媽媽、人生百味等</p></div>\
-<div class='answer-section'><p class='answer-upper-line'>獨立與團體街賣各有優劣勢，但街頭並不只屬於行人，也屬於暫時住宿者，以及在街頭上討生活的人們。</p></div>"
-            },
+var data = [
             {"name":"Q1 創業家角色",
              "description":"虛擬是美好的，因為我們有得選擇。請選擇你的街頭創業家屬性",
              "options":[
@@ -134,7 +86,7 @@ var data = [{"name":"Q1 創業家角色",
                  }
              ],
             "information":"<div class='answer-section-title'><div class='data-img img-answer-search'></div><p>許多人對於街賣集團有著許多疑問，人生百味團隊實地走訪了台北兩個團體，發現其多為合作社或一般公司形式進行，有些為出外打拚的身障者提供正餐與住宿，有些因交通安全考量提供接送。</p></div><div class='answer-section'><div class='data-img img-answer-a2-img'></div></div>\
-<div class='answer-section'><div class='data-img img-answer-a2-img2 answer-float-left'></div><p class='answer-float-left answer-upper-line'>台北地區目前有六至七個街賣團體，此外更有大誌、華山地瓜媽媽、人生百味等</p></div>\
+<div class='answer-section'><div class='data-img img-answer-a2-img2'></div><p class='answer-float-left answer-upper-line'>台北地區目前有六至七個街賣團體，此外更有大誌、華山地瓜媽媽、人生百味等</p></div>\
 <div class='answer-section'><p class='answer-upper-line'>獨立與團體街賣各有優劣勢，但街頭並不只屬於行人，也屬於暫時住宿者，以及在街頭上討生活的人們。</p></div>"
             },
     
