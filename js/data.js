@@ -22,7 +22,7 @@ var data = [
                          scene.role = 1;
                          scene.defaultThreshold.saw += 0.008;
                      },
-                     "effectInfo":"消費機率高，多了「彩券」可賣",
+                     "effectInfo":"消費機率高",
                  },
                  {
                      "name":"B",

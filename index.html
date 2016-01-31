@@ -18,20 +18,21 @@
   <body ng-controller="MainCtrl as scene">
 
     <div class="scene street" ng-style='scene.streetStyle()'>
-        <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span></div>
+        <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span>{{scene.threshold}}</div>
         <div class="street-stage">
             <div class="street-background">
                 <img src=""/>
             </div>
-            <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()" ng-class="scene.animate">
-                <img src="img/street-role-{{scene.role}}.png"/>
+            <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()" >
+               <img src="img/game/shadow.png"/ class="master-shadow">
+                <img ng-class="scene.animate" src="img/street-role-{{scene.role}}.png" class="street-master-img"/>
             </div>
             <div class="street-customers">
                 <div class="person" ng-class="person.name" ng-repeat="person in scene.street_people" ng-style="person.style()">
-                   <img class="person-mind person-token" ng-if="person.mind=='bad'" src="img/heart-bad.png"/>
-                   <img class="person-mind person-token" ng-if="person.mind=='good'" src="img/heart-good.png"/>
-                    <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/person-normalsaw.png"/>
-                    <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/person-redeye.png"/>
+                   <img class="person-mind person-token" ng-if="person.mind=='bad'" src="img/game/bad-mood.png"/>
+                   <img class="person-mind person-token" ng-if="person.mind=='good'" src="img/game/bought.png"/>
+                    <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/game/like.png"/>
+                    <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/game/dislike.png"/>
                     <img class="person-body" src="img/person.png"/>
                     <div ng-if="scene.debug">
                     {{person.name}}
@@ -48,6 +49,21 @@
                <div class="db-score">
                    <span class="db-score-number">{{scene.total_score}}</span>
                </div>
+                <div class="db-timebar-wrapper">
+                    <div class="db-timebar">
+                       <div class="db-time-bar db-time-white"></div>
+                       <div class="db-time-bar db-time-yellow" style="width: {{scene.lineLengthStyle()}}px;"></div>
+                       
+<!--
+                        <div class="db-timelayer">
+                            <img src="img/time-bar.png" alt="">
+                            <div class="db-time-arrow" style="right:{{scene.currentTime / scene.countdown * 322}}px;">
+                                <img src="img/sun.png" alt="">
+                            </div>
+                        </div>
+-->
+                    </div>
+                </div>
                 <div class="db-badge">
                     <div class="bg-space" ng-repeat="element in scene.data"></div>
                     <div class="badges">
@@ -59,16 +75,7 @@
                 <div class="db-warning animated bounce" ng-if="scene.warning">
                     <img src="img/warning.png" alt=""/>
                 </div>
-                <div class="db-timebar-wrapper">
-                    <div class="db-timebar">
-                        <div class="db-timelayer">
-                            <img src="img/time-bar.png" alt="">
-                            <div class="db-time-arrow" style="right:{{scene.currentTime / scene.countdown * 322}}px;">
-                                <img src="img/sun.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
         </div>
@@ -81,6 +88,7 @@
                 </ul>
             </div>
         </div>
+        <div ng-if="scene.debug" style="position: absolute;left: {{scene.region[0][0]}}px;top:{{scene.region[0][1]}}px;width: {{scene.region[1][0]-scene.region[0][0]}}px;height: {{scene.region[1][1]-scene.region[0][1]}}px;background: #000;opacity: 0.5;" class="aaa"></div>
     </div>  
   
   

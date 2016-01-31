@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="62px" height="67px" viewBox="0 0 62 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.5.1 (25234) - http://www.bohemiancoding.com/sketch -->
+    <title>dislike</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="dislike" sketch:type="MSLayerGroup" transform="translate(2.000000, 2.000000)">
+            <path d="M20.3613281,48.8544922 L28.0174451,62.4239127 C28.5600952,63.3856858 29.4549341,63.3955961 30.0204259,62.4387685 L38.0488281,48.8544922 C38.0488281,48.8544922 58,43.2050781 58,24.610079 C58,8.43648435 45.0162577,0 29,0 C12.9837423,0 8.34398516e-16,8.43648435 0,24.610079 C8.34398498e-16,42.7626953 20.3613281,48.8544922 20.3613281,48.8544922 Z" id="Oval-2" stroke="#39AB96" stroke-width="3.2" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <g id="Group-2" transform="translate(8.739726, 13.453488)" sketch:type="MSShapeGroup">
+                <path d="M20.260274,22.4651163 C31.4497143,22.4651163 40.5205479,15.2729929 40.5205479,11.2325581 C40.5205479,7.19212333 31.4497143,0 20.260274,0 C9.07083363,0 5.00275394e-16,6.82243475 0,11.2325581 C4.87077688e-16,15.6426815 9.07083363,22.4651163 20.260274,22.4651163 Z" id="Oval-8" stroke="#E56969" stroke-width="2.4"></path>
+                <ellipse id="Oval-9" fill="#E56969" cx="20.5768408" cy="11.2325581" rx="9.18043664" ry="9.30697674"></ellipse>
+                <ellipse id="Oval-9" fill="#FFFFFF" cx="24.3756421" cy="6.73953488" rx="1.5828339" ry="1.60465116"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

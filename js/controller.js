@@ -29,11 +29,11 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($
     $this.getRegionPoint = {
         x : function(){
             var region = $this.region;
-            return Math.random() * (region[1][0] - region[0][0]) + region[0][0] - $this.getPersonBoxSize().width;
+            return Math.random() * (region[1][0] - region[0][0] - $this.getPersonBoxSize().width) + region[0][0] ;
         },
         y : function(){
             var region = $this.region;
-            return Math.random() * (region[1][1] - region[0][1]) + region[0][1];
+            return Math.random() * (region[1][1] - region[0][1] - $this.getPersonBoxSize().height) + region[0][1] ;
         },
     }
     
@@ -41,9 +41,10 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($
         
         $this.region = [[0,150],[600,350]];
         if($window.innerWidth>= 960){
+            $this.region[0][1] = 600/2;
             $this.region[1][0] = $this.width = 960;
-            $this.region[1][1] = $this.height = 600 - 115 - $this.getPersonBoxSize().height;    
-            $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
+            $this.region[1][1] = $this.height = 600;
+            $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2, $this.height/2-115];
             $('.street-background, .street-stage').width(960);
             $('.street-background, .street-stage').height(600);
         }else{
@@ -115,6 +116,18 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($
            }
     }
     
+    $this.lineLengthStyle = function(){
+        var badgeWidth = 63;
+        var fullLength = 575; // search db-time-white in css 
+//        scene.currentTime / scene.countdown
+        var t = $this.countdown - $this.currentTime;
+        var a = $this.countdown / $this.data.length;
+        var i = Math.floor(t / a);
+        var fullLength_2 = fullLength - badgeWidth * ($this.data.length - 1);
+        return ( t / $this.countdown * fullLength_2 ) + i * badgeWidth;
+        
+    }
+    
     $this.pauseMenu = {};
     $this.showPauseMenu = toolkit.showPauseMenu;
     $this.pauseMenu.continue = toolkit.pauseMenu.continue;
@@ -155,7 +168,7 @@ function resizing($scope){
 }
 
 $(document).ready(function(){
-  $('.street-master').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+  $('.street-master-img').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
       $(this).removeClass('animated').removeClass('tada');
     });
     

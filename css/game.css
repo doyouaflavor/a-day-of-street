@@ -234,22 +234,30 @@ body{
         left: 0;
         bottom: 60px
     }
-    .street-dashboard,
+    .street-background{
+        background: url(../img/game/background.png) repeat-x 0 0;
+    }
     .street-dashboard-wrapper{
         width: 100%;
+    }
+    .street-dashboard{
+        background: url(../img/game/top-bar@1x.png) no-repeat 0 0;
+        height: 60px;
+        width: 902px;
+        margin: 0 auto;
     }
     .answer-info{
         width: 360px;
         float: left;
     }
-    .street-dashboard{
-        width: 100%;
+    .db-badge{
+        position: absolute;
+        left: 200px;
     }
-    .bg-space{
-        float: left;
-    }
+    .bg-space,
     .badge{
         float: left;
+        margin-right: 43px;
     }
     .db-warning{
         left: 0;
@@ -257,13 +265,23 @@ body{
         position:absolute;
     }
     .db-score{
-        left: 300px;
-        top:80px;
+        left: 50px;
+        top: 20px;
     }
     .db-timebar-wrapper{
-        width: 320px;
-        height: 90px;
-        right: 10px;
+    }
+    .db-time-bar{
+        position: absolute;
+        left: 263px;
+        height: 30px;
+        border-bottom: white 5px solid;
+    }
+    .db-time-white{
+        width: 575px;
+        border-bottom: white 5px solid;
+    }
+    .db-time-yellow{
+        border-bottom: #F7D767 5px solid;
     }
     .answer-content{
         float: left;
@@ -437,19 +455,29 @@ a .option-text{
     position:absolute;
 }
 .street-background{
-    background: #FFF0E3;
+/*    background: #FFF0E3;*/
 }
 .person-token{
     position: absolute;
-    top: -45px;
-    left: 30px;
+    top: -67px;
+    left: 23px;
 }
 .person-mind{
-    left: 50px;
+    left: 25px;
 }
 .street-master{
+    height: 160px;
+    width: 100px;
+    position:relative;
 }
 .street-master img{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+.street-master .master-shadow{
+    top: 145px;
+    left: -50px;
 }
 .street-customers{
     pointer-events: none;
@@ -467,9 +495,9 @@ a .option-text{
     position: relative;
 }
 .bg-space{
-    background: url(../img/circle.png);
+    background: url(../img/game/step-circle@1x.png);
     width: 63px;
-    height: 66px;
+    height: 64px;
 /*    float: left;*/
 }
 .badges{
@@ -480,7 +508,8 @@ a .option-text{
 /*    float: left;*/
 }
 .badge img{
-    width: 63px;
+    margin: 3px;
+    width: 57px;
 }
 .pause-button{
     position: absolute;
@@ -637,7 +666,7 @@ p.answer-upper-line:before{
     margin-bottom: 10px;
 }
 .answer-section p{
-    float: left;
+/*    float: left;*/
 }
 .answer-section p.answer-float-left{
     width: 260px;

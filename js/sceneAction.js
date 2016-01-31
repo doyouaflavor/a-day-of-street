@@ -260,7 +260,7 @@ function Toolkit(scene){
                 // call first 'saw' person coming.
                 if(person.state == 'saw'){
                     var target = $this.masterPoint.slice();
-                    target[1] += $('.street-master img').height()/2;
+                    target[1] += $('.street-master').height()/2;
                     person.do("walk-deal",target);
                     break;
                 }
