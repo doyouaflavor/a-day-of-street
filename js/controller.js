@@ -127,6 +127,10 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce', function ($
         $sce.trustAsHtml($this.question.information);
         return $sce.getTrustedHtml($this.question.information);
     }
+    
+    $this.answerGetClassName = function(){
+        return "answer-number" + $this.selected.length;
+    }
 }]);
 
 

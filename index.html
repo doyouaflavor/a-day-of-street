@@ -16,11 +16,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
   </head>
   <body ng-controller="MainCtrl as scene">
-  <div class="header" id="header">
-      <span class="header-item header-logo">人生百味</span>
-      <span class="header-item header-team">製作團隊</span>
-  </div>
-  
+
     <div class="scene street" ng-style='scene.streetStyle()'>
         <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span></div>
         <div class="street-stage">
@@ -89,6 +85,11 @@
   
   
   <div class="scene game-start" ng-if="scene.state=='ready'">
+     <div class="header" id="header">
+      <span class="header-item header-logo">人生百味</span>
+      <span class="header-item header-team">街頭創業家的一天</span>
+  </div>
+  
       <h1>街頭創業家的一天</h1>
       <p>十字路旁單薄的叫賣身影，你是否已習以為常？<br/>
 不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。<br/>
@@ -127,7 +128,7 @@
   <div class="scene answer-information"  ng-if="scene.state=='answer-information'">
     <!--要改classname-->
     <div class="answer-set">
-       <div class="answer-info">
+       <div class="answer-info" ng-class="scene.answerGetClassName()">
            <div class="answer-info-header">
                <div class="answer-score">
                    <span class="answer-select">
@@ -151,11 +152,9 @@
         <div ng-bind-html="scene.getInformation()"></div>
          </div>
          
-         <div class="next">
                 <a class="next" href="javascript:void(0);" ng-click="scene.doClickNext()">
                   NEXT
                 </a>
-                </div>
              </div>
         </div>
         
