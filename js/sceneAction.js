@@ -304,8 +304,8 @@ function Toolkit(scene){
         tools.afterStreet();
         switch(level){
             case 1:
-                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.5);
-                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.8);
+                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.4);
+                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.6);
                 person1.vel = person2.vel = 7;
                 $this.street_people.push(person1);
                 $this.street_people.push(person2);
@@ -353,8 +353,8 @@ function Toolkit(scene){
                     delete($this.street_people[i]);
                     $this.street_people.splice(i,1);
                 }
-                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.5);
-                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.8);
+                var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.4);
+                var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.6);
                 person1.vel = person2.vel = 7;
                 person2.state ='redeye';
                 person2.waitInterval = -1;
@@ -409,14 +409,14 @@ function Toolkit(scene){
                         position: 'left'
                       },
                       {
-                        element: '.db-warning',
-                        intro: '在進入選擇題之前，會出現警告標誌。',
-                        position: 'right'
+                        element: '.bg-space:nth-of-type(3)',
+                        intro: '在進入選擇題之前，會出現預告符號。',
+                        position: 'down'
                       },
                       {
-                        element: '.db-timebar',
+                        element: '.db-badge',
                         intro: '隨著時間的推演，日光的更迭，你必須努力在黑夜來臨前賺取夠多的錢。',
-                        position: 'left'
+                        position: 'down'
                       },
                       {
                         element: '.street-master',

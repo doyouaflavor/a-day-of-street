@@ -260,6 +260,45 @@ body{
         float: left;
         margin-right: 43px;
     }
+    .bg-space{
+        position: relative;
+    }
+    .bg-space img{
+        left: 23px;
+        top: 66px;
+        position: absolute;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-name: warning-point;
+        animation-name: warning-point;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+    }
+    @-webkit-keyframes warning-point{
+        from {
+          top: 66px;
+        }
+        50%{
+          top: 76px;
+        }
+
+        to {
+          top: 66px;
+        }
+    }
+    @keyframes warning-point{
+        from {
+          top: 66px;
+        }
+        50%{
+          top: 76px;
+        }
+
+        to {
+          top: 66px;
+        }
+    }
+    
     .db-warning{
         left: 0;
         top: 63px;
@@ -282,8 +321,8 @@ body{
     }
     .db-time-bar{
         position: absolute;
-        left: 283px;
-        height: 40px;
+        left: 63px;
+        height: 30px;
         border-bottom: white 5px solid;
     }
     .db-time-white{
@@ -554,9 +593,9 @@ a .option-text{
     position: relative;
 }
 .bg-space{
-    background: url(../img/game/step-circle@1x.png);
+    background: url(../img/game/step-circle@1x.png) no-repeat 0 0;
     width: 63px;
-    height: 64px;
+    height: 94px;
 /*    float: left;*/
 }
 .badges{
@@ -575,14 +614,23 @@ a .option-text{
     background: #3FAA96;
     z-index: 999;
     bottom:0;
-    right: 0;
-    background: url("../img/menu.png") no-repeat ;
-    width: 65px;
-    height: 65px;
+    right: 40px;
+/*    background: url("../img/menu.png") no-repeat ;*/
+    width: 120px;
+    height: 40px;
     color: white;
+    padding-top: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .pause-button:before{
     content: "選單";
+    font-size: 23px;
+}
+.pause-button:after{
+    content: "\2630";
+    font-size: 23px;
+    margin-left: 20px;
 }
 .pause-menu{
     position: fixed;

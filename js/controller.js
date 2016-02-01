@@ -172,11 +172,5 @@ $(document).ready(function(){
       $(this).removeClass('animated').removeClass('tada');
     });
     
-  $('.db-warning').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-      $this = $('.db-warning');
-      $this.removeClass('animated').removeClass('bounce');
-      setTimeout(function(){$this.addClass('animated').addClass('bounce');},100);
-    });
-    
 });
 

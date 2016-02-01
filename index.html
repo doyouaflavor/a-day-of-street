@@ -43,17 +43,18 @@
                     </div>
                 </div>
             </div>
-            <div class="pause-button" ng-click="scene.showPauseMenu()"></div>    
+            <div class="pause-button" ng-click="scene.showPauseMenu()" ng-if="scene.currentTime > 0"></div>    
         </div>
         <div class="street-dashboard-wrapper" ng-click="scene.doClickMaster();">
             <div class="street-dashboard">
                <div class="db-score"><span class="db-score-unit">收入</span>
                    <span class="db-score-number">{{scene.total_score}}</span>
                </div>
-                <div class="db-timebar-wrapper">
+                <div class="db-badge">
+                   <div class="db-timebar-wrapper">
                     <div class="db-timebar">
                        <div class="db-time-bar db-time-white"></div>
-                       <div class="db-time-bar db-time-yellow" style="width: {{scene.lineLengthStyle()}}px;"></div>
+                       <div class="db-time-bar db-time-yellow" style="width: {{scene.lineLengthStyle()}}px;" ng-if="scene.currentTime > 0"></div>
                        
 <!--
                         <div class="db-timelayer">
@@ -65,18 +66,14 @@
 -->
                     </div>
                 </div>
-                <div class="db-badge">
                     <img class="db-sunny" src="img/game/sunny@1x.png" alt=""/>
-                    <div class="bg-space" ng-repeat="element in scene.data"></div>
+                    <div class="bg-space" ng-repeat="(i, element) in scene.data"><img src="img/game/point@1x.png" alt="" ng-if="i==scene.selected.length && scene.warning" /></div>
                     <div class="badges">
                         <div class="badge" ng-repeat="select in scene.selected">
                             <img src="{{select.option.rwd_img}}" alt=""/>
                         </div>
                     </div>
                     <img class="db-moon" src="img/game/moon@1x.png" alt=""/>
-                </div>
-                <div class="db-warning animated bounce" ng-if="scene.warning">
-                    <img src="img/warning.png" alt=""/>
                 </div>
 
 
