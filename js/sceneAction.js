@@ -16,6 +16,8 @@ function Toolkit(scene){
         $this.final_title = '';
         $this.selected = [];
         $this.data = data.slice();
+        $this.streetClassName = '';
+        $this.arrow = false;
         for(var i = 0; i < $this.data.length ;i++){
             $this.data[i].options = data[i].options.slice();
         }
@@ -231,6 +233,7 @@ function Toolkit(scene){
       
     */
     tools.doClickMaster = function(){
+        $this.arrow = false;
         $this.animate = '';
         $this.click = true;
         var i = 0;
@@ -277,8 +280,10 @@ function Toolkit(scene){
     
     tools.showPauseMenu = function(){
         if($this.pause){
+            $this.streetClassName = '';
             tools.prepareStreet();
         }else{
+            $this.streetClassName = 'street-pause';
             tools.afterStreet();
         }
         $this.pause = !$this.pause;
@@ -338,6 +343,7 @@ function Toolkit(scene){
                         person1.state = 'saw';
                         person1.sawInterval = -1;
                         $this.prepareStreet();
+                        $this.arrow = true;
                     }).onexit(tools.showAfterTut);
                     intro1.start();
                 },500);
@@ -383,6 +389,7 @@ function Toolkit(scene){
                         person1.state = 'saw';
                         person1.sawInterval = -1;
                         $this.prepareStreet();
+                        $this.arrow = true;
                         
                     }).onexit(tools.showAfterTut);
                     intro1.start();

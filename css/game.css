@@ -252,7 +252,8 @@ body{
     }
     .db-badge{
         position: absolute;
-        left: 200px;
+        top:10px;
+        left: 220px;
     }
     .bg-space,
     .badge{
@@ -265,15 +266,24 @@ body{
         position:absolute;
     }
     .db-score{
-        left: 50px;
         top: 20px;
+    }
+    .db-sunny{
+        position: absolute;
+        top: 10px;
+        left:-45px
+    }
+    .db-moon{
+        top: 10px;
+        right: -40px;
+        position: absolute;
     }
     .db-timebar-wrapper{
     }
     .db-time-bar{
         position: absolute;
-        left: 263px;
-        height: 30px;
+        left: 283px;
+        height: 40px;
         border-bottom: white 5px solid;
     }
     .db-time-white{
@@ -307,18 +317,26 @@ body{
 
 .db-score{
     position: absolute;
-    background: #3FAA96;
-    width: 60px;
+    width: 140px;
     color: white;
     padding: 3px 10px;
     text-align: left;
 }
+.db-score span{
+    display: block;
+    float: left;
+}
 .db-score:before{
-    content:"$";
     padding-right: 10px;
 }
+.db-score-unit:after{
+    content:"$";
+    margin-left: 10px;
+}
 .db-score-number{
-    float:right;
+    width: 70px;
+    margin-left:10px;
+    text-align: right;
 }
 .db-timebar-wrapper{
     position: absolute;
@@ -443,6 +461,13 @@ a .option-text{
 .street {
     position: relative;
 }
+.street-pause{
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+}
 .street-info{
     position: absolute;
     z-index: 99;
@@ -479,6 +504,40 @@ a .option-text{
     top: 145px;
     left: -50px;
 }
+.street-master .street-master-arrow{
+    position: absolute;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-name: arrow;
+    animation-name: arrow;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    left: 30px;
+}
+@-webkit-keyframes arrow{
+    from {
+      top: -60px;
+    }
+    50%{
+      top: -50px;
+    }
+    
+    to {
+      top: -60px;
+    }
+}
+@keyframes arrow{
+    from {
+      top: -60px;
+    }
+    50%{
+      top: -50px;
+    }
+    
+    to {
+      top: -60px;
+    }
+}
 .street-customers{
     pointer-events: none;
 }
@@ -513,12 +572,17 @@ a .option-text{
 }
 .pause-button{
     position: absolute;
+    background: #3FAA96;
     z-index: 999;
     bottom:0;
     right: 0;
     background: url("../img/menu.png") no-repeat ;
     width: 65px;
     height: 65px;
+    color: white;
+}
+.pause-button:before{
+    content: "選單";
 }
 .pause-menu{
     position: fixed;

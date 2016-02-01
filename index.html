@@ -19,13 +19,14 @@
 
     <div class="scene street" ng-style='scene.streetStyle()'>
         <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span>{{scene.threshold}}</div>
-        <div class="street-stage">
+        <div class="street-stage" ng-class="scene.streetClassName">
             <div class="street-background">
                 <img src=""/>
             </div>
             <div class="street-master" ng-click="scene.doClickMaster();" ng-style="scene.masterStyle()" >
                <img src="img/game/shadow.png"/ class="master-shadow">
                 <img ng-class="scene.animate" src="img/street-role-{{scene.role}}.png" class="street-master-img"/>
+                <img src="img/game/arrow.png" alt="" class="street-master-arrow" ng-if="scene.arrow">
             </div>
             <div class="street-customers">
                 <div class="person" ng-class="person.name" ng-repeat="person in scene.street_people" ng-style="person.style()">
@@ -46,7 +47,7 @@
         </div>
         <div class="street-dashboard-wrapper" ng-click="scene.doClickMaster();">
             <div class="street-dashboard">
-               <div class="db-score">
+               <div class="db-score"><span class="db-score-unit">收入</span>
                    <span class="db-score-number">{{scene.total_score}}</span>
                </div>
                 <div class="db-timebar-wrapper">
@@ -65,12 +66,14 @@
                     </div>
                 </div>
                 <div class="db-badge">
+                    <img class="db-sunny" src="img/game/sunny@1x.png" alt=""/>
                     <div class="bg-space" ng-repeat="element in scene.data"></div>
                     <div class="badges">
                         <div class="badge" ng-repeat="select in scene.selected">
                             <img src="{{select.option.rwd_img}}" alt=""/>
                         </div>
                     </div>
+                    <img class="db-moon" src="img/game/moon@1x.png" alt=""/>
                 </div>
                 <div class="db-warning animated bounce" ng-if="scene.warning">
                     <img src="img/warning.png" alt=""/>
