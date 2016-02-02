@@ -37,7 +37,7 @@ function Toolkit(scene){
         $this.height = 0;
         $this.index = 0;
         $this.total_score = 0;
-        $this.deal_score = 180;
+        $this.deal_score = 10;
         $this.final_title = '';
         $this.selected = [];
         $this.data = data.slice();
@@ -305,6 +305,7 @@ function Toolkit(scene){
                         var target = [0,person.position.y];
                         target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                         this_person.do("leave",target);
+                        $this.countGetOutPeople++;
                     },1000);
                     i++;
                     continue;
