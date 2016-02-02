@@ -1,8 +1,33 @@
+function getHowl(url,loop){
+    
+    return new Howl({
+        urls: [url],
+        loop: loop
+    })
+}
+
+var sound = {
+    coin: getHowl('../sound/button25.mp3'), //se_maoudamashii_system46.mp3, button25.mp3
+    coin_bad: getHowl('../sound/cancel2.mp3'),
+    bark: getHowl('../sound/b_061.mp3'), // button62, b_061.mp3
+    saw: getHowl('../sound/b_017.mp3'),
+    sell: getHowl('../sound/button42.mp3'), //42, b_006.mp3
+    click: getHowl('../sound/bubble-burst1.mp3'), // bubble-burst1,decision3
+    click2: getHowl('../sound/button70.mp3'), // hito_ge_paku01.mp3,button70.mp3
+    alert: getHowl('../sound/button36.mp3',true), //36,ta_ta_countdown02.mp3
+    tut_next: getHowl('../sound/hito_ge_paku01.mp3'), // 25,41,44,70
+    gong: getHowl('../sound/ata_a11.mp3'), // gong-played1.mp3,ata_a11.mp3
+    gongong: getHowl('../sound/gong-played1.mp3'), //gong-played2.mp3,gong-played1.mp3
+    nya: getHowl('../sound/line-girl1-nyaa1.mp3'), 
+}
+
+
 function Toolkit(scene){
     var tools = {};
     var $this = scene;
     var $interval = scene.interval;
     var $scope = scene.$scope;
+    var $timeout = scene.timeout;
     
     tools.newGame = function(){
         $this.afterTut = false;
@@ -12,12 +37,13 @@ function Toolkit(scene){
         $this.height = 0;
         $this.index = 0;
         $this.total_score = 0;
-        $this.deal_score = 10;
+        $this.deal_score = 180;
         $this.final_title = '';
         $this.selected = [];
         $this.data = data.slice();
         $this.streetClassName = '';
         $this.arrow = false;
+        $this.coins = [];
         for(var i = 0; i < $this.data.length ;i++){
             $this.data[i].options = data[i].options.slice();
         }
@@ -62,6 +88,7 @@ function Toolkit(scene){
         $this.state = 'question';
         $this.resizing();
         $this.updateRegionAndMaster();
+        sound.click.play();
     }
     
     tools.doClickSelectioins = function(option){
@@ -74,9 +101,11 @@ function Toolkit(scene){
         });
         $this.resizing();
         option.effect($this);
+        sound.click2.play();
     }
     
     tools.doClickNext = function(){
+        sound.click2.play();
         $this.index++;
         $this.state = 'street';
         $this.question = $this.data[$this.index];
@@ -129,9 +158,11 @@ function Toolkit(scene){
                        && person.position.y < $this.region[1][1]){
                         if(Math.random()<$this.threshold.saw){
                             person.do('saw');
+                            sound.saw.play();
                         }
                         if(Math.random()<$this.threshold.redeye){
                             person.do('redeye');
+                            sound.saw.play();
                         }
                         if(Math.random()<$this.threshold.idleToLeave){
                             
@@ -163,21 +194,25 @@ function Toolkit(scene){
                         person.do('kill');
                     }
                     if(person.state == 'walk-deal'){
+                        $this.coins.push({score: $this.deal_score});
+                        $timeout(function(){ $this.coins.pop()},1000);
                         $this.countDealedPeople++;
                         $this.total_score += $this.deal_score;
-                        if(!$this.afterTut){
-                            $this.showTut(2);
-                            return
-                        }
                         var target = [0,person.position.y];
                         target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                         person.do('leave',target);
-                        if(Math.random()<$this.threshold.mindToGood){
+                        if(Math.random()<$this.threshold.mindToGood || !$this.afterTut){
                             person.mind = 'good';
+                            sound.coin.play();
                             $this.countGoodMindPeople++;
                         }else{
                             person.mind = 'bad';
+                            sound.coin_bad.play();
                             $this.countBadMindPeople++;
+                        }
+                        if(!$this.afterTut){
+                            $timeout(function(){$this.showTut(2);},1000);
+                            return
                         }
                     }
                     
@@ -214,13 +249,17 @@ function Toolkit(scene){
                     $this.state = 'ending';
                     $this.final_title = getFinalTitle($this);
                     $this.afterStreet();
+                    sound.gongong.play();
                 }else{
                     if($this.currentTime % Math.floor($this.countdown/6) == 3){
                         $this.warning = true;
+                        sound.alert.play();
                     }
                     if($this.currentTime % Math.floor($this.countdown/6) == 0){
                         $this.state = 'question';
+                        sound.gong.play();
                         $this.afterStreet();
+                        sound.alert.fadeOut(0,500);
                     }
                 }
             }
@@ -233,6 +272,7 @@ function Toolkit(scene){
       
     */
     tools.doClickMaster = function(){
+        sound.sell.play();
         $this.arrow = false;
         $this.animate = '';
         $this.click = true;
@@ -242,16 +282,33 @@ function Toolkit(scene){
             var person = $this.street_people[i];
             if(person.state == 'redeye'){
                 var person_clear = true;
+                sound.bark.play();
                 break;
             }
             i++;
         }
         i = 0;
         // do action for any people
+        var redeye_bark = false;
         while(i < $this.street_people.length){
             var person = $this.street_people[i]
             // clear any customers
             if(person_clear && ( person.state == 'saw' || person.state == 'redeye')){    
+                if(person.state == 'redeye' && !redeye_bark){
+                    person.mind = 'bad';
+                    person.state = '';
+                    person.animate = 'tada animated';
+                    person.do('stop');
+                    redeye_bark = true;
+                    var this_person = person;
+                    $timeout(function(){
+                        var target = [0,person.position.y];
+                        target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
+                        this_person.do("leave",target);
+                    },1000);
+                    i++;
+                    continue;
+                }
                 var target = [0,person.position.y];
                 person.mind = 'bad';
                 $this.countBadMindPeople++;
@@ -344,7 +401,9 @@ function Toolkit(scene){
                         person1.sawInterval = -1;
                         $this.prepareStreet();
                         $this.arrow = true;
+                        sound.tut_next.play();
                     }).onexit(tools.showAfterTut);
+                    intro1.onchange(function(){sound.tut_next.play()});
                     intro1.start();
                 },500);
                 break;
@@ -390,8 +449,9 @@ function Toolkit(scene){
                         person1.sawInterval = -1;
                         $this.prepareStreet();
                         $this.arrow = true;
-                        
+                        sound.tut_next.play();
                     }).onexit(tools.showAfterTut);
+                    intro1.onchange(function(){sound.tut_next.play()});
                     intro1.start();
                 },500);
                 break;
@@ -435,6 +495,7 @@ function Toolkit(scene){
                     intro1 = introJs().setOptions(introOption);
                     intro1.oncomplete(tools.showAfterTut)
                         .onexit(tools.showAfterTut);
+                    intro1.onchange(function(){sound.tut_next.play()});
                     intro1.start();
                 },500);
                 break;
@@ -452,6 +513,7 @@ function Toolkit(scene){
         $this.warning = false;
         $this.afterTut = true;
         $this.prepareStreet();
+        sound.tut_next.play();
     }
     
     /**

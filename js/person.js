@@ -16,7 +16,9 @@ function newPerson(i,x,y){
     person.target.x = 0;
     person.target.y = 0;
     person.mind = '';
+    person.coin = false;
     person.name = 'wang'+i;
+    person.animate = '';
     person.sprite = $('.'+person.name);
     
     person.do = function(action,target){

@@ -4,6 +4,7 @@
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-sanitize.js"></script>
+    <script src="js/lib/howler.min.js"></script>
     <script type="text/javascript" src="js/lib/intro.min.js"></script>
     <link href="css/intro.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
@@ -27,6 +28,9 @@
                <img src="img/game/shadow.png"/ class="master-shadow">
                 <img ng-class="scene.animate" src="img/street-role-{{scene.role}}.png" class="street-master-img"/>
                 <img src="img/game/arrow.png" alt="" class="street-master-arrow" ng-if="scene.arrow">
+                <div ng-repeat="coin in scene.coins">
+                    <div class="person-coin">$</div>
+                </div>
             </div>
             <div class="street-customers">
                 <div class="person" ng-class="person.name" ng-repeat="person in scene.street_people" ng-style="person.style()">
@@ -34,7 +38,7 @@
                    <img class="person-mind person-token" ng-if="person.mind=='good'" src="img/game/bought.png"/>
                     <img class="person-saw person-token" ng-if="person.state=='saw'" src="img/game/like.png"/>
                     <img class="person-redeye person-token" ng-if="person.state=='redeye'" src="img/game/dislike.png"/>
-                    <img class="person-body" src="img/person.png"/>
+                    <img class="person-body" ng-class="person.animate" src="img/person.png"/>
                     <div ng-if="scene.debug">
                     {{person.name}}
                     {{person.action}}

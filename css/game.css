@@ -529,6 +529,45 @@ a .option-text{
 .person-mind{
     left: 25px;
 }
+.person-coin{
+    border:#5B3931 1px solid;
+    border-radius: 50%;
+    width: 30px;
+    height:30px;
+    position: absolute;
+    top: -30px;
+    left: 35%;
+    opacity: 0;
+    background: #F7D767;
+    color: white;
+    line-height: 1.5em;
+    font-size: 21px;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: coin;
+    animation-duration: 0.5s;
+    animation-name: coin;
+}
+@keyframes coin{
+    from{
+        top: 30px;
+        opacity: 1;
+    }
+    99%{
+        top: -30px;
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@-webkit-keyframes coin{
+    from{
+        top: 70px;
+    }
+    to{
+        top: 40px;
+    }
+}
 .street-master{
     height: 160px;
     width: 100px;
