@@ -7,18 +7,18 @@ function getHowl(url,loop){
 }
 
 var sound = {
-    coin: getHowl('../sound/button25.mp3'), //se_maoudamashii_system46.mp3, button25.mp3
-    coin_bad: getHowl('../sound/cancel2.mp3'),
-    bark: getHowl('../sound/b_061.mp3'), // button62, b_061.mp3
-    saw: getHowl('../sound/b_017.mp3'),
-    sell: getHowl('../sound/button42.mp3'), //42, b_006.mp3
-    click: getHowl('../sound/bubble-burst1.mp3'), // bubble-burst1,decision3
-    click2: getHowl('../sound/button70.mp3'), // hito_ge_paku01.mp3,button70.mp3
-    alert: getHowl('../sound/button36.mp3',true), //36,ta_ta_countdown02.mp3
-    tut_next: getHowl('../sound/hito_ge_paku01.mp3'), // 25,41,44,70
-    gong: getHowl('../sound/ata_a11.mp3'), // gong-played1.mp3,ata_a11.mp3
-    gongong: getHowl('../sound/gong-played1.mp3'), //gong-played2.mp3,gong-played1.mp3
-    nya: getHowl('../sound/line-girl1-nyaa1.mp3'), 
+    coin: getHowl('sound/button25.mp3'), //se_maoudamashii_system46.mp3, button25.mp3
+    coin_bad: getHowl('sound/cancel2.mp3'),
+    bark: getHowl('sound/b_061.mp3'), // button62, b_061.mp3
+    saw: getHowl('sound/b_017.mp3'),
+    sell: getHowl('sound/button42.mp3'), //42, b_006.mp3
+    click: getHowl('sound/bubble-burst1.mp3'), // bubble-burst1,decision3
+    click2: getHowl('sound/button70.mp3'), // hito_ge_paku01.mp3,button70.mp3
+    alert: getHowl('sound/button36.mp3',true), //36,ta_ta_countdown02.mp3
+    tut_next: getHowl('sound/hito_ge_paku01.mp3'), // 25,41,44,70
+    gong: getHowl('sound/ata_a11.mp3'), // gong-played1.mp3,ata_a11.mp3
+    gongong: getHowl('sound/gong-played1.mp3'), //gong-played2.mp3,gong-played1.mp3
+    nya: getHowl('sound/line-girl1-nyaa1.mp3'), 
 }
 
 
