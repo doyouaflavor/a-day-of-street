@@ -56,6 +56,11 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
             $this.height = $window.outerHeight - 45;
             $('.street-background, .street-stage').width($window.outerWidth);
             $('.street-background, .street-stage').height($window.outerHeight); 
+            console.log($window.innerWidth);
+            console.log($window.outerWidth);
+            console.log(window.innerWidth);
+            console.log(window.outerWidth);
+            a = $window;
 
         }
         
