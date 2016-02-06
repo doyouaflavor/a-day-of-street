@@ -41,7 +41,7 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
     $this.updateRegionAndMaster = function(){
         
         $this.region = [[0,150],[600,350]];
-        if($window.innerWidth>= 960){
+        if($window.outerWidth>= 960){
             $this.region[0][1] = 600/2;
             $this.region[1][0] = $this.width = 960;
             $this.region[1][1] = $this.height = 600;
@@ -49,13 +49,13 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
             $('.street-background, .street-stage').width(960);
             $('.street-background, .street-stage').height(600);
         }else{
-            $this.region[1][0] = $window.innerWidth;
-            $this.region[1][1] = $window.innerHeight - $this.getMasterBoxSize().height;
+            $this.region[1][0] = $window.outerWidth;
+            $this.region[1][1] = $window.outerHeight - $this.getMasterBoxSize().height;
             $this.masterPoint = [($this.region[1][0])/2,50];
-            $this.width = $window.innerWidth;
-            $this.height = $window.innerHeight - 45;
-            $('.street-background, .street-stage').width($window.innerWidth);
-            $('.street-background, .street-stage').height($window.innerHeight); 
+            $this.width = $window.outerWidth;
+            $this.height = $window.outerHeight - 45;
+            $('.street-background, .street-stage').width($window.outerWidth);
+            $('.street-background, .street-stage').height($window.outerHeight); 
 
         }
         
