@@ -50,8 +50,8 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
             $('.street-background, .street-stage').height(600);
         }else{
             $this.region[1][0] = $window.innerWidth;
-            $this.region[1][1] = $window.innerHeight - 115 - $this.getPersonBoxSize().height;
-            $this.masterPoint = [($this.region[1][0] - $this.getMasterBoxSize().width)/2,0];
+            $this.region[1][1] = $window.innerHeight - $this.getMasterBoxSize().height;
+            $this.masterPoint = [($this.region[1][0])/2,50];
             $this.width = $window.innerWidth;
             $this.height = $window.innerHeight - 45;
             $('.street-background, .street-stage').width($window.innerWidth);

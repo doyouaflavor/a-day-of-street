@@ -234,9 +234,6 @@ body{
         left: 0;
         bottom: 60px
     }
-    .street-background{
-        background: url(../img/game/background.png) repeat-x 0 0;
-    }
     .street-dashboard-wrapper{
         width: 100%;
     }
@@ -519,7 +516,7 @@ a .option-text{
     position:absolute;
 }
 .street-background{
-/*    background: #FFF0E3;*/
+    background: url(../img/game/background.png) repeat-x 0 0;
 }
 .person-token{
     position: absolute;
