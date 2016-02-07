@@ -15,6 +15,7 @@
     <script src="js/controller.js"></script>
     <link rel="stylesheet" href="css/game.css">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
   <body ng-controller="MainCtrl as scene">
 
@@ -177,7 +178,12 @@
     <div class="scene final" ng-if="scene.state=='ending'">
         <h2>結果頁</h2>
         <div>本日共賺進<span class="ending-score-span">{{scene.total_score}}</span>元</div>
+        <br/>
         <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span></div>
+        <br/>
+        <div>
+            在 FB 分享給好友。
+        </div>
         <div ng-repeat="select in scene.selected">
              <div class="select-question">{{select.questionInfo}}</div>
              <div class="select-answer">
@@ -196,16 +202,13 @@
             重新游玩
         </div>
         <div>
-            在 FB 分享給好友。
-        </div>
-        <div>
-            更多關於街賣的文章
+            更多關於街賣的知識
         </div>
         <div>
             尋找攻略和彩蛋
         </div>
         <div>
-            贊助我們 (2/3 前的群眾募資計劃)
+            FlyingV 贊助街賣計劃
         </div>
     </div>
   
