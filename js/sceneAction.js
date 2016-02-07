@@ -11,7 +11,7 @@ var sound = {
     coin_bad: getHowl('sound/cancel2.mp3'),
     bark: getHowl('sound/b_061.mp3'), // button62, b_061.mp3
     saw: getHowl('sound/b_017.mp3'),
-    sell: getHowl('sound/button42.mp3'), //42, b_006.mp3
+    sell: getHowl('sound/lay.mp3'), //42, b_006.mp3
     click: getHowl('sound/bubble-burst1.mp3'), // bubble-burst1,decision3
     click2: getHowl('sound/button70.mp3'), // hito_ge_paku01.mp3,button70.mp3
     alert: getHowl('sound/button36.mp3',true), //36,ta_ta_countdown02.mp3
