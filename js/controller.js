@@ -49,22 +49,14 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
             $('.street-background, .street-stage').width(960);
             $('.street-background, .street-stage').height(600);
         }else{
-            $this.region[1][0] = $window.outerWidth;
-            $this.region[1][1] = $window.outerHeight - $this.getMasterBoxSize().height;
+            $this.region[1][0] = $window.screen.width;
+            $this.region[1][1] = $window.screen.height - $this.getMasterBoxSize().height;
             $this.masterPoint = [($this.region[1][0])/2,50];
-            $this.width = $window.outerWidth;
-            $this.height = $window.outerHeight - 45;
-            $('.street-background, .street-stage').width($window.outerWidth);
-            $('.street-background, .street-stage').height($window.outerHeight); 
-            console.log($window.innerheight);
-            console.log($window.outerheight);
-            console.log(window.innerheight);
-            console.log(window.outerheight);
-            console.log($('.street-background, .street-stage'));
-            a = $window;
-
+            $this.width = $window.screen.width;
+            $this.height = $window.screen.height - 45;
+            $('.street-background, .street-stage').width($window.screen.width);
+            $('.street-background, .street-stage').height($window.screen.height); 
         }
-        
         
         
         
