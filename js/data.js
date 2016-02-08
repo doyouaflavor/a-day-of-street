@@ -12,6 +12,7 @@ var data = [
              "description":"虛擬是美好的，因為我們有得選擇。請選擇你的街頭創業家屬性",
              "options":[
                  {
+                     "question":1,
                      "name":"A",
                      "value":"身障者",
                      "addormulti":"+",
@@ -25,6 +26,7 @@ var data = [
                      "effectInfo":"消費機率高",
                  },
                  {
+                     "question":1,
                      "name":"B",
                      "value":"街友",
                      "addormulti":"+",
@@ -39,6 +41,7 @@ var data = [
                      "effectInfo":"消費機率低",
                  },
                  {
+                     "question":1,
                      "name":"C",
                      "value":"老人家",
                      "addormulti":"+",

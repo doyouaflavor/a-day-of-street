@@ -340,6 +340,19 @@ body{
         width: 560px;
         
     }
+    .final-layout-left{
+        background: #FFF0E3;
+        height: 600px;
+        float: left;
+        width: 35%;
+    }
+    .final-layout-right{
+        box-sizing: border-box;
+        padding: 10px 50px;
+        float: left; 
+        width: 65%;
+        color: aliceblue;
+    }
 }
 
 @media screen and (min-width: 960px){
@@ -703,24 +716,16 @@ a .option-text{
 
 /* ending */
 .select-question{
-    background: #3FAA96;
-    border-top: aliceblue 1px solid;
-    color: aliceblue;
-    height:45px;
-    line-height: 45px;
-    width: 40%;
-    float: left;
+    width: 20%;
     clear: both;
+    text-align: left;
 }
 .select-answer{
-    height:45px;
-    line-height: 45px;
-    border-top: black 1px solid;
+    width: 15%;
+    text-align: left;
 }
 
-.select-effectInfo{
-    color: #DE574B;
-}
+
 
 
 .introjs-prevbutton,.introjs-disabled{
@@ -852,4 +857,47 @@ p.answer-upper-line:before{
     float: left;
     width: 380px;
     text-align: left;
+}
+
+.final {
+    background: #3FAA96;
+}
+
+.select-effectInfo {
+    box-sizing: border-box;
+    background: #486e74;
+    margin:5px 0;
+    padding: 5px;
+    width: 65%;
+    height: 35px;
+    line-height: 25px;
+    text-align: right;
+}
+
+.select-item {
+    height: 45px;
+    line-height: 45px;
+}
+
+.select-item>div {
+    float: left;
+}
+
+.btn-result {
+    width: 170px;
+    background: #DB534B;
+    padding:10px;
+    margin: 5px;
+    float: left;
+}
+
+.select-list {
+    border-top: 1px solid aliceblue;
+    border-bottom: 1px solid aliceblue;
+}
+
+.ending-final-title {
+    background: #DB534B;
+    padding: 5px 20px;
+    font-size: 19px;
 }

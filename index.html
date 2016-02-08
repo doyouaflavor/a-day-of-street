@@ -176,39 +176,48 @@
 
     <!--結局-->
     <div class="scene final" ng-if="scene.state=='ending'">
-        <h2>結果頁</h2>
-        <div>本日共賺進<span class="ending-score-span">{{scene.total_score}}</span>元</div>
-        <br/>
-        <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span></div>
-        <br/>
-        <div>
-            在 FB 分享給好友。
-        </div>
-        <div ng-repeat="select in scene.selected">
-             <div class="select-question">{{select.questionInfo}}</div>
-             <div class="select-answer">
-                  <span class="select-index">{{select.option.name}}</span>
-                  <span class="select-value">{{select.option.value}}</span>
-    <!--              <span class="select-am">{{select.option.addormulti}}</span>-->
-    <!--              <span class="select-score">{{select.option.score}}</span>-->
-                 <span class="select-effectInfo">{{select.option.effectInfo}}</span>
-             </div>
-<!--
-              <div class="information" ng-bind-html="select.information">
-              </div>
--->
-        </div>
-        <div>
-            重新游玩
-        </div>
-        <div>
-            更多關於街賣的知識
-        </div>
-        <div>
-            尋找攻略和彩蛋
-        </div>
-        <div>
-            FlyingV 贊助街賣計劃
+       <div class="final-layout-left">
+           <img src="{{scene.selected[0].option.img}}" alt="">
+       </div>
+       <div class="final-layout-right">
+            <h2>街頭創業家潛力值評估</h2>
+            <div>賺取金額：<span class="ending-score-span">{{scene.total_score}}</span>元</div>
+            <br/>
+            <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span></div>
+            <br/>
+            <div class="btn-result btn-blue">
+                <a>在 FB 分享給好友。</a>
+            </div>
+            <div class="select-list">
+                <div ng-repeat="select in scene.selected" class="select-item">
+                     <div class="select-question">{{select.questionInfo}}</div>
+                     <div class="select-answer">
+                          <span class="select-index">{{select.option.name}}</span>
+                          <span class="select-value">{{select.option.value}}</span>
+            <!--              <span class="select-am">{{select.option.addormulti}}</span>-->
+            <!--              <span class="select-score">{{select.option.score}}</span>-->
+                     </div>
+                     <div class="select-effectInfo">
+                         {{select.option.effectInfo}}
+                     </div>
+        <!--
+                      <div class="information" ng-bind-html="select.information">
+                      </div>
+        -->
+                </div>
+            </div>
+            <div class="btn-result">
+                重新游玩
+            </div>
+            <div class="btn-result">
+                更多關於街賣的知識
+            </div>
+            <div class="btn-result">
+                尋找攻略和彩蛋
+            </div>
+            <div class="btn-result btn-blue">
+                FlyingV 贊助街賣計劃
+            </div>
         </div>
     </div>
   
