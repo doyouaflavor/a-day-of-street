@@ -183,10 +183,8 @@
             <h2>街頭創業家潛力值評估</h2>
             <div>賺取金額：<span class="ending-score-span">{{scene.total_score}}</span>元</div>
             <br/>
-            <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span></div>
-            <br/>
-            <div class="btn-result btn-blue">
-                <a>在 FB 分享給好友。</a>
+            <div>你的稱號：<span class="ending-final-title">{{scene.final_title}}</span>
+            <a class="btn-result btn-blue btn-share" href="{{scene.shareHref()}}" target="_blank">在 FB 分享給好友</a>
             </div>
             <div class="select-list">
                 <div ng-repeat="select in scene.selected" class="select-item">
@@ -206,17 +204,19 @@
         -->
                 </div>
             </div>
-            <div class="btn-result">
+            <div class="result-menu">
+            <a class="btn-result" ng-click="scene.pauseMenu.replay()">
                 重新游玩
-            </div>
-            <div class="btn-result">
+            </a>
+            <a class="btn-result" href="http://doyouaflavor.blogspot.tw">
                 更多關於街賣的知識
-            </div>
-            <div class="btn-result">
-                尋找攻略和彩蛋
-            </div>
-            <div class="btn-result btn-blue">
+            </a><br/>
+            <a class="btn-result" href="http://doyouaflavor.blogspot.tw">
+                尋找街賣攻略和彩蛋
+            </a>
+            <a class="btn-result btn-yellow" href="https://www.flyingv.cc/project/9420">
                 FlyingV 贊助街賣計劃
+            </a>
             </div>
         </div>
     </div>

@@ -1,3 +1,6 @@
+var host = 'http://st.doyouaflavor.tw/';
+
+
 var game = angular.module('game',['ngSanitize']);
 game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', function ($scope,$interval,$window,$sce,$timeout) {
     $this = this;
@@ -142,6 +145,39 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
     
     $this.answerGetClassName = function(){
         return "answer-number" + $this.selected.length;
+    }
+    $this.shareHref = function(){
+        var $arr = [];
+        $arr.push({
+            'name':'caption',
+            'attr':'人生百味〈街頭創業家的一天〉'
+        });
+        $arr.push({
+            'name':'picture',
+            'attr': host + $this.selected[0].option.img
+        });
+        $arr.push({
+            'name':'link',
+            'attr': host
+        });
+        $arr.push({
+            'name':'name',
+            'attr': $this.name + '在街頭創業一日見習中成功賺到' + $this.total_score + '元，得到「' + $this.final_title + '」稱號'
+        });
+        $arr.push({
+            'name':'redirect_uri',
+            'attr':host
+        });
+        $arr.push({
+            'name':'description',
+            'attr': '十字路旁單薄的叫賣身影，你是否已習以為常？不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。'
+        });
+        var $arr2 = ['https://www.facebook.com/dialog/feed?app_id=1020808967984987&display=popup'];
+        for(var i = 0; i<$arr.length; i++){
+            $arr2.push($arr[i].name + '=' + encodeURI($arr[i].attr));
+        }
+        return $arr2.join("&");
+        
     }
 }]);
 
