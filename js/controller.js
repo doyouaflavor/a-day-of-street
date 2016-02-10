@@ -9,6 +9,7 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
     $this.interval = $interval;
     $this.timeout = $timeout;
     $this.$scope = $scope;
+    $this.$window = $window;
     var toolkit = Toolkit($this);
     
     $this.newGame = toolkit.newGame;
@@ -44,7 +45,8 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
     $this.updateRegionAndMaster = function(){
         
         $this.region = [[0,150],[600,350]];
-        if($window.outerWidth>= 960){
+//        if($window.outerWidth>= 960){
+        if(!detectmob()){
             $this.region[0][1] = 600/2;
             $this.region[1][0] = $this.width = 960;
             $this.region[1][1] = $this.height = 600;
@@ -206,6 +208,20 @@ $(document).ready(function(){
   $('.street-master-img').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
       $(this).removeClass('animated').removeClass('tada');
     });
-    
 });
 
+function detectmob() { 
+ if( navigator.userAgent.match(/Android/i)
+ || navigator.userAgent.match(/webOS/i)
+ || navigator.userAgent.match(/iPhone/i)
+ || navigator.userAgent.match(/iPad/i)
+ || navigator.userAgent.match(/iPod/i)
+ || navigator.userAgent.match(/BlackBerry/i)
+ || navigator.userAgent.match(/Windows Phone/i)
+ ){
+    return true;
+  }
+ else {
+    return false;
+  }
+}

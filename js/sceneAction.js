@@ -28,6 +28,7 @@ function Toolkit(scene){
     var $interval = scene.interval;
     var $scope = scene.$scope;
     var $timeout = scene.timeout;
+    var $window = scene.$window;
     
     tools.newGame = function(){
         $this.afterTut = false;
@@ -105,6 +106,9 @@ function Toolkit(scene){
     }
     
     tools.doClickNext = function(){
+        $timeout(function(){
+            $window.scrollTo(0,0);
+        },100);
         sound.click2.play();
         $this.index++;
         $this.state = 'street';
