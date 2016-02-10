@@ -72,7 +72,9 @@
                     </div>
                 </div>
                     <img class="db-sunny" src="img/game/sunny@1x.png" alt=""/>
-                    <div class="bg-space" ng-repeat="(i, element) in scene.data"><img src="img/game/point@1x.png" alt="" ng-if="i==scene.selected.length && scene.warning" /></div>
+                    <div class="bg-space-wrapper">
+                        <div class="bg-space" ng-repeat="(i, element) in scene.data"><img src="img/game/point@1x.png" alt="" ng-if="i==scene.selected.length && scene.warning" /></div>
+                    </div>
                     <div class="badges">
                         <div class="badge" ng-repeat="select in scene.selected">
                             <img src="{{select.option.rwd_img}}" alt=""/>

@@ -121,8 +121,8 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
     }
     
     $this.lineLengthStyle = function(){
-        var badgeWidth = 63;
-        var fullLength = 575; // search db-time-white in css 
+        var badgeWidth = detectmob()? 16 : 63;
+        var fullLength = detectmob()? 212 :575; // search db-time-white in css 
 //        scene.currentTime / scene.countdown
         var t = $this.countdown - $this.currentTime;
         var a = $this.countdown / $this.data.length;

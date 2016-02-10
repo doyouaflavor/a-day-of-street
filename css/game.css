@@ -166,26 +166,77 @@ body{
     .street-dashboard,
     .street-dashboard-wrapper{
         width: 100%;
-    
+    }
+    .street-dashboard{
+        background: #3FAA96;
+        height: 50px;
     }
     .street-background{
         background: url(../img/game/background-rwd.png) repeat-x 0 0;
     }
     .db-score{
-        top: 10px;
-        left:10px;
+        top: 50px;
+        height: 30px;
+        line-height: 30px;
+        left: 0;
+        background: #486e74;
+        border-bottom-right-radius: 5px;
     }
     .db-badge{
+        /*display: none;*/
+    }
+    .db-sunny{
+        position:absolute;
+        left: 10px;
+        top: 10px;
+    }
+    .db-moon{
+        position:absolute;
+        right: 10px;
+        top: 10px;
+    }
+    .db-time-bar{
+        position: absolute;
+        height: 26.5px;
+        width: 210px;
+        top: 0;
+        left: 76px;
+    }
+    .db-time-white{
+        border-bottom: 3px white solid;
+    }
+    .db-time-yellow{
+        border-bottom: 3px #F7D767 solid;
+    }
+    .bg-space-wrapper{
+        position: absolute;
+        top: 20px;
+        left: 60px;
+    }
+    .bg-space{
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        border: 3px white solid;
+        box-sizing: border-box;
+        background: #3FAA96;
+    }
+    .badges{
+        position:absolute;
+        top:20px;
+        left:60px;
+    }
+    .badge{
+        background: url(../img/game/progress-yellow.png);
+    }
+    .badge, .bg-space{
+        width: 16px;
+        height: 16px;
+        float: left;
+        margin-right: 22px;
+    }
+    .badge img{
         display: none;
-    }
-    .db-timebar-wrapper{
-        height: 10px;
-        right: 0;
-    }
-    .db-timebar{
-        -ms-transform: rotate(90deg); /* IE 9 */
-        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-        transform: rotate(90deg);
     }
     .select-list {
         margin: 20px 10px;
@@ -281,13 +332,20 @@ body{
         top:10px;
         left: 220px;
     }
+    .badges{
+        top: 0;
+    }
     .bg-space,
     .badge{
         float: left;
         margin-right: 43px;
     }
     .bg-space{
+        background: url(../img/game/step-circle@1x.png) no-repeat 0 0;
+        width: 63px;
+        height: 94px;
         position: relative;
+    /*    float: left;*/
     }
     .bg-space img{
         left: 23px;
@@ -344,6 +402,7 @@ body{
         position: absolute;
     }
     .db-timebar-wrapper{
+        position: absolute;
     }
     .db-time-bar{
         position: absolute;
@@ -439,7 +498,6 @@ body{
     text-align: right;
 }
 .db-timebar-wrapper{
-    position: absolute;
     top: 0;
     height: 100px;
 }
@@ -692,15 +750,9 @@ a .option-text{
 .street-dashboard{
     position: relative;
 }
-.bg-space{
-    background: url(../img/game/step-circle@1x.png) no-repeat 0 0;
-    width: 63px;
-    height: 94px;
-/*    float: left;*/
-}
+
 .badges{
     position: absolute;
-    top: 0;
 }
 .badge{
 /*    float: left;*/
