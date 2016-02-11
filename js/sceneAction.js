@@ -549,7 +549,7 @@ function Toolkit(scene){
                       {
                         element: '.street-master',
                         intro: '現在叫賣看看。',
-                        position: 'top'
+                        position: 'down'
                       }
                     ],
                     exitOnOverlayClick : false,
