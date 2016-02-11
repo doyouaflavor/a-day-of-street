@@ -35,7 +35,7 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
-  <body ng-controller="MainCtrl as scene"  ONDRAGSTART="window.event.returnValue=false" ONCONTEXTMENU="window.event.returnValue=false" onSelectStart="event.returnValue=false">
+  <body ng-controller="MainCtrl as scene"  ONDRAGSTART="window.event.returnValue=false" ONCONTEXTMENU="window.event.returnValue=false" onSelectStart="event.returnValue=false" onload='document.getElementById("player-name").focus();'>
 
     <div class="scene street" ng-style='scene.streetStyle()'>
         <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span>{{scene.threshold}}</div>
@@ -78,6 +78,9 @@
                     <div class="db-timebar">
                        <div class="db-time-bar db-time-white"></div>
                        <div class="db-time-bar db-time-yellow" style="width: {{scene.lineLengthStyle()}}px;" ng-if="scene.currentTime > 0"></div>
+                       <div class="db-warning">
+                           !
+                       </div>
                        
 <!--
                         <div class="db-timelayer">
@@ -109,7 +112,6 @@
                 <ul>
                     <li ng-click="scene.showPauseMenu()">繼續</li>
                     <li ng-click="scene.pauseMenu.replay()">重頭開始</li>
-                    <li ng-click="scene.pauseMenu.shareFB()">分享</li>
                 </ul>
             </div>
         </div>
@@ -129,7 +131,7 @@
  其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。<br/>
  透過 3 分鐘的角色扮演遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。</p>
  <form ng-submit="scene.doClickStart()" >
-     <input type="text" placeholder="你的大名" name="" id="" ng-model="scene.name">
+     <input type="text" placeholder="你的大名" name="" id="player-name" ng-model="scene.name" ng-click="scene.sound.click.play()">
      <input type="submit" id="submit" value="登記創業" />
      <a href="https://docs.google.com/forms/d/14aCYSKBP61mnE_dy07YokfY1c-IDtnSu7UfSCEkpU_Q/viewform" target="_blank" class="ready-btn">回報意見</a>
      </form>
@@ -226,8 +228,8 @@
                 </div>
             </div>
             <div class="result-menu">
-            <a class="btn-result" ng-click="scene.pauseMenu.replay()">
-                重新游玩
+            <a class="btn-result" href="javascript:void(0);" ng-click="scene.pauseMenu.replay()">
+                重新遊玩
             </a>
             <a class="btn-result" href="http://doyouaflavor.blogspot.tw">
                 更多關於街賣的知識

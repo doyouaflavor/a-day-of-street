@@ -31,6 +31,8 @@ function Toolkit(scene){
     var $window = scene.$window;
     
     tools.newGame = function(){
+        $this.sound = sound;
+        
         $this.afterTut = false;
         $this.tutStep = -1;
         $this.pause = false;
@@ -108,6 +110,7 @@ function Toolkit(scene){
     }
     
     tools.doReport = function(){
+        if(location.host !=='game.doyouaflavor.tw')return ;
         $this.report[0].value= $this.name;
         $this.report[1].value= ($this.selected[0])?$this.selected[0].option.name:"";
         $this.report[2].value= ($this.selected[1])?$this.selected[1].option.name:""
@@ -464,6 +467,7 @@ function Toolkit(scene){
                     skipLabel: '跳過教學',
                     doneLabel: '我知道了',
                     disableInteraction : true,
+                    keyboardNavigation : false,
                   }
 
                 setTimeout(function(){
@@ -495,7 +499,7 @@ function Toolkit(scene){
                       },
                       {
                         element: '.wang1',
-                        intro: '當路人頭上有出現「看見」符號時，點一下你的街賣者，路人會走過來跟你消費。',
+                        intro: '當路人頭上有出現「看見」符號時，點一下'+$this.name+'，路人會走過來跟'+$this.name+'消費。',
                         position: 'down'
                       },
                       {
@@ -510,6 +514,7 @@ function Toolkit(scene){
                     skipLabel: '跳過教學',
                     doneLabel: '我知道了',
                     disableInteraction : true,
+                    keyboardNavigation : false,
                   }
 
                 setTimeout(function(){
@@ -543,7 +548,7 @@ function Toolkit(scene){
                     steps: [
                       {
                         element: '.wang2',
-                        intro: "這個人眼紅了，這時叫賣的話，他會大聲嚷嚷把想買的人嚇走。",
+                        intro: "這個人眼紅了，這時叫賣的話，他會大聲嚷嚷叫警察把想買的人嚇走。",
                         position: 'top'
                       },
                       {
@@ -558,6 +563,7 @@ function Toolkit(scene){
                     skipLabel: '跳過教學',
                     doneLabel: '我知道了',
                     disableInteraction : true,
+                    keyboardNavigation : false,
                   }
 
                 setTimeout(function(){
@@ -608,6 +614,7 @@ function Toolkit(scene){
                     skipLabel: '跳過教學',
                     doneLabel: '我知道了',
                     disableInteraction : true,
+                    keyboardNavigation : false,
                   }
                 setTimeout(function(){
                     intro1 = introJs().setOptions(introOption);

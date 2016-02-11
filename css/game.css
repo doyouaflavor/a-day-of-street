@@ -81,6 +81,10 @@ body{
     -moz-border-radius:20px;
     -webkit-border-radius: 20px;
     width: 40%;
+    outline: none;
+}
+.game-start input:focus[type=text]{
+    box-shadow: inset 0 0 3px 2px #f90; /* provides a more style-able replacement to the outline */
 }
 .game-start input[type=submit]{
     display: block;
@@ -165,6 +169,18 @@ body{
         width:150px;
         top:80px
     }
+    .answer-title{
+        width:auto;
+    }
+    .answer-section-title{
+/*        width: 100%;*/
+    }
+    .img-answer-a2-img,
+    .img-answer-a3-img,
+    .img-answer-a4-img{
+        transform: scale(0.5);
+        transform-origin: left top;
+    }
     .street-dashboard,
     .street-dashboard-wrapper{
         width: 100%;
@@ -210,6 +226,47 @@ body{
     .db-time-yellow{
         border-bottom: 3px #F7D767 solid;
     }
+    .db-warning{
+        font-weight: bold;
+        position: absolute;
+        right: 10px;
+        top: 56px;
+        color: darkred;
+        font-size: 23px;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-name: timelayer-animate;
+        animation-name: timelayer-animate;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+    }
+    @-webkit-keyframes timelayer-animate{
+        from {
+          opacity: 1;
+        }
+        50%{
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+    }
+    @keyframes timelayer-animate{
+        from {
+          opacity: 1;
+        }
+        50%{
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+    }
+    .db-timelayer img{
+        display: none;
+    }
     .bg-space-wrapper{
         position: absolute;
         top: 20px;
@@ -222,6 +279,9 @@ body{
         border: 3px white solid;
         box-sizing: border-box;
         background: #3FAA96;
+    }
+    .bg-space img{
+        display: none;
     }
     .badges{
         position:absolute;
@@ -256,6 +316,27 @@ body{
     .select-effectInfo{
         clear: both;
         margin: 0 10px;
+    }
+    .select-item>div.select-effectInfo{
+        height: auto;
+    }
+    .btn-result.btn-share {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    .result-menu{
+        width: 100%;
+    }
+    .btn-result {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+    result-menu:after {
+        clear: both;
+        margin: 2px;
+        content: " ";
     }
 }
 @media screen and (min-width: 768px){
@@ -325,6 +406,9 @@ body{
         width: 902px;
         margin: 0 auto;
     }
+    .answer-title{
+        width: 380px;
+    }
     .answer-info{
         width: 360px;
         float: left;
@@ -384,12 +468,6 @@ body{
           top: 66px;
         }
     }
-    
-    .db-warning{
-        left: 0;
-        top: 63px;
-        position:absolute;
-    }
     .db-score{
         top: 20px;
     }
@@ -419,6 +497,11 @@ body{
     .db-time-yellow{
         border-bottom: #F7D767 5px solid;
     }
+    .db-warning{
+        display: none;
+        position: absolute;
+    }
+    
     .answer-content{
         float: left;
         width: 560px;
@@ -458,6 +541,10 @@ body{
     }
     .select-effectInfo {
         width: 65%;
+    }
+    .btn-result{
+        width: 170px;
+        margin: 5px
     }
 }
 
@@ -693,11 +780,11 @@ a .option-text{
 }
 .street-master{
     height: 160px;
-    width: 100px;
+    width: 120px;
     position:relative;
 }
 .street-master img{
-    top: 0;
+    bottom: 0;
     left: 0;
     position: absolute;
 }
@@ -947,7 +1034,6 @@ p.answer-upper-line:before{
 .answer-title{
     padding-top: 10px;
     float: left;
-    width: 380px;
     text-align: left;
 }
 
@@ -985,10 +1071,8 @@ p.answer-upper-line:before{
 
 
 .btn-result {
-    width: 170px;
     background: #DB534B;
     padding:10px;
-    margin: 5px;
     float: left;
 }
 .btn-result.btn-share{
