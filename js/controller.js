@@ -185,6 +185,9 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
 
 
 function resizing($scope){
+    $w = $(window);
+    $('.img-answer-a2-img').css('transform','scale('+($w.width/474)+')' );
+    console.log(123);
     /*
     var wh = $(window).height();
     setTimeout(function(){
@@ -203,6 +206,10 @@ function resizing($scope){
     }
     */
 }
+
+$(window).resize(function(){
+    resizing();
+});
 
 $(document).ready(function(){
   $('.street-master-img').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
@@ -224,4 +231,13 @@ function detectmob() {
  else {
     return false;
   }
+}
+
+// from http://stackoverflow.com/questions/247483/http-get-request-in-javascript
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
 }

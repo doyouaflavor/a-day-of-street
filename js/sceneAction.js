@@ -55,12 +55,15 @@ function Toolkit(scene){
         $this.countdown = 180;
         $this.currentTime = -1;
         $this.street_people = [];
-        $this.allPeopleCount = 0;
         $this.role = 0;
         
         // For get final title. 
+        
+        $this.allPeopleCount = 0;
         $this.countDealedPeople = 0;
+        $this.countRedeyeYellPeople = 0;
         $this.countGetOutPeople = 0;
+        $this.countMissPeople = 0;
         $this.countGoodMindPeople = 0;
         $this.countBadMindPeople = 0;
 
@@ -82,8 +85,55 @@ function Toolkit(scene){
             idleToLeave: 0,
             sawToLeave: 0,
         };
+        $this.report = [
+            {id:1275687024,value:''}, //姓名 0
+            {id:248967896,value:''}, //第一題 1
+            {id:1976142292,value:''}, //第二題 2
+            {id:164500138,value:''}, //第三題 3
+            {id:1577046484,value:''}, //第四題 4
+            {id:1424987075,value:''}, //第五題 5
+            {id:1114063609,value:''}, //第六題 6
+            {id:714982201,value:''}, //出現人數 7
+            {id:1610838322,value:''}, //成交量 8
+            {id:444985876,value:''}, //警察逼逼次數 9
+            {id:1449750782,value:''}, //miss量 10
+            {id:71287881,value:''}, //趕走數量 11
+            {id:1921663805,value:''}, //開心人數 12
+            {id:741409202,value:''}, //不開心人數 13
+            {id:370171931,value:''}, //總分 14
+            {id: 653881628 , value:''}// 稱號 15
+        ];
     }
     
+    tools.doReport = function(){
+        $this.report[0].value= $this.name;
+        $this.report[1].value= $this.selected[0].option.name;
+        $this.report[2].value= $this.selected[1].option.name;
+        $this.report[3].value= $this.selected[2].option.name;
+        $this.report[4].value= $this.selected[3].option.name;
+        $this.report[5].value= $this.selected[4].option.name;
+        $this.report[6].value= $this.selected[5].option.name;
+        $this.report[7].value= $this.allPeopleCount;
+        $this.report[8].value= $this.countDealedPeople;
+        $this.report[9].value= $this.countRedeyeYellPeople;
+        $this.report[10].value = $this.countGetOutPeople;
+        $this.report[11].value = $this.countMissPeople;
+        $this.report[12].value = $this.countGoodMindPeople;
+        $this.report[13].value = $this.countBadMindPeople;
+        $this.report[14].value = $this.total_score;
+        $this.report[15].value = $this.final_title;
+        
+        
+        
+        var url = 'https://docs.google.com/forms/d/1pGHh6EeLxIp4AfbOfJr0qWNK75-T-dZW7auzidndHcM/formResponse?'
+        for(var i = 0;i<$this.report.length;i++){
+            url += 'entry.' + $this.report[i].id + '=' + encodeURI($this.report[i].value) + '&';
+        }
+        url += 'submit=submit';
+        console.log(url);
+        
+        httpGet(url);
+    }
     
     tools.doClickStart = function(){
         $this.state = 'question';
@@ -184,7 +234,7 @@ function Toolkit(scene){
                 if( person.state == 'saw' ){
                     person.sawInterval--;
                     if(person.sawInterval == 0){
-                        person.do('leave',getLeaveTarget(person,$this));
+                       $this.countMissPeople++; person.do('leave',getLeaveTarget(person,$this));
                     }
                 }
                 
@@ -252,8 +302,9 @@ function Toolkit(scene){
                 if($this.currentTime == 0){
                     $this.state = 'ending';
                     $this.final_title = getFinalTitle($this);
-                    $this.afterStreet();
+                    tools.afterStreet();
                     sound.gongong.play();
+                    tools.doReport();
                 }else{
                     if($this.currentTime % Math.floor($this.countdown/6) == 3){
                         $this.warning = true;
@@ -262,7 +313,7 @@ function Toolkit(scene){
                     if($this.currentTime % Math.floor($this.countdown/6) == 0){
                         $this.state = 'question';
                         sound.gong.play();
-                        $this.afterStreet();
+                        tools.afterStreet();
                         sound.alert.fadeOut(0,500);
                     }
                 }
@@ -286,6 +337,7 @@ function Toolkit(scene){
             var person = $this.street_people[i];
             if(person.state == 'redeye'){
                 var person_clear = true;
+                $this.countRedeyeYellPeople++;
                 sound.bark.play();
                 break;
             }
@@ -297,7 +349,7 @@ function Toolkit(scene){
         while(i < $this.street_people.length){
             var person = $this.street_people[i]
             // clear any customers
-            if(person_clear && ( person.state == 'saw' || person.state == 'redeye')){    
+            if(person_clear && ( person.state == 'saw' || person.state == 'redeye')){
                 if(person.state == 'redeye' && !redeye_bark){
                     person.mind = 'bad';
                     person.state = '';
@@ -556,7 +608,7 @@ function getFinalTitle($this){
         $this.selected[4].option.name == 'A' &&
         $this.selected[5].option.name == 'B'
     ){
-        last_name = last_name_list[6];
+        last_name = last_name_list[5];
     }else{
         if(total_score < score_interval[0]){
             var last_name = last_name_list[0];
