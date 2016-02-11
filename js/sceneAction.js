@@ -32,6 +32,7 @@ function Toolkit(scene){
     
     tools.newGame = function(){
         $this.afterTut = false;
+        $this.tutStep = -1;
         $this.pause = false;
         $this.warning = false;
         $this.width = 0;
@@ -166,7 +167,7 @@ function Toolkit(scene){
         $this.question = $this.data[$this.index];
         
         if(!$this.afterTut){
-            $this.showTut(1);
+            $this.showTut(0);
             return;
         }
         
@@ -251,7 +252,9 @@ function Toolkit(scene){
                     if(person.state == 'walk-deal'){
                         $this.coins.push({score: $this.deal_score});
                         $timeout(function(){ $this.coins.pop()},1000);
-                        $this.countDealedPeople++;
+                        if($this.afterTut){
+                            $this.countDealedPeople++;
+                        }
                         $this.total_score += $this.deal_score;
                         var target = [0,person.position.y];
                         target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
@@ -259,11 +262,15 @@ function Toolkit(scene){
                         if(Math.random()<$this.threshold.mindToGood || !$this.afterTut){
                             person.mind = 'good';
                             sound.coin.play();
-                            $this.countGoodMindPeople++;
+                            if($this.afterTut){
+                                $this.countGoodMindPeople++;
+                            }
                         }else{
                             person.mind = 'bad';
                             sound.coin_bad.play();
-                            $this.countBadMindPeople++;
+                            if($this.afterTut){
+                                $this.countBadMindPeople++;
+                            }
                         }
                         if(!$this.afterTut){
                             $timeout(function(){$this.showTut(2);},1000);
@@ -333,13 +340,21 @@ function Toolkit(scene){
         $this.arrow = false;
         $this.animate = '';
         $this.click = true;
+        if(!$this.afterTut && $this.tutStep == 0){
+            $timeout(function(){
+                tools.showTut(1);
+            },1500);
+        }
+        
         var i = 0;
         // Check if there are any redeyed-person.
         while(i < $this.street_people.length){
             var person = $this.street_people[i];
             if(person.state == 'redeye'){
                 var person_clear = true;
-                $this.countRedeyeYellPeople++;
+                if($this.afterTut){
+                    $this.countRedeyeYellPeople++;
+                }
                 sound.bark.play();
                 break;
             }
@@ -370,10 +385,11 @@ function Toolkit(scene){
                 }
                 var target = [0,person.position.y];
                 person.mind = 'bad';
-                $this.countBadMindPeople++;
                 target[0] = (Math.random()<0.5)?0 - $this.getPersonBoxSize().width: $this.region[1][0];
                 person.do("leave",target);
-                $this.countGetOutPeople++;
+                if($this.afterTut){
+                    $this.countGetOutPeople++;
+                }
             }
             else{
                 // call first 'saw' person coming.
@@ -417,8 +433,48 @@ function Toolkit(scene){
     }
     
     tools.showTut = function(level){
+        $this.tutStep++;
         tools.afterStreet();
         switch(level){
+            case 0:
+                introOption = {
+                    steps: [
+                      {
+                        element: '.street-master',
+                        intro: $this.name + "是一名街賣者，正在熙熙攘攘的路上販賣商品!!",
+                        position: 'down'
+                      },
+                      {
+                        element: '.street-master',
+                        intro: '點擊'+$this.name+'時，就會對附近的人進行叫賣',
+                        position: 'down'
+                      },
+                      {
+                        element: '.street-master',
+                        intro: '現在點擊看看',
+                        position: 'down'
+                      }
+                    ],
+                    exitOnOverlayClick : false,
+                    prevLabel : '上一步',
+                    nextLabel : '我知道了',
+                    skipLabel: '跳過教學',
+                    doneLabel: '我知道了',
+                    disableInteraction : true,
+                  }
+
+                setTimeout(function(){
+                    intro1 = introJs().setOptions(introOption);
+                    intro1.oncomplete(function(){
+                        $this.prepareStreet();
+                        $this.arrow = true;
+                        sound.tut_next.play();
+                    }).onexit(tools.showAfterTut);
+                    intro1.onchange(function(){sound.tut_next.play()});
+                    intro1.start();
+                },500);
+                
+                break;
             case 1:
                 var person1 = newPerson(1,$this.region[1][0]*0.1,$this.region[1][1]*0.4);
                 var person2 = newPerson(2,$this.region[1][0]*0.5,$this.region[1][1]*0.6);
@@ -429,20 +485,20 @@ function Toolkit(scene){
 
                 introOption = {
                     steps: [
-                      {
-                        element: '.street-master',
-                        intro: "你是一名街賣者，正在熙熙攘攘的路上販賣商品!!",
-                        position: 'left'
+                    {
+                        element: '.wang1',
+                        intro: '這是路人',
+                        position: 'down'
                       },
                       {
                         element: '.wang1',
-                        intro: '這是路人，當路人頭上有出現「看見」符號時，點一下你的街賣者，路人會走過來跟你消費。',
-                        position: 'right'
+                        intro: '當路人頭上有出現「看見」符號時，點一下你的街賣者，路人會走過來跟你消費。',
+                        position: 'down'
                       },
                       {
                         element: '.street-master',
                         intro: '現在點擊看看。',
-                        position: 'left'
+                        position: 'down'
                       }
                     ],
                     exitOnOverlayClick : false,
@@ -485,12 +541,12 @@ function Toolkit(scene){
                       {
                         element: '.wang2',
                         intro: "這個人眼紅了，這時叫賣的話，他會大聲嚷嚷把想買的人嚇走。",
-                        position: 'left'
+                        position: 'top'
                       },
                       {
                         element: '.street-master',
                         intro: '現在叫賣看看。',
-                        position: 'left'
+                        position: 'top'
                       }
                     ],
                     exitOnOverlayClick : false,
@@ -525,10 +581,10 @@ function Toolkit(scene){
                       {
                         element: '.street-master',
                         intro: "每隔一段時間會出現選擇，不同選擇會影響你的環境變因。",
-                        position: 'left'
+                        position: 'down'
                       },
                       {
-                        element: '.bg-space:nth-of-type(3)',
+                        element: '.bg-space:nth-of-type(2)',
                         intro: '在進入選擇題之前，會出現預告符號。',
                         position: 'down'
                       },
@@ -540,7 +596,7 @@ function Toolkit(scene){
                       {
                         element: '.street-master',
                         intro: '現在就來挑戰如何能在一天內賺取最多錢吧!!',
-                        position: 'left'
+                        position: 'down'
                       }
                     ],
                     exitOnOverlayClick : false,

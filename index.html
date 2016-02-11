@@ -25,7 +25,7 @@
     </script>
     <link rel="stylesheet" href="css/game.css">
     <meta name="title" content="街頭創業家的一天">
-    <meta name="description" content="十字路旁單薄的叫賣身影，你是否已習以為常？不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。">
+    <meta name="description" content="十字路旁單薄的叫賣身影，你是否已習以為常？不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。透過 3 分鐘的角色扮演遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。">
     <meta property="og:title" content="街頭創業家的一天"/>
     <meta property="og:image" content="http://doyouaflavor.github.io/a-day-of-street/img/preview.png"/>
     <meta property="og:description" content="十字路旁單薄的叫賣身影，你是否已習以為常？不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。"/>
@@ -34,7 +34,7 @@
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
-  <body ng-controller="MainCtrl as scene">
+  <body ng-controller="MainCtrl as scene"  ONDRAGSTART="window.event.returnValue=false" ONCONTEXTMENU="window.event.returnValue=false" onSelectStart="event.returnValue=false">
 
     <div class="scene street" ng-style='scene.streetStyle()'>
         <div class="street-info" ng-if='scene.debug' > 時間：<span>{{scene.currentTime}}</span>  分數：<span>{{scene.total_score}}</span>  單價：<span>{{scene.deal_score}}</span>{{scene.threshold}}</div>
@@ -118,7 +118,7 @@
   
   <div class="scene game-start" ng-if="scene.state=='ready'">
      <div class="header" id="header">
-      <span class="header-item header-logo">人生百味</span>
+      <span class="header-item header-logo"><a href="" target="_blank">人生百味</a></span>
       <span class="header-item header-team">街頭創業家的一天</span>
   </div>
   
@@ -126,7 +126,7 @@
       <p>十字路旁單薄的叫賣身影，你是否已習以為常？<br/>
 不知經過幾個年頭，這樣的身影撐起一個家庭，或至少希望獨立賺取應得溫飽。<br/>
  其中人生百萬種滋味和心路故事，每天只是路過是無法了解的。<br/>
- 透過角色扮演的遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。</p>
+ 透過 3 分鐘的角色扮演遊戲，希望帶著大家一起走入街頭創業家的日常，了解街頭販售的生活，打破隔閡點亮街頭。</p>
  <form ng-submit="scene.doClickStart()" >
      <input type="text" placeholder="你的大名" name="" id="" ng-model="scene.name">
      <input type="submit" id="submit" value="登記創業" />
