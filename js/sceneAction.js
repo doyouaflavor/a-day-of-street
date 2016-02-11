@@ -138,6 +138,9 @@ function Toolkit(scene){
     }
     
     tools.doClickStart = function(){
+        if($this.name == '' || $this.name == undefined){
+            $this.name = '你';
+        }
         $this.state = 'question';
         $this.resizing();
         $this.updateRegionAndMaster();

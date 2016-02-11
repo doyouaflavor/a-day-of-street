@@ -60,6 +60,7 @@ body{
     color: #764143;
     text-align: center;
     padding-bottom: 100px;
+    position: relative;
 }
 .game-start h1{
     padding-top: 50px;
@@ -94,6 +95,7 @@ body{
     background: #DB534B;
     border: #FBA9A9 solid 2px;
 }
+
 
 .triangle{
     width: 72px;
@@ -473,7 +475,9 @@ body{
 
 /* element */
 
-
+.ready-btn{
+    line-height: 40px;
+}
 .db-score{
     position: absolute;
     width: 140px;
@@ -761,7 +765,7 @@ a .option-text{
     margin: 3px;
     width: 57px;
 }
-.pause-button{
+.pause-button,.ready-btn{
     position: absolute;
     background: #3FAA96;
     z-index: 999;
