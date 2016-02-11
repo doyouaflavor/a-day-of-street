@@ -66,6 +66,7 @@ function Toolkit(scene){
         $this.countMissPeople = 0;
         $this.countGoodMindPeople = 0;
         $this.countBadMindPeople = 0;
+        $this.finishedGame = false;
 
         $this.defaultThreshold = {
             newPeople : 0.04,
@@ -107,12 +108,12 @@ function Toolkit(scene){
     
     tools.doReport = function(){
         $this.report[0].value= $this.name;
-        $this.report[1].value= $this.selected[0].option.name;
-        $this.report[2].value= $this.selected[1].option.name;
-        $this.report[3].value= $this.selected[2].option.name;
-        $this.report[4].value= $this.selected[3].option.name;
-        $this.report[5].value= $this.selected[4].option.name;
-        $this.report[6].value= $this.selected[5].option.name;
+        $this.report[1].value= ($this.selected[0])?$this.selected[0].option.name:"";
+        $this.report[2].value= ($this.selected[1])?$this.selected[1].option.name:""
+        $this.report[3].value= ($this.selected[2])?$this.selected[2].option.name:""
+        $this.report[4].value= ($this.selected[3])?$this.selected[3].option.name:""
+        $this.report[5].value= ($this.selected[4])?$this.selected[4].option.name:""
+        $this.report[6].value= ($this.selected[5])?$this.selected[5].option.name:""
         $this.report[7].value= $this.allPeopleCount;
         $this.report[8].value= $this.countDealedPeople;
         $this.report[9].value= $this.countRedeyeYellPeople;
@@ -304,6 +305,7 @@ function Toolkit(scene){
                     $this.final_title = getFinalTitle($this);
                     tools.afterStreet();
                     sound.gongong.play();
+                    $this.finishedGame = true;
                     tools.doReport();
                 }else{
                     if($this.currentTime % Math.floor($this.countdown/6) == 3){
@@ -571,6 +573,10 @@ function Toolkit(scene){
         $this.afterTut = true;
         $this.prepareStreet();
         sound.tut_next.play();
+    }
+    
+    window.onbeforeunload = function () {
+        tools.doReport();
     }
     
     /**
