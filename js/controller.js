@@ -187,7 +187,6 @@ game.controller('MainCtrl', ['$scope', '$interval','$window','$sce','$timeout', 
 function resizing($scope){
     $w = $(window);
     $('.img-answer-a2-img').css('transform','scale('+($w.width/474)+')' );
-    console.log(123);
     /*
     var wh = $(window).height();
     setTimeout(function(){

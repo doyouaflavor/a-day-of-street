@@ -78,7 +78,7 @@
                     <div class="db-timebar">
                        <div class="db-time-bar db-time-white"></div>
                        <div class="db-time-bar db-time-yellow" style="width: {{scene.lineLengthStyle()}}px;" ng-if="scene.currentTime > 0"></div>
-                       <div class="db-warning">
+                       <div class="db-warning" ng-if="scene.warning">
                            !
                        </div>
                        

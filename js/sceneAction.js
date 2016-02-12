@@ -34,6 +34,8 @@ function Toolkit(scene){
         $this.sound = sound;
         
         $this.afterTut = false;
+        $this.tutFlag = false;
+        
         $this.tutStep = -1;
         $this.pause = false;
         $this.warning = false;
@@ -278,7 +280,8 @@ function Toolkit(scene){
                                 $this.countBadMindPeople++;
                             }
                         }
-                        if(!$this.afterTut){
+                        if(!$this.afterTut && !$this.tutFlag && $this.tutStep == 1){
+                            $this.tutFlag = true;
                             $timeout(function(){$this.showTut(2);},1000);
                             return
                         }
@@ -294,7 +297,7 @@ function Toolkit(scene){
             });
             
             // Kill the outbonding people.
-            if(dying_people.length >= 1 && !$this.afterTut){
+            if(dying_people.length >= 1 && !$this.afterTut && $this.tutStep == 2){
                 $this.showTut(3);
                 return 
             }
@@ -346,7 +349,8 @@ function Toolkit(scene){
         $this.arrow = false;
         $this.animate = '';
         $this.click = true;
-        if(!$this.afterTut && $this.tutStep == 0){
+        if(!$this.afterTut && $this.tutStep == 0 && !$this.tutFlag){
+            $this.tutFlag = true;
             $timeout(function(){
                 tools.showTut(1);
             },1500);
@@ -473,6 +477,7 @@ function Toolkit(scene){
                 setTimeout(function(){
                     intro1 = introJs().setOptions(introOption);
                     intro1.oncomplete(function(){
+                        $this.tutFlag = false;
                         $this.prepareStreet();
                         $this.arrow = true;
                         sound.tut_next.play();
@@ -520,6 +525,7 @@ function Toolkit(scene){
                 setTimeout(function(){
                     intro1 = introJs().setOptions(introOption);
                     intro1.oncomplete(function(){
+                        $this.tutFlag = false;
                         person1.state = 'saw';
                         person1.sawInterval = -1;
                         $this.prepareStreet();
@@ -569,6 +575,7 @@ function Toolkit(scene){
                 setTimeout(function(){
                     intro1 = introJs().setOptions(introOption);
                     intro1.oncomplete(function(){
+                        $this.tutFlag = false;
                         person1.state = 'saw';
                         person1.sawInterval = -1;
                         $this.prepareStreet();
@@ -593,7 +600,7 @@ function Toolkit(scene){
                         position: 'down'
                       },
                       {
-                        element: '.bg-space:nth-of-type(2)',
+                        element: detectmob()? '.db-warning':'.bg-space:nth-of-type(2)',
                         intro: '在進入選擇題之前，會出現預告符號。',
                         position: 'down'
                       },
@@ -639,6 +646,7 @@ function Toolkit(scene){
         $this.afterTut = true;
         $this.prepareStreet();
         sound.tut_next.play();
+        $('.introjs-overlay').remove();
     }
     
     window.onbeforeunload = function () {
