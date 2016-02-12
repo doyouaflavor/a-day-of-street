@@ -112,7 +112,7 @@ function Toolkit(scene){
     }
     
     tools.doReport = function(){
-        if(location.host !=='game.doyouaflavor.tw')return ;
+        if(window.location.host !=='game.doyouaflavor.tw')return ;
         $this.report[0].value= $this.name;
         $this.report[1].value= ($this.selected[0])?$this.selected[0].option.name:"";
         $this.report[2].value= ($this.selected[1])?$this.selected[1].option.name:""
