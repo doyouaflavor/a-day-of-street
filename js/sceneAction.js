@@ -646,7 +646,6 @@ function Toolkit(scene){
         $this.afterTut = true;
         $this.prepareStreet();
         sound.tut_next.play();
-        $('.introjs-overlay').remove();
     }
     
     window.onbeforeunload = function () {
