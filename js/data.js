@@ -71,7 +71,7 @@ var data = [
                      "effect":function(scene){
                          removeItem(scene.data, 2, "C");//刪掉第三題的日用品
                          removeItem(scene.data, 3, "C");//刪掉第四題的夜市
-                         scene.threshold.redeye += 0.001;
+                         scene.threshold.redeye *2;
                      },
                      "effectInfo":"生活較自由",
                  },
@@ -83,9 +83,9 @@ var data = [
                      "img":"img/2-group.png",
                      "rwd_img":"img/mobile-2-group.png",
                      "effect":function(scene){
-                         scene.threshold.redeye += 0.001;
+                         scene.threshold.redeye *2;
                      },
-                     "effectInfo":"較多選擇",
+                     "effectInfo":"商品可有較多選擇",
                  }
              ],
             "information":"<div class='answer-section-title'><div class='data-img img-answer-search'></div><p>許多人對於街賣集團有著許多疑問，人生百味團隊實地走訪了台北兩個團體，發現其多為合作社或一般公司形式進行，有些為出外打拚的身障者提供正餐與住宿，有些因交通安全考量提供接送。</p></div><div class='answer-section'><div class='data-img img-answer-a2-img'></div></div>\
@@ -104,9 +104,9 @@ var data = [
                      "img":"img/3-flower.png",
                      "rwd_img":"img/mobile-3-flower.png",
                      "effect":function(scene){
-                         scene.deal_score += 25;
+                         scene.deal_score = 25;
                      },
-                     "effectInfo":"單次消費 +25 元。",
+                     "effectInfo":"一串 25 元",
                  },
                  {
                      "name":"B",
@@ -118,7 +118,7 @@ var data = [
                      "effect":function(scene){
                          scene.deal_score += 10;
                      },
-                     "effectInfo":"單次消費 +10 元。",
+                     "effectInfo":"單次消費多 10 元",
                  },
                  {
                      "name":"C",
@@ -128,9 +128,10 @@ var data = [
                      "img":"img/3-tissue.png",
                      "rwd_img":"img/mobile-3-tissue.png",
                      "effect":function(scene){
-                         scene.deal_score += 50;
+                         scene.deal_score = 50;
+                         scene.defaultThreshold.saw *= 0.5;
                      },
-                     "effectInfo":"單次消費 +50 元。",
+                     "effectInfo":"單價約 50 元",
                  },
                  {
                      "name":"D",
@@ -140,9 +141,9 @@ var data = [
                      "img":"img/3-lottery.png",
                      "rwd_img":"img/mobile-3-lottery.png",
                      "effect":function(scene){
-                         scene.deal_score += 20;
+                         scene.deal_score = 20;
                      },
-                     "effectInfo":"單次消費 +20 元。",
+                     "effectInfo":"單價 20 元",
                  },
              ],
             "information":"<div class='answer-section-title'><div class='data-img img-answer-search'></div><p>目前市面上的街頭商品，多以玉蘭花、彩券與日用品為主。<br>由於無法大量批發，以及每月能販售的數量有限，為了維持生計多會將價格訂得高於市價。但也因此產生被消費者認為太貴且品質不清楚，而不願意購買的困境。</p>\
@@ -158,8 +159,8 @@ var data = [
                      "img":"img/4-MRT.png",
                      "rwd_img":"img/mobile-4-MRT.png",
                      "effect":function(scene){
-                         scene.threshold.newPeople *= 1.1;
-                         scene.threshold.redeye *= 1.1;
+                         scene.threshold.newPeople *= 1.5;
+                         scene.threshold.redeye *= 1.5;
                      },
                      "effectInfo":"人潮多、眼紅的人也多",
                  },
@@ -183,9 +184,9 @@ var data = [
                      "img":"img/4-nightmarket.png",
                      "rwd_img":"img/mobile-4-nightmarket.png",
                      "effect":function(scene){
-                         scene.threshold.newPeople *= 1.1;
-                         scene.threshold.saw *= 0.9;
-                         scene.threshold.redeye *= 0.9;
+                         scene.threshold.newPeople *= 1.5;
+                         scene.threshold.saw *= 0.7;
+                         scene.threshold.redeye *= 0.7;
                      },
                      "effectInfo":"人潮多，但容易遭人忽視",
                  }
@@ -204,7 +205,7 @@ var data = [
                      "img":"img/5-board.png",
                      "rwd_img":"img/mobile-5-board.png",
                      "effect":function(scene){
-                         scene.threshold.saw += 0.05;
+                         scene.threshold.saw *= 1.5;
                      },
                      "effectInfo":"增加被注意到的機會",
                  },
@@ -216,8 +217,8 @@ var data = [
                      "img":"img/5-loudly.png",
                      "rwd_img":"img/mobile-5-loudly.png",
                      "effect":function(scene){
-                         scene.threshold.saw += 0.05;
-                         scene.threshold.redeye += 0.05;
+                         scene.threshold.saw *= 2;
+                         scene.threshold.redeye *= 1.5;
                      },
                      "effectInfo":"較受各種人群注意",
                  },
@@ -229,6 +230,7 @@ var data = [
                      "img":"img/5-silence.png",
                      "rwd_img":"img/mobile-5-silence.png",
                      "effect":function(scene){
+                         scene.threshold.saw *= 1.2
                      },
                      "effectInfo":"較少人注意你",
                  }
@@ -247,7 +249,7 @@ var data = [
                      "img":"img/6-Sympathy.png",
                      "rwd_img":"img/mobile-6-Sympathy.png",
                      "effect":function(scene){
-                         scene.threshold.saw += 0.05;
+                         scene.threshold.saw *= 3;
                          scene.threshold.mindToGood = 0.6;
                      },
                      "effectInfo":"買的人變多了，但不乏買得不甘願的人",
@@ -260,6 +262,7 @@ var data = [
                      "img":"img/6-noSympathy.png",
                      "rwd_img":"img/mobile-6-noSympathy.png",
                      "effect":function(scene){
+                         scene.threshold.saw *= 1.2;
                      },
                      "effectInfo":"買的人不會變多",
                  }

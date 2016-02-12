@@ -832,6 +832,9 @@ a .option-text{
 .street-dashboard-wrapper{
     pointer-event: none;
 }
+.debug-people-area{
+    pointer-event: none;
+}
 .person {
     position: absolute;
 }
