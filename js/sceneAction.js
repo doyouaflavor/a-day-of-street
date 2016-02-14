@@ -332,7 +332,7 @@ function Toolkit(scene){
                         $this.state = 'question';
                         sound.gong.play();
                         tools.afterStreet();
-                        sound.alert.fadeOut(0,500);
+                        sound.alert.stop(0);
                     }
                 }
             }
