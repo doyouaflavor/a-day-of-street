@@ -680,7 +680,7 @@ function getFinalTitle($this){
     var middle_name_list = ['吟遊','噴水','絕地','神秘','做好做滿','天使'];
     var middle_name = middle_name_list[countDealedPeople % 6];
     var last_name_list = ['小販','商人','走路工','逃給','總裁','校長'];
-    var score_interval = [300,700,1000,2000,99999]
+    var score_interval = [1000,1500,2000,2500,99999]
     if( $this.selected[0].option.name == 'A' && 
         $this.selected[1].option.name == 'A' &&
         $this.selected[3].option.name == 'A' &&
