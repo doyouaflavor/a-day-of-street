@@ -131,7 +131,7 @@ var data = [
                          scene.deal_score = 50;
                          scene.defaultThreshold.saw *= 0.5;
                      },
-                     "effectInfo":"單價約 50 元",
+                     "effectInfo":"單價約 50 元，較少人買",
                  },
                  {
                      "name":"D",
