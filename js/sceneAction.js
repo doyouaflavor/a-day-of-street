@@ -321,6 +321,7 @@ function Toolkit(scene){
                     $this.final_title = getFinalTitle($this);
                     tools.afterStreet();
                     sound.gongong.play();
+                    sound.alert.stop();
                     $this.finishedGame = true;
                     tools.doReport();
                 }else{

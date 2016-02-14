@@ -1,4 +1,4 @@
-var host = 'http://st.doyouaflavor.tw/';
+var host = 'http://game.doyouaflavor.tw/';
 
 
 var game = angular.module('game',['ngSanitize']);
