@@ -710,6 +710,7 @@ a .option-text{
 /* Street */
 .street {
     position: relative;
+    height: 20px; 
 }
 .street-pause{
     -webkit-filter: blur(10px);
